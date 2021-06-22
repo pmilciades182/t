@@ -1,6 +1,6 @@
 <?php
-//phpinfo();
-$m = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+
+$_MONGO = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 
 //echo __select($m, 'db_acceso.usuario', ['usr' => 'admin','psw' => '123' ] ,[] );
 
@@ -29,5 +29,26 @@ function __select($_CONN, $_TABLA, $_FILTRO , $_OPCIONES )
         return $_COLECCION;
     }
 
+}
+
+///crea la collection
+function __collection($_CONN,$_ENTIDAD)
+{
+    $command = new MongoDB\Driver\Command(['listCollections' => 1, 'filter' => ['name' =>  $_ENTIDAD ] ] );
+
+    //var_dump($command);
+    $result = $_CONN->executeCommand('db_acceso', $command )->toArray();
+    //var_dump($result);
+
+    if (false == empty($result))
+    { 
+
+    }
+    else
+    {
+        $command = new MongoDB\Driver\Command(["create" => $_ENTIDAD]);
+        $cursor = $_CONN->executeCommand("db_acceso", $command);
+        $response = $cursor->toArray()[0];
+    }
 }
 
