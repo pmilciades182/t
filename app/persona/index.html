@@ -3,8 +3,54 @@
     <link href="../../css/tablas.css" rel="stylesheet">
     <script defer src="../../js/pro.js"></script>
     <script src="../../js/s.js"></script> 
+    <script src="../../js/app.js"></script> 
     <script  src="../../js/tab.js"></script>
 </head>
+
+<script>
+
+/////globales de entidad
+
+var entity          = 'persona';
+
+var cols_grid       = [ 
+                        'id',
+                        'nombre',
+                        'apellido',
+                        'telefono',
+                        'email',
+                        'fecha_nacimiento',
+                        'nacionalidad',
+                        'tipo_documento',
+                        'nro_documento',
+                        'direccion',
+                        'pais',
+                        'ciudad'
+                    ];
+
+var cols_form       = [ 
+                        'id',
+                        'nombre',
+                        'apellido',
+                        'telefono',
+                        'email',
+                        'fecha_nacimiento',
+                        'nacionalidad',
+                        'tipo_documento',
+                        'nro_documento',
+                        'direccion',
+                        'pais',
+                        'ciudad'
+                    ];
+
+var cols_search     = [ 
+                        'nombre',
+                        'apellido',
+                        'nro_documento'
+                    ];
+
+
+</script>
 
 <div id="mgs_modal"> MODAL <span id="close_modal"> X </span> </div> 
 
@@ -30,9 +76,7 @@
 
     <div id="t_bod">
         <table id="ta">
-
             <tbody>
-
                 <!--
                 <tr>
                     <th></th>
@@ -54,81 +98,8 @@
                     <td>2011/04/25</td>
                     <td>$320,800</td>
                 </tr>
-                <tr>
-                    <td class="t_ch"><input type="checkbox"></td>
-                    <td class="t_ch"> <i class="fas fa-edit"></i></td>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                </tr>
-                <tr>
-                    <td class="t_ch"><input type="checkbox"> </td>
-                    <td class="t_ch"> <i class="fas fa-edit"></i></td>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                </tr>
-                <tr>
-                    <td class="t_ch"><input type="checkbox"> </td>
-                    <td class="t_ch"> <i class="fas fa-edit"></i></td>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td>$433,060</td>
-                </tr>
-                <tr>
-                    <td class="t_ch"><input type="checkbox"> </td>
-                    <td class="t_ch"> <i class="fas fa-edit"></i></i></td>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                </tr>
-                <tr>
-                    <td class="t_ch"><input type="checkbox"></td>
-                    <td class="t_ch"> <i class="fas fa-edit"></i></td>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                </tr>
-                <tr>
-                    <td class="t_ch"><input type="checkbox"></td>
-                    <td class="t_ch"> <i class="fas fa-edit"></i></td>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                </tr>
-                <tr>
-                    <td class="t_ch"><input type="checkbox"></td>
-                    <td class="t_ch"> <i class="fas fa-edit"></i></td>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                </tr>
-
                 -->
             </tbody>
-
-           
         </table>
     </div>
 
@@ -156,3 +127,7 @@
         </div>
     </div>
 </div>
+
+
+<script>
+</script>
