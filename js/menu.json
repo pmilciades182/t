@@ -1,0 +1,40 @@
+{
+    "0": [
+        {
+            "_tipo": "1",
+            "_class": "li_de",
+            "_class2": "tit",
+            "_data_prog": "persona",
+            "_data_id": "1",
+            "_data_tit_pes": "Personas",
+            "_icono": "envelope",
+            "_titulo": "Personas"
+        }
+    ],
+
+    "1": [
+        {
+            "_tipo": "1",
+            "_class": "li_de",
+            "_class2": "tit",
+            "_data_prog": "cosa",
+            "_data_id": "2",
+            "_data_tit_pes": "Cosas",
+            "_icono": "envelope",
+            "_titulo": "Cosas"
+        }
+    ],
+
+    "2": [
+        {
+            "_tipo": "2",
+            "_class": "li_de",
+            "_class2": "tit",
+            "_titulo": "- Empresarial -",
+            "_data_prog": "",
+            "_data_id": "",
+            "_data_tit_pes": "",
+            "_icono": ""
+        }
+    ]
+}

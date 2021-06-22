@@ -1,0 +1,210 @@
+* {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+td {
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .0178571429em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+th {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .0178571429em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+
+tr {
+    padding-right: 16px;
+    padding-left: 16px;
+    height: 52px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, .12);
+    border-collapse: collapse;
+}
+
+#ta>tbody>tr:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+
+#ta>tbody>tr:nth-child(even) {
+    background-color: #fff;
+}
+
+tr:hover {
+    background-color: #c4c4c4 !important;
+}
+
+table {
+    color: rgba(0, 0, 0, .87);
+    white-space: nowrap;
+    border-collapse: collapse;
+    -webkit-overflow-scrolling: touch;
+    display: inline-flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow-x: auto;
+    white-space: nowrap;
+    table-layout: fixed;
+    position: relative;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+
+
+.t_ch {
+    text-align: center;
+}
+
+#t_con {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    background-color: ghostwhite;
+}
+
+#t_hea {
+    display: flex;
+    height: 30px;
+    width: 99%;
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+#t_foo {
+    display: flex;
+    height: 30px;
+    width: 99%;
+    background-color: white;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+#t_bod {
+    display: flex;
+    height: calc(100% - (60px));
+    margin: 3px;
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: gray;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: darkgray;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #2574A9;
+    color: whitesmoke;
+}
+
+.agrupador {
+    display: flex;
+    background-color: #2574A9;
+    border-radius: 50px;
+
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    padding: 3px;
+    cursor: pointer;
+    color: white;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    letter-spacing: .0178571429em;
+    border: solid 1px;
+    border-color: black;
+
+}
+
+.ag_gree{
+    background-color: rgb(53, 110, 53);  
+}
+
+.ag_red{
+    background-color: rgb(143, 15, 15);  
+}
+
+.ag_exp{
+    background-color: #F9F9F9;
+    color: rgba(0, 0, 0, .87);
+}
+
+#mgs_modal{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 0, 0, 0.30);;
+
+}
