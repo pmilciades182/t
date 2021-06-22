@@ -77,17 +77,11 @@ var cols_search     = [
     <div id="t_bod">
         <table id="ta">
             <tbody>
-                <!--
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Nombre</th>
-                    <th>Posicion</th>
-                    <th>Sucursal</th>
-                    <th>Edad</th>
-                    <th>Fecha de inicio</th>
-                    <th>Salario</th>
+                
+                <tr id="__th">
                 </tr>
+
+                <!--
                 <tr>
                     <td class="t_ch"> <input type="checkbox"> </td>
                     <td class="t_ch"><i class="fas fa-edit"></i></td>
@@ -130,4 +124,12 @@ var cols_search     = [
 
 
 <script>
+
+$( document ).ready(function() 
+{
+    ///// funciones de entidad
+    var e__th = $("#__th" );
+    e__put_th(cols_grid,e__th);
+
+});
 </script>
