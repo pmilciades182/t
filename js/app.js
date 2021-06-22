@@ -15,8 +15,6 @@ function e__put_th(e,f)
 
 }
 
-
-
 function capitalizeTheFirstLetterOfEachWord(words) {
     words = words.replace('_',' ');
     var separateWord = words.toLowerCase().split(' ');
