@@ -7,7 +7,7 @@ $entity = 'persona';
 
 ///crear collection
 
-__collection($_MONGO , $entity);
+__collection($_MONGO , $_DB, $entity);
 
 
 
