@@ -76,12 +76,15 @@ var cols_search     = [
 
     <div id="t_bod">
         <table id="ta">
-            <tbody>
-                
+           
+               
+           
+
+            <tbody id="__td">
+
                 <tr id="__th">
                 </tr>
 
-                <!--
                 <tr>
                     <td class="t_ch"> <input type="checkbox"> </td>
                     <td class="t_ch"><i class="fas fa-edit"></i></td>
@@ -91,8 +94,17 @@ var cols_search     = [
                     <td>61</td>
                     <td>2011/04/25</td>
                     <td>$320,800</td>
+                    <td>$320,800</td>
+                    <td>$320,800</td>
+                    <td>$320,800</td>
+                    <td>$320,800</td>
+                    <td>$320,800</td>
+                    <td>$320,800</td>
+                    
+
                 </tr>
-                -->
+                
+
             </tbody>
         </table>
     </div>
@@ -129,10 +141,11 @@ $( document ).ready(function()
 {
    
     var e__th = $("#__th" );
+    var e__td = $("#__td" );
 
     ///// funciones de entidad
     e__put_th(cols_grid,e__th);
-    e__put_td(entity,cols_grid,e__th);
+    e__put_td(entity,cols_grid,e__td);
 
 });
 </script>

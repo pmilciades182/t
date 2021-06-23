@@ -22,7 +22,7 @@ if(isset($_GET['user']))
     else
     {
         $_CHECK_USR_PSW =  __select($_MONGO, $_DB, $_COLECCION , ['usr' => $_USER ,'psw' => $_PASS  ] ,[] );
-
+        //var_dump($_CHECK_USR_PSW);
         if($_CHECK_USR_PSW == null )
         {
             err_login('Error: Error de Usuario o Contraseña');
