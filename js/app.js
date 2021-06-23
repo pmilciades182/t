@@ -70,9 +70,14 @@ function e__put_td(g,e, f)
                 let _a1 = document.createElement("td");
                 let _a2 = document.createElement("td");
                 _a1.innerHTML= '<input type="checkbox">';
-                _a2.innerHTML= '<i class="fas fa-edit"></i>';
+                _a2.innerHTML= '<i class="fas fa-edit tabla_edit"></i>';
                 _a1.classList.add("t_ch");
                 _a2.classList.add("t_ch");
+
+                _a2.addEventListener("click", function (e) {
+                    mostrar_modal(4);
+                }, false);
+
                 k.appendChild(_a1);
                 k.appendChild(_a2);
                 for (let j = 0; j <= e.length - 1 ; j++) 

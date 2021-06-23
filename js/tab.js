@@ -22,6 +22,11 @@ $(document).ready(function () {
     mostrar_modal(4);
   });
 
+  
+  $(".tabla_edit").on("click", function () {
+    mostrar_modal(4);
+  });
+
 
 
 });

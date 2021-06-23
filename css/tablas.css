@@ -4,6 +4,10 @@
     letter-spacing: 0.07em;
 }
 
+.tabla_edit{
+    cursor: pointer;
+}
+
 td {
 
     -moz-osx-font-smoothing: grayscale;
