@@ -22,7 +22,9 @@ function __select($_CONN,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES )
     $_DATOS = trim($_DATOS);
     $_DATOS = trim($_DATOS,',');
 
-    if(strlen($_DATOS) == 0)
+    $_DATOS = '[' . $_DATOS . ']';
+
+    if( trim($_DATOS) == '[]' )
     {
         return null;
     }

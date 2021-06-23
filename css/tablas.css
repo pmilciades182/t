@@ -131,7 +131,7 @@ body {
     margin: 3px;
     overflow: auto;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 /* width */
