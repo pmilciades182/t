@@ -24,7 +24,6 @@ function carga_menu(u) {
 
         let _class = null;
         let _class2 = null;
-        let _on_click = null;
         let _data_prog = null;
         let _data_id = null;
         let _data_tit_pes = null;
@@ -33,8 +32,6 @@ function carga_menu(u) {
         let _tipo = null;
 
         let cab = document.getElementById("menu_ca");
-
-
 
         $.each(data, function (key, val) {
 
@@ -50,7 +47,6 @@ function carga_menu(u) {
             _data_tit_pes = t._data_tit_pes;
             _icono = t._icono;
             _titulo = t._titulo;
-
 
 
             /// Menus para Abrir programas
