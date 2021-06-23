@@ -5,29 +5,30 @@ $_DB    = 'db_acceso';
 
 //echo __select($m, 'db_acceso.usuario', ['usr' => 'admin','psw' => '123' ] ,[] );
 
-function __select($_CONN, $_TABLA, $_FILTRO , $_OPCIONES )
+function __select($_CONN,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES )
 {
-    $_COLECCION     = '';
+    $_DATOS     = '';
+    $_BASE = $_DB . '.' . $_COLECCION;
     $query          = new MongoDB\Driver\Query($_FILTRO, $_OPCIONES);
-    $cursor         = $_CONN->executeQuery($_TABLA , $query);
+    $cursor         = $_CONN->executeQuery( $_BASE , $query);
 
     foreach ($cursor as $a ) 
     {
 
-        $_COLECCION .= json_encode($a);
-        $_COLECCION .= ',';
+        $_DATOS .= json_encode($a);
+        $_DATOS .= ',';
     }
 
-    $_COLECCION = trim($_COLECCION);
-    $_COLECCION = trim($_COLECCION,',');
+    $_DATOS = trim($_DATOS);
+    $_DATOS = trim($_DATOS,',');
 
-    if(strlen($_COLECCION) == 0)
+    if(strlen($_DATOS) == 0)
     {
         return null;
     }
     else
     {
-        return $_COLECCION;
+        return $_DATOS;
     }
 
 }

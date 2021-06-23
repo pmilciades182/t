@@ -5,7 +5,7 @@ if(isset($_POST['user']))
      $_USER =  $_POST['user'];
      $_PASS =  $_POST['pass'];
 
-     $_FILE = 'http://localhost/t/server/check_session.php?user=' ;
+     $_FILE = 'http://paxodell/t/server/check_session.php?user=' ;
      $_FILE .= $_USER . '&pass=';
      $_FILE .= $_PASS ;
      $RES = file_get_contents($_FILE,FILE_USE_INCLUDE_PATH);

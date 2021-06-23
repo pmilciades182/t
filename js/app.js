@@ -31,17 +31,15 @@ function capitalizeTheFirstLetterOfEachWord(words) {
 }
 
 ////funcion que hace mayusculas a siglas
-
 function e__siglas(e) {
-
     if (e.toUpperCase() == 'ID' ||
-        e.toUpperCase() == 'RUC'
-    ) {
-       // console.log(e);
-        e = e.toUpperCase();
-
-    }
-
+        e.toUpperCase() == 'RUC') 
+    {e = e.toUpperCase();}
     return e;
+}
+
+function e__put_td(g,e, f) 
+{
+    return null;
 
 }
