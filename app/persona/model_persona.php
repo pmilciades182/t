@@ -20,7 +20,7 @@ if(isset($_POST['e']) or isset($_GET['e'])    )
 
     }else
     {
-        $_FILTRO    = [];
+       $_FILTRO    = [];
        $_OPCIONES   = [];
        $_D = __select($_MONGO,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES );
     }

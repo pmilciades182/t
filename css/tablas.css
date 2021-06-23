@@ -1,16 +1,17 @@
 * {
     font-family: Helvetica, sans-serif;
-    font-size: 16px;
+    white-space: nowrap;
+    letter-spacing: 0.07em;
 }
 
 td {
 
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-size: .875rem;
+    font-size: .775rem;
     line-height: 1.25rem;
     font-weight: 400;
-    letter-spacing: .0178571429em;
+    letter-spacing: 0.07em;
     text-decoration: inherit;
     text-transform: inherit;
     box-sizing: border-box;
@@ -23,10 +24,10 @@ td {
 th {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-size: .875rem;
+    font-size: .775rem;
     line-height: 1.25rem;
     font-weight: 400;
-    letter-spacing: .0178571429em;
+    letter-spacing: 0.07em;
     text-decoration: inherit;
     text-transform: inherit;
     box-sizing: border-box;
@@ -166,8 +167,7 @@ th {
 .agrupador {
     display: flex;
     background-color: #2574A9;
-    border-radius: 50px;
-
+    border-radius: 5px;
     justify-content: center;
     align-items: center;
     margin: 3px;
