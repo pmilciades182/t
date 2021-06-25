@@ -1,3 +1,4 @@
+///carga los titulos de las tablas
 function e__put_th(e, f) {
     let k = document.createElement("th");
     let h = document.createElement("th");
@@ -15,6 +16,7 @@ function e__put_th(e, f) {
 
 }
 
+///mayusculas a la primera letra
 function capitalizeTheFirstLetterOfEachWord(words) {
     words = words.replace('_', ' ');
     var separateWord = words.toLowerCase().split(' ');
@@ -104,7 +106,7 @@ function e__put_td(g, e, f) {
 
 }
 
-
+///genera la paginacion de la tabla
 function e__pagination(e, f) {
     let loc = 'model_' + e + '.php';
 
@@ -125,10 +127,20 @@ function e__pagination(e, f) {
     });
 
     function __pag(i) {
-        let cant_pages = Math.ceil(i / 10);
-        console.log(cant_pages);
 
-        for (let i = 1; i <= cant_pages; i++) {
+        /// 10 lineas por pagina
+        let cant_pages = Math.ceil(i / 10);
+        let pags = 0;
+        console.log(cant_pages);
+        //hasta 5 paginas en la primera carga
+        if (cant_pages > 5) {
+            pags = 5;
+        }
+        else {
+            pags = cant_pages;
+        }
+
+        for (let i = 1; i <= pags; i++) {
             let pg = document.createElement("div");
             pg.classList.add("pagination");
             if (i == 1) {
