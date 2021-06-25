@@ -7,7 +7,6 @@ include_once('../../server/mongo.php');
 $_COLECCION = 'persona';
 
 ///crear collection
-
 __collection($_MONGO , $_DB, $_COLECCION);
 
 ///letra e utilizado para select
