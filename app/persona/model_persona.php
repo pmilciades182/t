@@ -27,7 +27,7 @@ if(isset($_POST['e']) or isset($_GET['e'])    )
 }
 
 ///letra c para definir un count
-if(isset($_POST['c']) or isset($_GET['c'])    )
+if(isset($_POST['c']) or isset($_GET['c']))
 {
        $_FILTRO    = [];
        $_OPCIONES   = [];
