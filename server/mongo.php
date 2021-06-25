@@ -36,9 +36,9 @@ function __select($_CONN,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES )
 }
 
 ///crea la collection
-function __collection($_CONN,$_DB,$_ENTIDAD)
+function __collection($_CONN,$_DB,$_COLECCION)
 {
-    $command = new MongoDB\Driver\Command(['listCollections' => 1, 'filter' => ['name' =>  $_ENTIDAD ] ] );
+    $command = new MongoDB\Driver\Command(['listCollections' => 1, 'filter' => ['name' =>  $_COLECCION ] ] );
 
     //var_dump($command);
     $result = $_CONN->executeCommand($_DB, $command )->toArray();
@@ -50,9 +50,24 @@ function __collection($_CONN,$_DB,$_ENTIDAD)
     }
     else
     {
-        $command = new MongoDB\Driver\Command(["create" => $_ENTIDAD]);
+        $command = new MongoDB\Driver\Command(["create" => $_COLECCION]);
         $cursor = $_CONN->executeCommand($_DB, $command);
         $response = $cursor->toArray()[0];
     }
+}
+
+function __count($_CONN,$_DB,$_COLECCION)
+{
+    $command = new \MongoDB\Driver\Command(['count' => $_COLECCION ]);
+    try 
+    {
+        $cursor = $_CONN->executeCommand($_DB, $command);
+    } 
+    catch (\MongoDB\Driver\Exception\Exception $e) 
+    {
+        $error_message = $e->getMessage();
+    }
+    $count = $cursor->toArray()[0]->n;
+    return $count;
 }
 

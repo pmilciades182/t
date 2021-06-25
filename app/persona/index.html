@@ -2,57 +2,57 @@
     <link href="../../css/all.css" rel="stylesheet">
     <link href="../../css/tablas.css" rel="stylesheet">
     <script defer src="../../js/pro.js"></script>
-    <script src="../../js/s.js"></script> 
-    <script src="../../js/app.js"></script> 
-    <script  src="../../js/tab.js"></script>
+    <script src="../../js/s.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/tab.js"></script>
 </head>
 
 <script>
 
-/////globales de entidad
+    /////globales de entidad
 
-var entity          = 'persona';
+    var entity = 'persona';
 
-var cols_grid       = [ 
-                        'id',
-                        'nombre',
-                        'apellido',
-                        'telefono',
-                        'email',
-                        'fecha_nacimiento',
-                        'nacionalidad',
-                        'tipo_documento',
-                        'nro_documento',
-                        'direccion',
-                        'pais',
-                        'ciudad'
-                    ];
+    var cols_grid = [
+        'id',
+        'nombre',
+        'apellido',
+        'telefono',
+        'email',
+        'fecha_nacimiento',
+        'nacionalidad',
+        'tipo_documento',
+        'nro_documento',
+        'direccion',
+        'pais',
+        'ciudad'
+    ];
 
-var cols_form       = [ 
-                        'id',
-                        'nombre',
-                        'apellido',
-                        'telefono',
-                        'email',
-                        'fecha_nacimiento',
-                        'nacionalidad',
-                        'tipo_documento',
-                        'nro_documento',
-                        'direccion',
-                        'pais',
-                        'ciudad'
-                    ];
+    var cols_form = [
+        'id',
+        'nombre',
+        'apellido',
+        'telefono',
+        'email',
+        'fecha_nacimiento',
+        'nacionalidad',
+        'tipo_documento',
+        'nro_documento',
+        'direccion',
+        'pais',
+        'ciudad'
+    ];
 
-var cols_search     = [ 
-                        'nombre',
-                        'apellido',
-                        'nro_documento'
-                    ];
+    var cols_search = [
+        'nombre',
+        'apellido',
+        'nro_documento'
+    ];
 
 
 </script>
 
-<div id="mgs_modal"> MODAL <span id="close_modal"> X </span> </div> 
+<div id="mgs_modal"> MODAL <span id="close_modal"> X </span> </div>
 
 <div id="t_con">
 
@@ -68,7 +68,7 @@ var cols_search     = [
         <div class='agrupador ag_gree' id="go_new">
             <div> &nbsp&nbsp <i class="fas fa-plus"></i> Nuevo Registro &nbsp&nbsp</div>
         </div>
-        <div class='agrupador ag_red'  id="go_delete">
+        <div class='agrupador ag_red' id="go_delete">
             <div> &nbsp&nbsp <i class="far fa-trash-alt"></i> Eliminar &nbsp&nbsp</div>
         </div>
     </div>
@@ -84,27 +84,17 @@ var cols_search     = [
     <div id="t_foo">
 
         <div class='agrupador'>
-           
+
             <i class="fal fa-chevron-double-left pagination"></i>
-          
+
             <i class="fal fa-chevron-left pagination"></i>
             <div id="pages__">
 
-            <div class="pagination current">1</div>
-         
-            <div  class="pagination">2</div>
-            
-            <div  class="pagination">3</div>
-          
-            <div  class="pagination">4</div>
-            
-            <div  class="pagination">5</div>
-       
             </div>
             <i class="fal fa-chevron-right pagination"></i>
-            
+
             <i class="fal fa-chevron-double-right pagination"></i>
-           
+
         </div>
     </div>
 </div>
@@ -112,15 +102,17 @@ var cols_search     = [
 
 <script>
 
-$( document ).ready(function() 
-{
-   
-    var e__th = $("#__th" );
-    var e__td = $("#__td" );
+    $(document).ready(function () {
 
-    ///// funciones de entidad
-    e__put_th(cols_grid,e__th);
-    e__put_td(entity,cols_grid,e__td);
+        var e__th = $("#__th");
+        var e__td = $("#__td");
+        var e__pg = $("#pages__");
 
-});
+        ///// funciones de entidad
+        e__put_th(cols_grid, e__th);
+        e__put_td(entity, cols_grid, e__td);
+
+        e__pagination(entity, e__pg);
+
+    });
 </script>
