@@ -7,6 +7,21 @@
 .tabla_edit{
     cursor: pointer;
 }
+.pagination{
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.pagination.current
+{
+    color:white;
+    background-color: #084866;
+    border-radius: 50px;
+
+}
+#pages__{
+display: flex;
+}
 
 td {
 

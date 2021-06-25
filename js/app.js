@@ -34,6 +34,7 @@ function e__siglas(e) {
     return e;
 }
 
+///carga los datos a la tabla
 function e__put_td(g,e, f) 
 {
 
@@ -59,7 +60,7 @@ function e__put_td(g,e, f)
 
       function __tab(d)
       {
-        let can = 8;
+        let can = 9;
         
         for (let i = 0; i <= can; i++) 
         {
