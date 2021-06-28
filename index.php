@@ -60,7 +60,7 @@ else
             </form>
         </div> 
         <div id="p2">
-            B
+            
         </div>
     </div>
 </body>
