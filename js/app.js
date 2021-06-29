@@ -154,7 +154,7 @@ function e__pagination(e, f) {
 
             pg.addEventListener("click", function (e) 
             {
-                console.log(pg);
+                _put_current(pg);
 
                 
 
@@ -163,6 +163,12 @@ function e__pagination(e, f) {
             f[0].appendChild(pg);
 
         }
+
+    function _put_current(e){
+
+        let f = $(".myClass")
+
+    }
 
     }
 
