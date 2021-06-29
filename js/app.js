@@ -143,10 +143,22 @@ function e__pagination(e, f) {
         for (let i = 1; i <= pags; i++) {
             let pg = document.createElement("div");
             pg.classList.add("pagination");
+
             if (i == 1) {
                 pg.classList.add("current");
-            }
+            }   
+
+
+
             pg.innerText = i;
+
+            pg.addEventListener("click", function (e) 
+            {
+                console.log(pg);
+
+                
+
+            });
 
             f[0].appendChild(pg);
 
