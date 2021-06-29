@@ -28,6 +28,14 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+.arrow:hover{
+    background-color: #66abca;
+    border-radius: 50px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
 
 
 .pagination.current
@@ -35,8 +43,8 @@
     color:white;
     background-color: #084866;
     border-radius: 50px;
-
 }
+
 #pages__{
 display: flex;
 }

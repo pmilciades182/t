@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="icon" type="img/image/png" href="img/i.png">
     <link rel="stylesheet" href="css/g.css">
-    <link rel="stylesheet" href="css/all.css">s
+    <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/fontawesome.css">
 </head>
 <body>

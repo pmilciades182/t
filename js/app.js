@@ -131,7 +131,7 @@ function e__pagination(e, f) {
         /// 10 lineas por pagina
         let cant_pages = Math.ceil(i / 10);
         let pags = 0;
-        console.log(cant_pages);
+        //console.log(cant_pages);
         //hasta 5 paginas en la primera carga
         if (cant_pages > 5) {
             pags = 5;
@@ -148,20 +148,14 @@ function e__pagination(e, f) {
                 pg.classList.add("current");
             }   
 
-
-
             pg.innerText = i;
 
             pg.addEventListener("click", function (e) 
             {
                 _put_current(pg);
-
-                
-
             });
 
             f[0].appendChild(pg);
-
         }
 
     function _put_current(e){
@@ -178,5 +172,29 @@ function e__pagination(e, f) {
 
     }
 
+    return null;
+}
+
+
+function __move_pag_prev()
+{
+    let a = $(".pagination.current").prev();
+
+    if(a.length > 0)
+    {
+        a.click();
+    }
+    return null;
+}
+
+
+function __move_pag_next()
+{
+    let a = $(".pagination.current").next();
+
+    if(a.length > 0)
+    {
+        a.click();
+    }
     return null;
 }

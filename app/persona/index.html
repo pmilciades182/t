@@ -84,12 +84,12 @@
 
     <div id="t_foo" class="noselect">
         <div class='agrupador'>
-            <i class="fal fa-chevron-double-left pagination "></i>
-            <i class="fal fa-chevron-left pagination "></i>
+            <i class="fal fa-chevron-double-left pagination arrow"></i>
+            <i class="fal fa-chevron-left pagination arrow" id="__pprev"></i>
             <div id="pages__">
             </div>
-            <i class="fal fa-chevron-right pagination "></i>
-            <i class="fal fa-chevron-double-right pagination "></i>
+            <i class="fal fa-chevron-right pagination arrow" id="__pnext"></i>
+            <i class="fal fa-chevron-double-right pagination arrow"></i>
         </div>
     </div>
 </div>
@@ -106,6 +106,21 @@
         e__put_th(cols_grid, e__th);
         e__put_td(entity, cols_grid, e__td);
         e__pagination(entity, e__pg);
+
+        ///funciones de paginacion
+
+        $("#__pprev").on( "click", function() 
+        {
+            __move_pag_prev();
+        });
+
+        $("#__pnext").on( "click", function() 
+        {
+            __move_pag_next();
+        });
+
+
+
 
     });
 </script>
