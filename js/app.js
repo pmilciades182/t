@@ -166,7 +166,13 @@ function e__pagination(e, f) {
 
     function _put_current(e){
 
-        let f = $(".myClass")
+        let f = $("div.pagination");
+        f.each(function (m,i) 
+        {
+         i.classList.remove("current");
+        });
+
+        e.classList.add("current");
 
     }
 
