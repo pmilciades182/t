@@ -7,6 +7,8 @@ var arr_pes = [0];
 $(document).ready(function () {
     let usr = 'ADMIN';
     carga_menu(usr);
+    ///imagen estatica
+    document.getElementById('img_logo').setAttribute('draggable', false);
 
 });
 

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <link rel="icon" type="img/image/png" href="img/i.png">
     <link rel="stylesheet" href="css/g.css">
-    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/all.css">s
     <link rel="stylesheet" href="css/fontawesome.css">
 </head>
 <body>
-    <div id="o2">
+    <div id="o2" class="noselect">
         <div id="q1">
             <div id="w1">
-                <img src="img/f.png" alt="Avatar" class="logo">
+                <img src="img/f.png" alt="Avatar" class="logo" id="img_logo">
                 <input type="text" placeholder="Buscar..." name="buscar" class="buscador" id="busc_menu" autocomplete="off" >
             </div>
             <div id="w2">
