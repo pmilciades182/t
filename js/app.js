@@ -107,7 +107,7 @@ function e__put_td(g, e, f) {
 }
 
 ///genera la paginacion de la tabla
-function e__pagination(e, f) {
+function e__pagination(e, f,g) {
     let loc = 'model_' + e + '.php';
 
     var request = $.ajax({
@@ -119,18 +119,19 @@ function e__pagination(e, f) {
 
     request.done(function (d) {
         // console.log(d);
-        __pag(d)
+        __pag(d,g)
     });
 
     request.fail(function (jqXHR, textStatus) {
         console.log(textStatus);
     });
 
-    function __pag(i) {
+    function __pag(i,g) {
 
         /// 10 lineas por pagina
         let cant_pages = Math.ceil(i / 10);
         let pags = 0;
+        g[0].innerText = 'Registros 1 al 10 de ' + i;
         //console.log(cant_pages);
         //hasta 5 paginas en la primera carga
         if (cant_pages > 5) {
@@ -146,29 +147,27 @@ function e__pagination(e, f) {
 
             if (i == 1) {
                 pg.classList.add("current");
-            }   
+            }
 
             pg.innerText = i;
 
-            pg.addEventListener("click", function (e) 
-            {
+            pg.addEventListener("click", function (e) {
                 _put_current(pg);
             });
 
             f[0].appendChild(pg);
         }
 
-    function _put_current(e){
+        function _put_current(e) {
 
-        let f = $("div.pagination");
-        f.each(function (m,i) 
-        {
-         i.classList.remove("current");
-        });
+            let f = $("div.pagination");
+            f.each(function (m, i) {
+                i.classList.remove("current");
+            });
 
-        e.classList.add("current");
+            e.classList.add("current");
 
-    }
+        }
 
     }
 
@@ -176,24 +175,20 @@ function e__pagination(e, f) {
 }
 
 
-function __move_pag_prev()
-{
+function __move_pag_prev() {
     let a = $(".pagination.current").prev();
 
-    if(a.length > 0)
-    {
+    if (a.length > 0) {
         a.click();
     }
     return null;
 }
 
 
-function __move_pag_next()
-{
+function __move_pag_next() {
     let a = $(".pagination.current").next();
 
-    if(a.length > 0)
-    {
+    if (a.length > 0) {
         a.click();
     }
     return null;

@@ -83,6 +83,8 @@
     </div>
 
     <div id="t_foo" class="noselect">
+        <div id="registros__">
+        </div>
         <div class='agrupador'>
             <i class="fal fa-chevron-double-left pagination arrow"></i>
             <i class="fal fa-chevron-left pagination arrow" id="__pprev"></i>
@@ -90,6 +92,8 @@
             </div>
             <i class="fal fa-chevron-right pagination arrow" id="__pnext"></i>
             <i class="fal fa-chevron-double-right pagination arrow"></i>
+        </div>
+        <div>
         </div>
     </div>
 </div>
@@ -101,11 +105,12 @@
         var e__th = $("#__th");
         var e__td = $("#__td");
         var e__pg = $("#pages__");
+        var e__rr = $("#registros__");
 
         ///// funciones de entidad
         e__put_th(cols_grid, e__th);
         e__put_td(entity, cols_grid, e__td);
-        e__pagination(entity, e__pg);
+        e__pagination(entity, e__pg,e__rr);
 
         ///funciones de paginacion
 
