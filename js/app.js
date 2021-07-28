@@ -203,3 +203,23 @@ function e__paginador(a, e) {
 
     return null;
 }
+
+
+function __move_pag_prev() {
+    let a = $(".pagination.current").prev();
+
+    if (a.length > 0) {
+        a.click();
+    }
+    return null;
+}
+
+
+function __move_pag_next() {
+    let a = $(".pagination.current").next();
+
+    if (a.length > 0) {
+        a.click();
+    }
+    return null;
+}
