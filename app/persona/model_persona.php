@@ -60,7 +60,6 @@ if(isset($_POST['e']) or isset($_GET['e']) )
        $_D = __select($_MONGO,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES );
     }
 
-
     echo $_D;
 }
 
