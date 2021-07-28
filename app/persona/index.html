@@ -86,8 +86,8 @@
     </div>
 
     <div id="t_foo">
-        <div>
-            Regisros [1 al 10] de [48]
+        <div id="text_paginator">
+            ...
         </div>
         <div class='agrupador'>
 
@@ -113,7 +113,7 @@
             
         </div>
         <div >
-            PABLO GONZALEZ ©
+            PG ANALITICA ©
         </div>
     </div>
 </div>
@@ -129,6 +129,8 @@
         ///// funciones de entidad
         e__put_th(cols_grid, e__th);
         e__put_td(entity, cols_grid, e__td,page);
+
+        e__text_paginator(entity);
 
 
     });

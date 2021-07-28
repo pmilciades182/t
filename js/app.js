@@ -40,8 +40,9 @@ function e__put_td(g, e, f, _p) {
 
     ///reset del f
 
-    console.log(f[0]);
-    console.log($(".registro").remove());
+    //console.log(f[0]);
+    //console.log($(".registro").remove());
+    $(".registro").remove();
 
     let loc = 'model_' + g + '.php';
 
@@ -118,7 +119,7 @@ function e__put_td(g, e, f, _p) {
 
 function e__paginador(a, e) {
 
-    console.log(a.dataset.type);
+    //console.log(a.dataset.type);
     let loc = 'model_' + e + '.php';
     let cantidad = 0;
 
@@ -138,8 +139,8 @@ function e__paginador(a, e) {
         console.log(textStatus);
     });
 
-    console.log('registros ' + cantidad);
-    console.log('pagina ' + page);
+    //console.log('registros ' + cantidad);
+    //console.log('pagina ' + page);
 
     let _t = a.dataset.type;
 
@@ -150,10 +151,10 @@ function e__paginador(a, e) {
 
         } else {
             page = 1;
-            let e__th = $("#__th");
             let e__td = $("#__td");
-            console.log('Primer Boton');
+            //console.log('Primer Boton');
             e__put_td(entity, cols_grid, e__td, page);
+            text_pag(page,ultima_pagina,cantidad);
         }
 
     }
@@ -163,10 +164,10 @@ function e__paginador(a, e) {
 
         } else {
             page = page - 1;
-            let e__th = $("#__th");
             let e__td = $("#__td");
-            console.log('segundo Boton');
+            //console.log('segundo Boton');
             e__put_td(entity, cols_grid, e__td, page);
+            text_pag(page,ultima_pagina,cantidad);
         }
 
 
@@ -177,10 +178,10 @@ function e__paginador(a, e) {
 
         } else {
             page = page + 1;
-            let e__th = $("#__th");
             let e__td = $("#__td");
-            console.log('tercer Boton');
+            //console.log('tercer Boton');
             e__put_td(entity, cols_grid, e__td, page);
+            text_pag(page,ultima_pagina,cantidad);
         }
 
 
@@ -191,35 +192,87 @@ function e__paginador(a, e) {
 
         }
         else {
-            let e__th = $("#__th");
             let e__td = $("#__td");
-            console.log('Ultimo Boton');
+            //console.log('Ultimo Boton');
             e__put_td(entity, cols_grid, e__td, ultima_pagina);
             page = ultima_pagina;
+            text_pag(page,ultima_pagina,cantidad);
         }
 
     }
-
-
     return null;
 }
 
+function e__text_paginator(e)
+{
+    let loc = 'model_' + e + '.php';
+    let cantidad = 0;
 
-function __move_pag_prev() {
-    let a = $(".pagination.current").prev();
+    var request = $.ajax({
+        url: loc,
+        type: "POST",
+        data: { c: 1 },
+        dataType: "json",
+        async: false
+    });
 
-    if (a.length > 0) {
-        a.click();
+    request.done(function (d) {
+        // console.log(d);
+        cantidad = d;
+    });
+    request.fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+    });
+
+    let ultima_pagina = Math.ceil(cantidad / 10);
+
+    text_pag(1,ultima_pagina,cantidad)
+
+}
+
+/// pagina actual, ultima pagina, cantidad de registros
+
+function text_pag(a,b,c)
+{
+    let g = $("#text_paginator");
+    //console.log(g);
+
+    let r = 1;
+    let s = 10;
+
+    b ;
+    
+    if(a == 1)
+    {
+        r = 1;
+        s = 10;
     }
-    return null;
-}
-
-
-function __move_pag_next() {
-    let a = $(".pagination.current").next();
-
-    if (a.length > 0) {
-        a.click();
+    else
+    {
+        r = ((a - 1) * 10) + 1;
+        s = r + 9;
     }
-    return null;
+
+    if(a==b)
+    {
+        if(a == 1)
+        {
+            r = 1;
+            s = c;
+        }else
+        {
+            r = ((a - 1) * 10) + 1;
+            s = c ;
+        }
+    }
+
+    ///ultima pagina
+
+    
+
+    let tt = 'Registros [ ' + r + ' al ' + s + ' ] de [ ' + c + ' ]' ;
+    g[0].innerText = tt;
+
 }
+
+
