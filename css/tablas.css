@@ -8,17 +8,18 @@
     cursor: pointer;
 }
 .pagination{
-    padding-left: 7px;
-    padding-right: 7px;
-}
-
-.pagination.current
-{
-    color:white;
-    background-color: #084866;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
     border-radius: 50px;
-
+ 
+    font-size: 15px;
 }
+.pagination:hover{
+    background-color: #154a6d;
+}
+
 #pages__{
 display: flex;
 }

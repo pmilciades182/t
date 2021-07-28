@@ -36,16 +36,23 @@ function e__siglas(e) {
 }
 
 ///carga los datos a la tabla
-function e__put_td(g, e, f) {
+function e__put_td(g, e, f, _p) {
+
+    ///reset del f
+
+    console.log(f[0]);
+    console.log($(".registro").remove());
 
     let loc = 'model_' + g + '.php';
 
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1 },
+        data: { e: 1, p: _p },
         dataType: "json"
     });
+
+    //console.log(request);
 
     request.done(function (d) {
         // console.log(d);
@@ -61,6 +68,9 @@ function e__put_td(g, e, f) {
 
         for (let i = 0; i <= can; i++) {
             let k = document.createElement("tr");
+
+            k.classList.add("registro");
+
             if (d[i] !== undefined) {
                 /// dos td iniciales para el check y edit
                 let _a1 = document.createElement("td");
@@ -106,53 +116,90 @@ function e__put_td(g, e, f) {
 
 }
 
-///genera la paginacion de la tabla
-function e__pagination(e, f) {
+function e__paginador(a, e) {
+
+    console.log(a.dataset.type);
     let loc = 'model_' + e + '.php';
+    let cantidad = 0;
 
     var request = $.ajax({
         url: loc,
         type: "POST",
         data: { c: 1 },
-        dataType: "json"
+        dataType: "json",
+        async: false
     });
 
     request.done(function (d) {
         // console.log(d);
-        __pag(d)
+        cantidad = d;
     });
-
     request.fail(function (jqXHR, textStatus) {
         console.log(textStatus);
     });
 
-    function __pag(i) {
+    console.log('registros ' + cantidad);
+    console.log('pagina ' + page);
 
-        /// 10 lineas por pagina
-        let cant_pages = Math.ceil(i / 10);
-        let pags = 0;
-        console.log(cant_pages);
-        //hasta 5 paginas en la primera carga
-        if (cant_pages > 5) {
-            pags = 5;
-        }
-        else {
-            pags = cant_pages;
-        }
+    let _t = a.dataset.type;
 
-        for (let i = 1; i <= pags; i++) {
-            let pg = document.createElement("div");
-            pg.classList.add("pagination");
-            if (i == 1) {
-                pg.classList.add("current");
-            }
-            pg.innerText = i;
+    let ultima_pagina = Math.ceil(cantidad / 10);
 
-            f[0].appendChild(pg);
+    if (_t == 1) {
+        if (page == 1) {
 
+        } else {
+            page = 1;
+            let e__th = $("#__th");
+            let e__td = $("#__td");
+            console.log('Primer Boton');
+            e__put_td(entity, cols_grid, e__td, page);
         }
 
     }
+
+    if (_t == 2) {
+        if (page == 1) {
+
+        } else {
+            page = page - 1;
+            let e__th = $("#__th");
+            let e__td = $("#__td");
+            console.log('segundo Boton');
+            e__put_td(entity, cols_grid, e__td, page);
+        }
+
+
+    }
+
+    if (_t == 3) {
+        if (page == ultima_pagina) {
+
+        } else {
+            page = page + 1;
+            let e__th = $("#__th");
+            let e__td = $("#__td");
+            console.log('tercer Boton');
+            e__put_td(entity, cols_grid, e__td, page);
+        }
+
+
+    }
+
+    if (_t == 4) {
+        if (page == ultima_pagina) {
+
+        }
+        else {
+            let e__th = $("#__th");
+            let e__td = $("#__td");
+            console.log('Ultimo Boton');
+            e__put_td(entity, cols_grid, e__td, ultima_pagina);
+            page = ultima_pagina;
+        }
+
+    }
+
 
     return null;
 }
