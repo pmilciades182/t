@@ -316,3 +316,66 @@ th {
       font-family: monospace;
       font-weight: 900;
   }
+
+  /* estilos del modal */
+  #md_cont{
+      display: flex;
+      background-color: ghostwhite;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 80%;
+      flex-direction: column;
+      border-radius: 10px;
+
+ 
+  }
+
+  #md_head{
+    display: flex;
+   
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    flex-direction: row;
+    border-bottom: solid;
+    font-family:  Helvetica, sans-serif;
+    font-weight: 900;
+    border-width: 1px;
+
+  }
+
+  #md_body{
+    display: flex;
+    background-color: ghostwhite;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+    flex-direction: column;
+  }
+
+  #md_foo{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    flex-direction: column;
+    border-top: solid;
+    font-family:  Helvetica, sans-serif;
+    font-weight: 900;
+    border-width: 1px;
+  }
+
+  .modal_head{
+      padding-left: 50px;
+      padding-right: 50px;
+  }
+  .modal_head.close{
+      cursor: pointer;
+      color: rgb(94, 34, 34);
+      font-size: 30px;
+  }

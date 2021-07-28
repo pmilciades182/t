@@ -86,7 +86,7 @@ function e__put_td(g, e, f, _p) {
                 _a2.classList.add("t_ch");
 
                 _a2.addEventListener("click", function (e) {
-                    mostrar_modal(4);
+                    mostrar_modal(5);
                 }, false);
 
                 k.appendChild(_a1);
@@ -113,7 +113,7 @@ function e__put_td(g, e, f, _p) {
 
             f[0].appendChild(k);
             f[0].style.display = 'block';
-           
+
 
             setTimeout(function () {
                 _wait.style.display = 'none';
@@ -163,7 +163,7 @@ function e__paginador(a, e) {
             let e__td = $("#__td");
             //console.log('Primer Boton');
             e__put_td(entity, cols_grid, e__td, page);
-            text_pag(page,ultima_pagina,cantidad);
+            text_pag(page, ultima_pagina, cantidad);
         }
 
     }
@@ -176,7 +176,7 @@ function e__paginador(a, e) {
             let e__td = $("#__td");
             //console.log('segundo Boton');
             e__put_td(entity, cols_grid, e__td, page);
-            text_pag(page,ultima_pagina,cantidad);
+            text_pag(page, ultima_pagina, cantidad);
         }
 
 
@@ -190,7 +190,7 @@ function e__paginador(a, e) {
             let e__td = $("#__td");
             //console.log('tercer Boton');
             e__put_td(entity, cols_grid, e__td, page);
-            text_pag(page,ultima_pagina,cantidad);
+            text_pag(page, ultima_pagina, cantidad);
         }
 
 
@@ -205,15 +205,14 @@ function e__paginador(a, e) {
             //console.log('Ultimo Boton');
             e__put_td(entity, cols_grid, e__td, ultima_pagina);
             page = ultima_pagina;
-            text_pag(page,ultima_pagina,cantidad);
+            text_pag(page, ultima_pagina, cantidad);
         }
 
     }
     return null;
 }
 
-function e__text_paginator(e)
-{
+function e__text_paginator(e) {
     let loc = 'model_' + e + '.php';
     let cantidad = 0;
 
@@ -235,75 +234,64 @@ function e__text_paginator(e)
 
     let ultima_pagina = Math.ceil(cantidad / 10);
 
-    text_pag(1,ultima_pagina,cantidad)
+    text_pag(1, ultima_pagina, cantidad)
 
 }
 
 /// pagina actual, ultima pagina, cantidad de registros
 
-function text_pag(a,b,c)
-{
+function text_pag(a, b, c) {
     let g = $("#text_paginator");
     //console.log(g);
 
     let r = 1;
     let s = 10;
 
-    b ;
-    
-    if(a == 1)
-    {
+    b;
+
+    if (a == 1) {
         r = 1;
         s = 10;
     }
-    else
-    {
+    else {
         r = ((a - 1) * 10) + 1;
         s = r + 9;
     }
 
-    if(a==b)
-    {
-        if(a == 1)
-        {
+    if (a == b) {
+        if (a == 1) {
             r = 1;
             s = c;
-        }else
-        {
+        } else {
             r = ((a - 1) * 10) + 1;
-            s = c ;
+            s = c;
         }
     }
 
     ///ultima pagina
 
-    
 
-    let tt = 'Registros [ ' + _zx(r) + ' al ' + _zx(s) + ' ] de [ ' + _zx(c) + ' ]' ;
+
+    let tt = 'Registros [ ' + _zx(r) + ' al ' + _zx(s) + ' ] de [ ' + _zx(c) + ' ]';
     g[0].innerText = tt;
 
 }
 
 /// funcion para igualar los numeros de la paginacion
-function _zx(e)
-{
-    if( e >= 0 && e < 10 )
-    {
+function _zx(e) {
+    if (e >= 0 && e < 10) {
         e = '\xa0\xa0\xa0\xa0' + e;
     }
 
-    if( e >= 10 && e < 100 )
-    {
+    if (e >= 10 && e < 100) {
         e = '\xa0\xa0\xa0' + e;
     }
 
-    if( e >= 100 && e < 1000 )
-    {
+    if (e >= 100 && e < 1000) {
         e = '\xa0\xa0' + e;
     }
 
-    if( e >= 1000 && e < 10000 )
-    {
+    if (e >= 1000 && e < 10000) {
         e = '\xa0' + e;
     }
 
@@ -318,71 +306,85 @@ function _zx(e)
 $(document).ready(function () {
 
     $("#close_modal").on("click", function () {
-  
-      cerrar_modal();
-  
+
+        cerrar_modal();
+
     });
-  
+
     $("#go_busq").on("click", function () {
-      mostrar_modal(1);
+
+        mostrar_modal(1);
     });
-  
+
     $("#go_exp").on("click", function () {
-      mostrar_modal(2);
+
+        mostrar_modal(2);
     });
-  
+
     $("#go_new").on("click", function () {
-      mostrar_modal(3);
+
+        mostrar_modal(3);
     });
-  
+
     $("#go_delete").on("click", function () {
-      mostrar_modal(4);
+
+        mostrar_modal(4);
     });
-  
-    
+
+
     $(".tabla_edit").on("click", function () {
-      mostrar_modal(4);
+
+        mostrar_modal(5);
     });
-  
-  
-  
-  });
-  
-  
-  function cerrar_modal() {
-  
+
+
+
+});
+
+
+function cerrar_modal() {
+
     $("#mgs_modal").css("display", "none");
-  
-  }
-  
-  //// mostrar modal
-  //// - tipo
-  function mostrar_modal(t) {
-  
+
+}
+
+//// mostrar modal
+//// - tipo
+function mostrar_modal(t) {
+
     switch (t) {
-      //// busqueda avanzada
-      case 1:
-        $("#mgs_modal").css("background-color", "rgb(69 122 177 / 37%)");
-        break;
-      //// exportar
-      case 2:
-        $("#mgs_modal").css("background-color", "rgb(87 101 115 / 20%)");
-        break;
-      ///nuevo registro
-      case 3:
-        $("#mgs_modal").css("background-color", "rgb(67 156 87 / 45%)");
-        break;
-      /// eliminar
-      case 4:
-        $("#mgs_modal").css("background-color", "rgb(144 45 45 / 45%)");
-        break;
-      default:
-        $("#mgs_modal").css("background-color", "rgb(87 101 115 / 20%)");
+        //// busqueda avanzada
+        case 1:
+            $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Búsqueda Avanzada';
+            $("#mgs_modal").css("background-color", "rgb(69 122 177 / 37%)");
+            break;
+        //// exportar
+        case 2:
+            $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Exportar Datos';
+            $("#mgs_modal").css("background-color", "rgb(87 101 115 / 20%)");
+            break;
+        ///nuevo registro
+        case 3:
+            $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Nuevo Registro';
+            $("#mgs_modal").css("background-color", "rgb(67 156 87 / 45%)");
+            break;
+        /// eliminar
+        case 4:
+            $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Eliminar Registros';
+            $("#mgs_modal").css("background-color", "rgb(144 45 45 / 45%)");
+            break;
+        //// editar
+        case 5:
+            $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Editar Registro';
+            $("#mgs_modal").css("background-color", "rgb(0 45 45 / 45%)");
+            break;
+        default:
+            $("#mgs_modal").css("background-color", "rgb(87 101 115 / 20%)");
     }
-  
+
     $("#mgs_modal").css("display", "flex");
-  
-  }
-  
+
+}
+
 
 
