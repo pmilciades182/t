@@ -134,13 +134,15 @@ function e__pagination(e, f,g) {
         g[0].innerText = 'Registros 1 al 10 de ' + i;
         //console.log(cant_pages);
         //hasta 5 paginas en la primera carga
+
+        /*
         if (cant_pages > 5) {
             pags = 5;
         }
         else {
             pags = cant_pages;
-        }
-
+        }*/
+        pags = cant_pages;
         for (let i = 1; i <= pags; i++) {
             let pg = document.createElement("div");
             pg.classList.add("pagination");
