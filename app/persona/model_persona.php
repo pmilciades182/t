@@ -34,7 +34,6 @@ if(isset($_POST['e']) or isset($_GET['e']) )
     if($_P == 1)
     {
         $_P = 0; 
-
     }
     else
     {

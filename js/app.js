@@ -42,6 +42,10 @@ function e__put_td(g, e, f, _p) {
 
     //console.log(f[0]);
     //console.log($(".registro").remove());
+    _wait = document.getElementById('wait_');
+    f[0].style.display = 'none';
+    _wait.style.display = 'flex';
+
     $(".registro").remove();
 
     let loc = 'model_' + g + '.php';
@@ -108,13 +112,18 @@ function e__put_td(g, e, f, _p) {
             }
 
             f[0].appendChild(k);
+            f[0].style.display = 'block';
+           
+
+            setTimeout(function () {
+                _wait.style.display = 'none';
+            }, 400);
+
             //console.log(d[i]);
             //console.log(e[i]);
         }
     }
-
     return null;
-
 }
 
 function e__paginador(a, e) {
@@ -270,8 +279,36 @@ function text_pag(a,b,c)
 
     
 
-    let tt = 'Registros [ ' + r + ' al ' + s + ' ] de [ ' + c + ' ]' ;
+    let tt = 'Registros [ ' + _zx(r) + ' al ' + _zx(s) + ' ] de [ ' + _zx(c) + ' ]' ;
     g[0].innerText = tt;
+
+}
+
+/// funcion para igualar los numeros de la paginacion
+function _zx(e)
+{
+    if( e >= 0 && e < 10 )
+    {
+        e = '\xa0\xa0\xa0\xa0' + e;
+    }
+
+    if( e >= 10 && e < 100 )
+    {
+        e = '\xa0\xa0\xa0' + e;
+    }
+
+    if( e >= 100 && e < 1000 )
+    {
+        e = '\xa0\xa0' + e;
+    }
+
+    if( e >= 1000 && e < 10000 )
+    {
+        e = '\xa0' + e;
+    }
+
+
+    return e
 
 }
 
