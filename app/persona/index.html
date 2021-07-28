@@ -1,4 +1,5 @@
 <head>
+    <meta charset="UTF-8">
     <link href="../../css/all.css" rel="stylesheet">
     <link href="../../css/tablas.css" rel="stylesheet">
     <script defer src="../../js/pro.js"></script>
@@ -12,6 +13,8 @@
     /////globales de entidad
 
     var entity = 'persona';
+
+    var page   = 1;
 
     var cols_grid = [
         'id',
@@ -82,50 +85,52 @@
         </table>
     </div>
 
-    <div id="t_foo" class="noselect">
-        <div id="registros__">
+    <div id="t_foo">
+        <div>
+            Regisros [1 al 10] de [48]
         </div>
         <div class='agrupador'>
-            <i class="fal fa-chevron-double-left pagination arrow"></i>
-            <i class="fal fa-chevron-left pagination arrow" id="__pprev"></i>
-            <div id="pages__">
-            </div>
-            <i class="fal fa-chevron-right pagination arrow" id="__pnext"></i>
-            <i class="fal fa-chevron-double-right pagination arrow"></i>
+
+            <i class="fal fa-chevron-double-left pagination" 
+            data-type='1'
+            onclick="e__paginador(this,entity)"
+            ></i>
+
+            <i class="fal fa-chevron-left pagination" 
+            data-type='2'
+            onclick="e__paginador(this,entity)"
+            ></i>
+
+            <i class="fal fa-chevron-right pagination" 
+            data-type='3'
+            onclick="e__paginador(this,entity)"
+            ></i>
+
+            <i class="fal fa-chevron-double-right pagination" 
+            data-type='4'
+            onclick="e__paginador(this,entity)"
+            ></i>
+            
         </div>
-        <div>
+        <div >
+            PABLO GONZALEZ ©
         </div>
     </div>
 </div>
 
 <script>
 
-    $(document).ready(function (){
+    $(document).ready(function ()
+    {
 
         var e__th = $("#__th");
         var e__td = $("#__td");
-        var e__pg = $("#pages__");
-        var e__rr = $("#registros__");
 
         ///// funciones de entidad
         e__put_th(cols_grid, e__th);
-        e__put_td(entity, cols_grid, e__td);
-        e__pagination(entity, e__pg,e__rr);
-
-        ///funciones de paginacion
-
-        $("#__pprev").on( "click", function() 
-        {
-            __move_pag_prev();
-        });
-
-        $("#__pnext").on( "click", function() 
-        {
-            __move_pag_next();
-        });
-
-
+        e__put_td(entity, cols_grid, e__td,page);
 
 
     });
+
 </script>

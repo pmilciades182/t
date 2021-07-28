@@ -8,14 +8,16 @@
     cursor: pointer;
 }
 .pagination{
-
-    color: black;
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
     margin-left: 10px;
     margin-right: 10px;
-
-
+    border-radius: 50px;
+ 
+    font-size: 15px;
+}
+.pagination:hover{
+    background-color: #154a6d;
 }
 
 .noselect{
@@ -26,23 +28,6 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-}
-
-.arrow:hover{
-    background-color: #66abca;
-    border-radius: 50px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-}
-
-
-
-.pagination.current
-{
-    color:white;
-    background-color: #084866;
-    border-radius: 50px;
 }
 
 #pages__{
