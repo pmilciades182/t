@@ -19,16 +19,16 @@
 </div>
 <div id="t_con">
     <div id="t_hea" class="noselect">
-        <div class='agrupador' id="go_busq">
+        <div class="agrupador" id="go_busq">
             <div> &nbsp&nbsp<i class="fas fa-search"></i><span> Busqueda Avanzada</span>&nbsp&nbsp </div>
         </div>
-        <div class='agrupador ag_exp' id="go_exp">
+        <div class="agrupador ag_exp" id="go_exp">
             <div> &nbsp&nbsp<i class="far fa-file-alt"></i><span></span> Exportar</span> &nbsp&nbsp</div>
         </div>
-        <div class='agrupador ag_gree' id="go_new">
+        <div class="agrupador ag_gree" id="go_new">
             <div> &nbsp&nbsp <i class="fas fa-plus"></i> Nuevo Registro &nbsp&nbsp</div>
         </div>
-        <div class='agrupador ag_red' id="go_delete">
+        <div class="agrupador ag_red" id="go_delete">
             <div> &nbsp&nbsp <i class="far fa-trash-alt"></i> Eliminar &nbsp&nbsp</div>
         </div>
     </div>
@@ -50,11 +50,11 @@
     <div id="t_foo" class="noselect">
         <div id="text_paginator">
         </div>
-        <div class='agrupador'>
-            <i class="fal fa-chevron-double-left pagination" data-type='1' onclick="e__paginador(this,entity)"></i>
-            <i class="fal fa-chevron-left pagination" data-type='2' onclick="e__paginador(this,entity)"></i>
-            <i class="fal fa-chevron-right pagination" data-type='3' onclick="e__paginador(this,entity)"></i>
-            <i class="fal fa-chevron-double-right pagination" data-type='4' onclick="e__paginador(this,entity)"></i>
+        <div class="agrupador">
+            <i class="fal fa-chevron-double-left pagination" data-type="1" onclick="e__paginador(this,entity)"></i>
+            <i class="fal fa-chevron-left pagination" data-type="2" onclick="e__paginador(this,entity)"></i>
+            <i class="fal fa-chevron-right pagination" data-type="3" onclick="e__paginador(this,entity)"></i>
+            <i class="fal fa-chevron-double-right pagination" data-type="4" onclick="e__paginador(this,entity)"></i>
         </div>
         <div id="text_copy">
             PG ANALITICA ©
