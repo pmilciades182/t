@@ -270,8 +270,6 @@ function text_pag(a, b, c) {
 
     ///ultima pagina
 
-
-
     let tt = 'Registros [ ' + _zx(r) + ' al ' + _zx(s) + ' ] de [ ' + _zx(c) + ' ]';
     g[0].innerText = tt;
 
@@ -356,26 +354,34 @@ function mostrar_modal(t) {
         //// busqueda avanzada
         case 1:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Búsqueda Avanzada';
+            $("#text_button_modal")[0].innerText = 'BUSCAR';
             $("#mgs_modal").css("background-color", "rgb(69 122 177 / 37%)");
             break;
         //// exportar
         case 2:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Exportar Datos';
+            $("#text_button_modal")[0].innerText = 'EXPORTAR';
             $("#mgs_modal").css("background-color", "rgb(87 101 115 / 20%)");
             break;
         ///nuevo registro
         case 3:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Nuevo Registro';
+            $("#text_button_modal")[0].innerText = 'INSERTAR';
             $("#mgs_modal").css("background-color", "rgb(67 156 87 / 45%)");
+
+            nuevo_registro(cols_form);
+
             break;
         /// eliminar
         case 4:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Eliminar Registros';
+            $("#text_button_modal")[0].innerText = 'ELIMINAR';
             $("#mgs_modal").css("background-color", "rgb(144 45 45 / 45%)");
             break;
         //// editar
         case 5:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Editar Registro';
+            $("#text_button_modal")[0].innerText = 'EDITAR';
             $("#mgs_modal").css("background-color", "rgb(0 45 45 / 45%)");
             break;
         default:
@@ -383,6 +389,13 @@ function mostrar_modal(t) {
     }
 
     $("#mgs_modal").css("display", "flex");
+
+}
+
+
+function nuevo_registro(a) {
+    //console.log($("#md_body")[0]);
+    $("#md_body").empty();
 
 }
 

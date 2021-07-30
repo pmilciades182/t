@@ -13,8 +13,15 @@
     <div id="md_cont">
         <div id="md_head" class="noselect"> <span class="modal_head" id="modal_title"> ... </span> <i
                 class="fas fa-times modal_head close" id="close_modal"> </i> </div>
-        <div id="md_body"> BODY </div>
-        <div id="md_foo" class="noselect"> FOOTER</div>
+        <div id="md_body"></div>
+        <div id="md_foo" class="noselect"> 
+
+        <div class="agrupador b_modal" >
+            <div><span id="text_button_modal"></span></div>
+        </div>
+       
+
+        </div>
     </div>
 </div>
 <div id="t_con">

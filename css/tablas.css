@@ -379,3 +379,9 @@ th {
       color: rgb(94, 34, 34);
       font-size: 30px;
   }
+
+  
+  .agrupador.b_modal{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
