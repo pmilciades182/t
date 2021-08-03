@@ -13,7 +13,124 @@
     <div id="md_cont">
         <div id="md_head" class="noselect"> <span class="modal_head" id="modal_title"> ... </span> <i
                 class="fas fa-times modal_head close" id="close_modal"> </i> </div>
-        <div id="md_body"></div>
+        <div id="md_body">
+
+        <div class="form_content">
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th> Valor</th>
+            </tr>
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+            
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+
+            <tr>
+                <td>Nombre</td>
+                <td> <input> </input> </td>
+            </tr>
+           
+
+        </table>
+        </div>
+
+        </div>
         <div id="md_foo" class="noselect"> 
 
         <div class="agrupador b_modal" >
