@@ -3,8 +3,6 @@
 $_MONGO = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 $_DB    = 'db_acceso';
 
-var_dump($_MONGO);
-
 //echo __select($m, 'db_acceso.usuario', ['usr' => 'admin','psw' => '123' ] ,[] );
 
 function __select($_CONN,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES )
