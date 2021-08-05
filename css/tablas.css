@@ -392,3 +392,32 @@ th {
     padding-left: 10px;
     padding-top: 10px;
   }
+
+
+  /* pantallas de 20 pulgadas o menos */
+
+@media (max-height: 850px) {
+
+  td{
+    font-size: .695rem;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  tr{
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 40px;
+  }
+  th{
+    font-size: .695rem;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  #md_foo{
+    height: 8%;
+  }
+
+
+
+  }
