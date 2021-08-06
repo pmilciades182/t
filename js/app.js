@@ -408,6 +408,15 @@ function mostrar_modal(t) {
 
 function go_frm_new(a) {
     frm_hide();
+
+    //// limpia los inputs
+    let ins = $("#tbl_new").find("select,textarea, input")
+
+    for (var i = 0; i < ins.length; i++) 
+    {
+        ins[i].value = '';
+    }
+
     $("#frm_new").css("display", "flex");
 }
 
@@ -492,6 +501,9 @@ function button_frm(a,b){
 
     console.log(a.dataset);
     let t = $("#tbl_new").find("select,textarea, input").serializeArray();
+
+ 
+
     //console.log(t);
 
     let arr = {};
@@ -530,9 +542,6 @@ function button_frm(a,b){
     });
  
    
-
-
-
 }
 
 
