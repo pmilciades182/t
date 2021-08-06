@@ -412,8 +412,7 @@ function go_frm_new(a) {
     //// limpia los inputs
     let ins = $("#tbl_new").find("select,textarea, input")
 
-    for (var i = 0; i < ins.length; i++) 
-    {
+    for (var i = 0; i < ins.length; i++) {
         ins[i].value = '';
     }
 
@@ -471,13 +470,13 @@ function e__frm_all(a, b) {
             E.classList.add("frm_input");
             let F = document.createElement("input");
 
-            let ipatter = return_input_pattern(campo.input_pattern); 
+            let ipatter = return_input_pattern(campo.input_pattern);
             F.name = campo.attribute;
             F.type = ipatter.type;
             F.readOnly = ipatter.readonly;
 
             //console.log( ipatter.readonly);
-            
+
 
             ///hint
             let G = document.createElement("td");
@@ -497,41 +496,40 @@ function e__frm_all(a, b) {
     return null;
 }
 
-function button_frm(a,b){
+function button_frm(a, b) {
 
     console.log(a.dataset);
     let t = $("#tbl_new").find("select,textarea, input").serializeArray();
 
- 
+
 
     //console.log(t);
 
     let arr = {};
-  
 
-    for (var i = 0; i < t.length; i++) 
-    {
-        arr[''+ t[i].name +''] = t[i].value;
+
+    for (var i = 0; i < t.length; i++) {
+        arr['' + t[i].name + ''] = t[i].value;
     }
 
     //console.log(arr);
-   // console.log(JSON.stringify(t));
+    // console.log(JSON.stringify(t));
     //console.log(JSON.stringify(arr));
 
     let y = JSON.stringify(arr);
     let loc = 'model_' + b + '.php';
 
     var request = $.ajax({
-        url:loc,
+        url: loc,
         type: "POST",
-        data: {i:0,d:arr},
+        data: { i: 0, d: arr },
         dataType: "text"
-      
+
     });
 
     request.done(function (d) {
         // console.log(d);
-        console.log (d) ;
+        console.log(d);
         frm_hide();
         cerrar_modal();
         let e__td = $("#__td");
@@ -540,8 +538,8 @@ function button_frm(a,b){
     request.fail(function (jqXHR, textStatus) {
         console.log(textStatus);
     });
- 
-   
+
+
 }
 
 
