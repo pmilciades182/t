@@ -356,12 +356,18 @@ function mostrar_modal(t) {
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Búsqueda Avanzada';
             $("#text_button_modal")[0].innerText = 'BUSCAR';
             $("#mgs_modal").css("background-color", "rgb(69 122 177 / 37%)");
+
+            go_frm_search();
+
             break;
         //// exportar
         case 2:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Exportar Datos';
             $("#text_button_modal")[0].innerText = 'EXPORTAR';
             $("#mgs_modal").css("background-color", "rgb(87 101 115 / 20%)");
+
+            go_frm_export();
+
             break;
         ///nuevo registro
         case 3:
@@ -369,7 +375,7 @@ function mostrar_modal(t) {
             $("#text_button_modal")[0].innerText = 'INSERTAR';
             $("#mgs_modal").css("background-color", "rgb(67 156 87 / 45%)");
 
-            nuevo_registro(cols_form);
+            go_frm_new(cols_form);
 
             break;
         /// eliminar
@@ -377,12 +383,19 @@ function mostrar_modal(t) {
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Eliminar Registros';
             $("#text_button_modal")[0].innerText = 'ELIMINAR';
             $("#mgs_modal").css("background-color", "rgb(144 45 45 / 45%)");
+
+            go_frm_delete();
+
+
             break;
         //// editar
         case 5:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Editar Registro';
             $("#text_button_modal")[0].innerText = 'EDITAR';
             $("#mgs_modal").css("background-color", "rgb(0 45 45 / 45%)");
+
+            go_frm_edit();
+
             break;
         default:
             $("#mgs_modal").css("background-color", "rgb(87 101 115 / 20%)");
@@ -393,9 +406,128 @@ function mostrar_modal(t) {
 }
 
 
-function nuevo_registro(a) {
-    //console.log($("#md_body")[0]);
-    $("#md_body").empty();
+function go_frm_new(a) {
+    frm_hide();
+    $("#frm_new").css("display", "flex");
+}
+
+function go_frm_edit(a) {
+    frm_hide();
+    $("#frm_edit").css("display", "flex");
+}
+
+function go_frm_delete(a) {
+    frm_hide();
+    $("#frm_delete").css("display", "flex");
+}
+
+function go_frm_search(a) {
+    frm_hide();
+    $("#frm_search").css("display", "flex");
+}
+
+function go_frm_export(a) {
+    frm_hide();
+    $("#frm_export").css("display", "flex");
+}
+
+function frm_hide() {
+    $("#frm_new").css("display", "none");
+    $("#frm_search").css("display", "none");
+    $("#frm_edit").css("display", "none");
+    $("#frm_delete").css("display", "none");
+    $("#frm_export").css("display", "none");
+}
+
+function e__frm_all(a, b) {
+    /* generar formulario para registro nuevo */
+
+    for (var i = 0; i < a.length; i++) {
+        //console.log(a[i]);
+        let campo = a[i];
+
+        let tbl_new = $("#tbl_new")[0];
+
+        if (campo.new == true) {
+            /// se genera la linea
+            //console.log(campo.label);
+            let Q = document.createElement("tr");
+            Q.classList.add("frm_line");
+            ///se genera la etiqueta
+            let W = document.createElement("td");
+            W.classList.add("frm_label");
+            W.innerText = campo.label;
+            /// se genera el input
+            let E = document.createElement("td");
+            E.classList.add("frm_input");
+            let F = document.createElement("input");
+
+            let ipatter = return_input_pattern(campo.input_pattern); 
+            F.name = campo.attribute;
+            F.type = ipatter.type;
+            F.readOnly = ipatter.readonly;
+
+            //console.log( ipatter.readonly);
+            
+
+            ///hint
+            let G = document.createElement("td");
+            G.classList.add("frm_hint");
+            G.innerText = campo.hint;
+
+            Q.appendChild(W);
+            E.appendChild(F);
+            Q.appendChild(E);
+            Q.appendChild(G);
+            tbl_new.appendChild(Q);
+
+        }
+    }
+
+
+    return null;
+}
+
+function button_frm(a,b){
+
+    console.log(a.dataset);
+    let t = $("#tbl_new").find("select,textarea, input").serializeArray();
+    //console.log(t);
+
+    let arr = {};
+  
+
+    for (var i = 0; i < t.length; i++) 
+    {
+        arr[''+ t[i].name +''] = t[i].value;
+    }
+
+    //console.log(arr);
+   // console.log(JSON.stringify(t));
+    //console.log(JSON.stringify(arr));
+
+    let y = JSON.stringify(arr);
+    let loc = 'model_' + b + '.php';
+
+    var request = $.ajax({
+        url:loc,
+        type: "POST",
+        data: {i:0,d:arr},
+        dataType: "text"
+      
+    });
+
+    request.done(function (d) {
+        // console.log(d);
+        console.log (d) ;
+    });
+    request.fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+    });
+ 
+   
+
+
 
 }
 

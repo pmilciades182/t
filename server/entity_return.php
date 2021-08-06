@@ -65,5 +65,24 @@ if(isset($_POST['c']) or isset($_GET['c']))
        echo $_D;
 }
 
+///letra i para definir un insert
+if(isset($_POST['i']) or isset($_GET['i']))
+{
+        ////letra d para datos a insertar
+        /// solo por post
+        if (isset($_POST['d']))
+        {
+            $DATA =   ($_POST['d']);
+            $_D = __insert($_MONGO,$_DB, $_COLECCION,$DATA);
+            echo '{"ok" : "insert!"}';
+        }
+        else
+        {
+            //$DATA =   json_decode($_POST['d']);
+            echo '{ "Error" : "DATA - POST"} ';
+        }
+      
+}
+
 
 ?>

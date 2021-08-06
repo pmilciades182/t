@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link href="../../css/all.css" rel="stylesheet">
@@ -6,6 +8,7 @@
     <script src="../../js/s.js"></script>
     <script src="../../js/app.js"></script>
     <script src="../../js/forms.js"></script>
+    <script src="../../js/j2.js"></script>
     <script src="entity.js"></script>
 </head>
 <div id="mgs_modal">
@@ -15,125 +18,80 @@
                 class="fas fa-times modal_head close" id="close_modal"> </i> </div>
         <div id="md_body">
 
-        <div class="form_content">
-        <table>
-            <tr>
-                <th>Campo</th>
-                <th> Valor</th>
-            </tr>
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-            
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-
-            <tr>
-                <td>Nombre</td>
-                <td> <input> </input> </td>
-            </tr>
-           
+        <div class="form_content" id='frm_new'>
+         <table >
+            <tbody id="tbl_new">
+                <tr>
+                    <th>Campo</th>
+                    <th>Ingresar Valor Nuevo</th>
+                    <th>Descripcion de ayuda</th>
+                </tr>
+            </tbody>
 
         </table>
         </div>
 
+        <div class="form_content" id='frm_search'>
+        frm_search
+            <table>
+                <tr>
+                    <th>Campo</th>
+                    <th> Valor</th>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td> <input> </input> </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form_content" id='frm_export'>
+        frm_export
+            <table>
+                <tr>
+                    <th>Campo</th>
+                    <th> Valor</th>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td> <input> </input> </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form_content" id='frm_delete'>
+        frm_delete
+            <table>
+                <tr>
+                    <th>Campo</th>
+                    <th> Valor</th>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td> <input> </input> </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form_content" id='frm_edit'>
+        frm_edit
+            <table>
+                <tr>
+                    <th>Campo</th>
+                    <th> Valor</th>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td> <input> </input> </td>
+                </tr>
+            </table>
+        </div>
+
+
         </div>
         <div id="md_foo" class="noselect"> 
 
-        <div class="agrupador b_modal" >
+        <div class="agrupador b_modal"  id = "go_frm_action" data-action = "" onclick="button_frm(this,entity)">
             <div><span id="text_button_modal"></span></div>
         </div>
        
@@ -193,5 +151,12 @@
         e__put_th(cols_grid, e__th);
         e__put_td(entity, cols_grid, e__td, page);
         e__text_paginator(entity);
+
+        e__frm_all(cols_form,cols_search);
+
+        
+
     });
 </script>
+
+</html>

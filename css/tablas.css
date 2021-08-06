@@ -126,6 +126,11 @@ body {
     margin: 0px;
     overflow: hidden;
     background-color: ghostwhite;
+    height: 100%;
+}
+
+html{
+  height: 100%;
 }
 
 #t_hea {
@@ -309,9 +314,10 @@ th {
       height: 80%;
       flex-direction: column;
       border-radius: 10px;
-
- 
+      min-width: 550px;
   }
+
+
 
   #md_head{
     display: flex;
@@ -374,6 +380,15 @@ th {
     padding-left: 10px;
     padding-top: 10px;
   }
+
+  .frm_hint{
+    color: gray;
+  }
+
+   input[type=date],input[type=text],input[type=number]
+   {
+    width: 162px;
+   }
 
 
   /* pantallas de 20 pulgadas o menos */

@@ -71,3 +71,14 @@ function __count($_CONN,$_DB,$_COLECCION)
     return $count;
 }
 
+function __insert($_CONN,$_DB,$_COLECCION,$DATA)
+{
+    $_BASE = $_DB . '.' . $_COLECCION;
+
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $_id1 = $bulk->insert($DATA);
+    //var_dump($_id1);
+    $result = $_CONN->executeBulkWrite($_BASE, $bulk);
+
+}
+
