@@ -520,6 +520,10 @@ function button_frm(a,b){
     request.done(function (d) {
         // console.log(d);
         console.log (d) ;
+        frm_hide();
+        cerrar_modal();
+        let e__td = $("#__td");
+        e__put_td(entity, cols_grid, e__td, page);
     });
     request.fail(function (jqXHR, textStatus) {
         console.log(textStatus);
