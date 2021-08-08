@@ -314,7 +314,7 @@ th {
       height: 80%;
       flex-direction: column;
       border-radius: 10px;
-      min-width: 550px;
+      min-width: 850px;
   }
 
 
@@ -379,6 +379,7 @@ th {
   .form_content{
     padding-left: 10px;
     padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .frm_hint{

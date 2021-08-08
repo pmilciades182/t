@@ -332,6 +332,12 @@ $(document).ready(function () {
         mostrar_modal(4);
     });
 
+    $("#go_refresh").on("click", function () {
+
+        window.location.reload();
+    });
+  
+
 
     $(".tabla_edit").on("click", function () {
 

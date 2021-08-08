@@ -101,6 +101,10 @@
 </div>
 <div id="t_con">
     <div id="t_hea" class="noselect">
+ 
+        <div class="agrupador" id="go_refresh">
+            <div> &nbsp&nbsp<i class="fas fa-sync"></i><span> Recargar </span>&nbsp&nbsp </div>
+        </div>
         <div class="agrupador" id="go_busq">
             <div> &nbsp&nbsp<i class="fas fa-search"></i><span> Busqueda Avanzada</span>&nbsp&nbsp </div>
         </div>
