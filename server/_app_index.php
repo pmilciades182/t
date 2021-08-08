@@ -11,11 +11,41 @@
     <script src="../../js/j2.js"></script>
     <script src="entity.js"></script>
 </head>
+
+<div id="mgs_error">
+    <div id="md_cont_err">
+
+        <div id="md_head_err" class="noselect"> 
+            <span class="modal_head" id="modal_title_err"> <b>Alerta</b> </span> 
+           
+        </div>
+
+        <div id="md_body_err">
+
+        Mensaje de Error
+
+        </div>
+
+        <div id="md_foo_err" class="noselect"> 
+
+        <div class="agrupador b_modal" onclick="cierra_error()">
+            <div><span> OK </span>
+             </div>
+         </div>
+
+
+        </div>
+
+    </div>
+</div>
+
 <div id="mgs_modal">
 
     <div id="md_cont">
-        <div id="md_head" class="noselect"> <span class="modal_head" id="modal_title"> ... </span> <i
-                class="fas fa-times modal_head close" id="close_modal"> </i> </div>
+        <div id="md_head" class="noselect"> 
+            <span class="modal_head" id="modal_title"> ... </span> 
+            <i class="fas fa-times modal_head close" id="close_modal"> </i> 
+        </div>
         <div id="md_body">
 
         <div class="form_content" id='frm_new'>
@@ -24,6 +54,7 @@
                 <tr>
                     <th>Campo</th>
                     <th>Ingresar Valor Nuevo</th>
+                    <th>Obligtorio</th>
                     <th>Descripcion de ayuda</th>
                 </tr>
             </tbody>

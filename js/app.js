@@ -415,7 +415,7 @@ function mostrar_modal(t) {
 
 }
 
-
+///// formulario nuevo registro
 function go_frm_new(a) {
     frm_hide();
 
@@ -423,6 +423,7 @@ function go_frm_new(a) {
     let ins = $("#tbl_new").find("select,textarea, input");
     /// limpia los select
     $( "select" ).empty();
+   
     for (var i = 0; i < ins.length; i++) {
         ins[i].value = '';
         //recarga las listas
@@ -519,9 +520,21 @@ function e__frm_all(a, b) {
             G.classList.add("frm_hint");
             G.innerText = campo.hint;
 
+            let H = document.createElement("td");
+
+            if(campo.required)
+            {
+                H.innerHTML = '<i class="far fa-exclamation-circle obligatorio"></i>';
+            }else
+            {
+                console.log(campo);
+            }
+           
+
             Q.appendChild(W);
             E.appendChild(F);
             Q.appendChild(E);
+            Q.appendChild(H);
             Q.appendChild(G);
             tbl_new.appendChild(Q);
 
@@ -540,6 +553,8 @@ function button_frm(a, b) {
 
     switch (action) {
         case 'INSERTAR':
+
+            mostrar_modal_error('Error 404');
 
             let t = $("#tbl_new").find("select,textarea, input").serializeArray();
 
@@ -622,6 +637,16 @@ function load_list(a,b)
 
 
 
+}
+
+function mostrar_modal_error(m)
+{
+    $("#mgs_error").css("display", "flex");
+}
+
+function cierra_error()
+{
+    $("#mgs_error").css("display", "none");
 }
 
 

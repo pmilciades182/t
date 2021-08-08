@@ -31,7 +31,8 @@ var cols_form =
             "new": false,
             "edit": true,
             "input_pattern": 1,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
@@ -41,7 +42,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
@@ -51,7 +53,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
@@ -62,6 +65,7 @@ var cols_form =
             "edit": true,
             "input_pattern": 2,
             "list": false
+            
 
         },
         {
@@ -71,7 +75,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 5,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
@@ -81,7 +86,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 4,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
@@ -91,7 +97,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
@@ -101,7 +108,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
@@ -111,7 +119,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
 
@@ -123,7 +132,8 @@ var cols_form =
             "edit": true,
             "input_pattern": 2,
             "list": true,
-            "list_entity" : "pais"
+            "list_entity" : "pais",
+            "required" : true
 
         },
         {
@@ -133,7 +143,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
@@ -143,7 +154,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false
+            "list": false,
+            "required" : true
 
         }
 
