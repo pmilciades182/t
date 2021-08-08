@@ -389,6 +389,9 @@ th {
    {
     width: 162px;
    }
+   select{
+    width: 168px;
+   }
 
 
   /* pantallas de 20 pulgadas o menos */

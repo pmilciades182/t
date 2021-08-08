@@ -65,6 +65,9 @@ function e__put_td(g, e, f, _p) {
     });
 
     request.fail(function (jqXHR, textStatus) {
+        setTimeout(function () {
+            _wait.style.display = 'none';
+        }, 400);
         console.log(textStatus);
     });
 
@@ -373,6 +376,7 @@ function mostrar_modal(t) {
         case 3:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Nuevo Registro';
             $("#text_button_modal")[0].innerText = 'INSERTAR';
+
             $("#mgs_modal").css("background-color", "rgb(67 156 87 / 45%)");
 
             go_frm_new(cols_form);
@@ -410,10 +414,19 @@ function go_frm_new(a) {
     frm_hide();
 
     //// limpia los inputs
-    let ins = $("#tbl_new").find("select,textarea, input")
-
+    let ins = $("#tbl_new").find("select,textarea, input");
+    /// limpia los select
+    $( "select" ).empty();
     for (var i = 0; i < ins.length; i++) {
         ins[i].value = '';
+        //recarga las listas
+        //console.log(ins[i].tagName);
+        if(ins[i].tagName == 'SELECT')
+        {
+            load_list( ins[i],ins[i].name);
+        }
+        
+
     }
 
     $("#frm_new").css("display", "flex");
@@ -457,6 +470,7 @@ function e__frm_all(a, b) {
         let tbl_new = $("#tbl_new")[0];
 
         if (campo.new == true) {
+
             /// se genera la linea
             //console.log(campo.label);
             let Q = document.createElement("tr");
@@ -466,14 +480,30 @@ function e__frm_all(a, b) {
             W.classList.add("frm_label");
             W.innerText = campo.label;
             /// se genera el input
+
+            /// en caso de input type select
             let E = document.createElement("td");
             E.classList.add("frm_input");
-            let F = document.createElement("input");
+           
 
-            let ipatter = return_input_pattern(campo.input_pattern);
-            F.name = campo.attribute;
-            F.type = ipatter.type;
-            F.readOnly = ipatter.readonly;
+           let F ;
+            
+            if(campo.list)
+            {
+                //console.log(campo.label)
+                 F = document.createElement("select");
+                 F.name = campo.attribute;
+                 load_list(F,campo.attribute);
+            }
+            else
+            {
+                 F = document.createElement("input");
+                let ipatter = return_input_pattern(campo.input_pattern);
+                F.name = campo.attribute;
+                F.type = ipatter.type;
+                F.readOnly = ipatter.readonly;
+            } 
+
 
             //console.log( ipatter.readonly);
 
@@ -498,46 +528,92 @@ function e__frm_all(a, b) {
 
 function button_frm(a, b) {
 
-    console.log(a.dataset);
-    let t = $("#tbl_new").find("select,textarea, input").serializeArray();
+    //console.log(a.dataset);
 
+    let action = $("#text_button_modal")[0].innerText;
 
+    switch (action) {
+        case 'INSERTAR':
 
-    //console.log(t);
+            let t = $("#tbl_new").find("select,textarea, input").serializeArray();
 
-    let arr = {};
+            let arr = {};
+            for (var i = 0; i < t.length; i++) {
+                arr['' + t[i].name + ''] = t[i].value;
+            }
 
+            let y = JSON.stringify(arr);
+            //console.log(y);
+            let loc = 'model_' + b + '.php';
+            let j = { i: 0, d: arr };
+            //console.log(j);
+            var request = $.ajax({
+                url: loc,
+                type: "POST",
+                data: j,
+                dataType: "text"
 
-    for (var i = 0; i < t.length; i++) {
-        arr['' + t[i].name + ''] = t[i].value;
+            });
+
+            request.done(function (d) {
+                // console.log(d);
+                //console.log(d);
+                frm_hide();
+                cerrar_modal();
+                let e__td = $("#__td");
+                e__put_td(entity, cols_grid, e__td, page);
+                e__text_paginator(entity);
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                console.log(textStatus);
+            });
+            break;
+
     }
 
-    //console.log(arr);
-    // console.log(JSON.stringify(t));
-    //console.log(JSON.stringify(arr));
+}
 
-    let y = JSON.stringify(arr);
-    let loc = 'model_' + b + '.php';
+//carga las listas select segun la entidad
+function load_list(a,b)
+{
+
+    let loc = '../'+ b +'/model_' + b + '.php';
 
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { i: 0, d: arr },
-        dataType: "text"
-
+        data: { e: 1, p: 1 },
+        dataType: "json"
     });
 
-    request.done(function (d) {
+    //console.log(request);
+
+    request.done(function (v) {
         // console.log(d);
-        console.log(d);
-        frm_hide();
-        cerrar_modal();
-        let e__td = $("#__td");
-        e__put_td(entity, cols_grid, e__td, page);
+        //console.log(v);
+        __tab(v);
     });
-    request.fail(function (jqXHR, textStatus) {
-        console.log(textStatus);
-    });
+
+    function __tab(v) {
+      
+        //console.log(v);
+
+        a.options.add( new Option('Seleccione...', '') );
+
+        for (let i = 0; i <= v.length -1; i++) {
+
+
+                let r = v[i];
+                //console.log(r);
+
+                let c = (r['id']);
+                let d = (r['descripcion']);
+                a.options.add( new Option(d, d) );
+
+        }
+    }  
+
 
 
 }

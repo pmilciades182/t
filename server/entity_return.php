@@ -72,9 +72,30 @@ if(isset($_POST['i']) or isset($_GET['i']))
         /// solo por post
         if (isset($_POST['d']))
         {
+           
             $DATA =   ($_POST['d']);
+            /// enumerar el id
+
+            $_FILTRO    = [];
+            $_OPCIONES   = [
+                'sort' => ['id' => -1]  ,
+                'skip' => 0,
+                'limit' => 1
+             ];
+
+             $_D = __select($_MONGO,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES );
+             $N  = json_decode($_D);
+             $N  = $N[0]->id;
+
+             $N  = intval($N) +1;
+             
+
+
+            $DATA['id'] = $N;
+            //var_dump($DATA);
+
             $_D = __insert($_MONGO,$_DB, $_COLECCION,$DATA);
-            echo '{"ok" : "insert!"}';
+            //echo '{"ok" : "insert!"}';
         }
         else
         {

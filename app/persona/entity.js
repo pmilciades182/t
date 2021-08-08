@@ -122,7 +122,8 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false
+            "list": true,
+            "list_entity" : "pais"
 
         },
         {
