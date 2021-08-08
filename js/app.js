@@ -525,9 +525,10 @@ function e__frm_all(a, b) {
             if(campo.required)
             {
                 H.innerHTML = '<i class="far fa-exclamation-circle obligatorio"></i>';
+                F.dataset._required = true;
             }else
             {
-                console.log(campo);
+                //console.log(campo);
             }
            
 
@@ -554,7 +555,32 @@ function button_frm(a, b) {
     switch (action) {
         case 'INSERTAR':
 
-            mostrar_modal_error('Error 404');
+            //mostrar_modal_error('Error 404');
+
+            //comprueba campos requeridos
+            let _req = 1;
+            let n = $("#tbl_new").find("select,textarea, input");
+
+            for (var i = 0; i < n.length; i++) 
+            {
+                //console.log(n[i].dataset)
+                
+               if (n[i].dataset._required)
+               {
+                   if(n[i].value.length == 0)
+                   {
+                    _req = 0;  
+                   }
+               }
+            }
+
+            if(_req == 0)
+            {
+                mostrar_modal_error('Favor completar campos Obligatorios');
+                return null;
+            }
+
+           
 
             let t = $("#tbl_new").find("select,textarea, input").serializeArray();
 
@@ -641,7 +667,10 @@ function load_list(a,b)
 
 function mostrar_modal_error(m)
 {
+    $("#md_body_err")[0].innerText = m ;
+
     $("#mgs_error").css("display", "flex");
+    
 }
 
 function cierra_error()
