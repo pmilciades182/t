@@ -82,3 +82,18 @@ function __insert($_CONN,$_DB,$_COLECCION,$DATA)
 
 }
 
+function __delete($_CONN,$_DB,$_COLECCION,$DATA)
+{
+    $_BASE = $_DB . '.' . $_COLECCION;
+
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $DATA = intval($DATA);
+    $bulk->delete(['id' => $DATA], ['limit' => 1]);
+
+    
+
+    $result = $_CONN->executeBulkWrite($_BASE, $bulk);
+    //var_dump($result);
+
+}
+

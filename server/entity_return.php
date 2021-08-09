@@ -89,13 +89,11 @@ if(isset($_POST['i']) or isset($_GET['i']))
 
              $N  = intval($N) +1;
              
-
-
             $DATA['id'] = $N;
             //var_dump($DATA);
 
             $_D = __insert($_MONGO,$_DB, $_COLECCION,$DATA);
-            //echo '{"ok" : "insert!"}';
+            echo '{"ok" : "insert!"}';
         }
         else
         {
@@ -103,6 +101,115 @@ if(isset($_POST['i']) or isset($_GET['i']))
             echo '{ "Error" : "DATA - POST"} ';
         }
       
+}
+
+///palabra del para definir un delete
+if(isset($_POST['del']) or isset($_GET['del']))
+{
+        ////letra d para datos a insertar
+        if (isset($_POST['d']) or isset($_GET['d']))
+        {
+           if(isset($_POST['d']))
+           {
+            $DATA =   ($_POST['d']);
+           }
+           else
+           {
+            $DATA =   ($_GET['d']);
+           }
+
+            $DATA = explode(",",  $DATA);
+
+            foreach ($DATA as &$valor) {
+                //var_dump( $valor);
+                __delete($_MONGO,$_DB, $_COLECCION,$valor);
+            }
+
+            
+            echo '{ "Ok" : "DATA - POST"} ';
+            
+        }
+        else
+        {
+            //$DATA =   json_decode($_POST['d']);
+            echo '{ "Error" : "DATA - POST"} ';
+        }
+      
+}
+///exp es para descargar csv
+if(isset($_POST['exp']) or isset($_GET['exp']) )
+{
+        $NAME_CSV = 'archivo';
+
+        if (isset($_POST['name']))
+        {
+            $NAME_CSV = $_POST['name'];
+        }
+        else
+        {
+            $NAME_CSV = $_GET['name'];
+        }
+
+        if( strlen(trim($NAME_CSV)) == 0)
+        {
+            $NAME_CSV = 'archivo';
+        }
+      
+       $_FILTRO    = [];
+       $_OPCIONES   = [
+           'sort' => ['id' => -1]  ];
+
+        header("Content-type: text/csv");
+        header("Content-Disposition: attachment; filename=".$NAME_CSV.".csv");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+
+       $_D = __select($_MONGO,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES );
+       $_D = json_decode($_D);
+
+       //var_dump($_D);
+
+       
+       foreach ($_D as $key => $value)
+       {
+
+
+           foreach ($value as $R => $S)
+           {
+            //var_dump($S);
+            if(is_string($R))
+            {
+                echo $R . ' ; ';
+            }
+           }
+           echo  "\r\n";
+           break;
+      }
+
+       foreach ($_D as $key => $value)
+       {
+
+
+           foreach ($value as $R => $S)
+           {
+            //var_dump($S);
+            if(is_string($S))
+            {
+                echo $S . ' ; ';
+            }else{
+                if(is_int($S))
+                {
+                    echo $S . ' ; ';
+                }else
+                {
+                    echo ' ; ';
+                }
+                
+            }
+           }
+           echo  "\r\n";
+      }
+        
 }
 
 

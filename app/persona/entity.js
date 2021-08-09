@@ -5,6 +5,10 @@ var entity = 'persona';
 //// pagina inicial
 var page = 1;
 
+//// elementos a eliminar
+
+var e__delete = [];
+
 /// columnas de la grilla
 var cols_grid = [
     'id',

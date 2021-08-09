@@ -70,7 +70,7 @@ function e__put_td(g, e, f, _p) {
         }, 400);
         console.log(textStatus);
     });
-
+    ///// carga los datos a la grilla
     function __tab(d) {
         let can = 9;
 
@@ -83,12 +83,15 @@ function e__put_td(g, e, f, _p) {
                 /// dos td iniciales para el check y edit
                 let _a1 = document.createElement("td");
                 let _a2 = document.createElement("td");
-                _a1.innerHTML = '<input type="checkbox">';
+                _a1.innerHTML = '<input type="checkbox" class="_chk_delete" onchange="chk_delete(this)">';
                 _a2.innerHTML = '<i class="fas fa-edit tabla_edit"></i>';
                 _a1.classList.add("t_ch");
                 _a2.classList.add("t_ch");
+                
 
+                //// formulario de edicion;
                 _a2.addEventListener("click", function (e) {
+                    carga_edit(d[i]);
                     mostrar_modal(5);
                 }, false);
 
@@ -131,6 +134,11 @@ function e__put_td(g, e, f, _p) {
 
 function e__paginador(a, e) {
 
+    /// vacia lista de eliminados
+    ////  e__delete = [];
+    ///  $("#delete_count")[0].innerText = '';
+
+
     //console.log(a.dataset.type);
     let loc = 'model_' + e + '.php';
     let cantidad = 0;
@@ -167,6 +175,8 @@ function e__paginador(a, e) {
             //console.log('Primer Boton');
             e__put_td(entity, cols_grid, e__td, page);
             text_pag(page, ultima_pagina, cantidad);
+            e__delete = [];
+            $("#delete_count")[0].innerText = '';
         }
 
     }
@@ -180,6 +190,8 @@ function e__paginador(a, e) {
             //console.log('segundo Boton');
             e__put_td(entity, cols_grid, e__td, page);
             text_pag(page, ultima_pagina, cantidad);
+            e__delete = [];
+            $("#delete_count")[0].innerText = '';
         }
 
 
@@ -194,6 +206,8 @@ function e__paginador(a, e) {
             //console.log('tercer Boton');
             e__put_td(entity, cols_grid, e__td, page);
             text_pag(page, ultima_pagina, cantidad);
+            e__delete = [];
+            $("#delete_count")[0].innerText = '';
         }
 
 
@@ -209,6 +223,8 @@ function e__paginador(a, e) {
             e__put_td(entity, cols_grid, e__td, ultima_pagina);
             page = ultima_pagina;
             text_pag(page, ultima_pagina, cantidad);
+            e__delete = [];
+            $("#delete_count")[0].innerText = '';
         }
 
     }
@@ -336,15 +352,6 @@ $(document).ready(function () {
 
         window.location.reload();
     });
-  
-
-
-    $(".tabla_edit").on("click", function () {
-
-        mostrar_modal(5);
-    });
-
-
 
 });
 
@@ -371,6 +378,16 @@ function mostrar_modal(t) {
             break;
         //// exportar
         case 2:
+            //// nombre del archivo
+            var currentdate = new Date();
+            var datetime = '_' + currentdate.getDate().toString()
+                + (currentdate.getMonth() + 1).toString()
+                + currentdate.getFullYear().toString()
+                + currentdate.getHours().toString()
+                + currentdate.getMinutes().toString()
+                + currentdate.getSeconds().toString();
+
+            $("#export_name")[0].value = entity + datetime;
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Exportar Datos';
             $("#text_button_modal")[0].innerText = 'EXPORTAR';
             $("#mgs_modal").css("background-color", "rgb(87 101 115 / 20%)");
@@ -390,8 +407,19 @@ function mostrar_modal(t) {
             break;
         /// eliminar
         case 4:
+
+            ////verifica si existen items seleccionados
+            if (e__delete.length == 0) {
+                mostrar_modal_error('No existen items Seleccionados para Eliminar');
+                return null;
+            }
+
+            let u = e__delete.length;
+
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Eliminar Registros';
             $("#text_button_modal")[0].innerText = 'ELIMINAR';
+
+            $("#frm_delete")[0].innerText = '¿Está seguro que desea eliminar ' + u + ' registro(s)?';
             $("#mgs_modal").css("background-color", "rgb(144 45 45 / 45%)");
 
             go_frm_delete();
@@ -422,18 +450,15 @@ function go_frm_new(a) {
     //// limpia los inputs
     let ins = $("#tbl_new").find("select,textarea, input");
     /// limpia los select
-    $( "select" ).empty();
-   
+    $("select").empty();
+
     for (var i = 0; i < ins.length; i++) {
         ins[i].value = '';
         //recarga las listas
         //console.log(ins[i].tagName);
-        if(ins[i].tagName == 'SELECT')
-        {
-            load_list( ins[i],ins[i].name);
+        if (ins[i].tagName == 'SELECT') {
+            load_list(ins[i], ins[i].name);
         }
-        
-
     }
 
     $("#frm_new").css("display", "flex");
@@ -444,6 +469,7 @@ function go_frm_edit(a) {
     $("#frm_edit").css("display", "flex");
 }
 
+///// formulario para eliminar registros
 function go_frm_delete(a) {
     frm_hide();
     $("#frm_delete").css("display", "flex");
@@ -476,6 +502,10 @@ function e__frm_all(a, b) {
 
         let tbl_new = $("#tbl_new")[0];
 
+        let tbl_edit = $("#tbl_edit")[0];
+
+        // formulario para nuevo registro
+
         if (campo.new == true) {
 
             /// se genera la linea
@@ -491,25 +521,23 @@ function e__frm_all(a, b) {
             /// en caso de input type select
             let E = document.createElement("td");
             E.classList.add("frm_input");
-           
 
-           let F ;
-            
-            if(campo.list)
-            {
+
+            let F;
+
+            if (campo.list) {
                 //console.log(campo.label)
-                 F = document.createElement("select");
-                 F.name = campo.attribute;
-                 load_list(F,campo.attribute);
+                F = document.createElement("select");
+                F.name = campo.attribute;
+                load_list(F, campo.attribute);
             }
-            else
-            {
-                 F = document.createElement("input");
+            else {
+                F = document.createElement("input");
                 let ipatter = return_input_pattern(campo.input_pattern);
                 F.name = campo.attribute;
                 F.type = ipatter.type;
                 F.readOnly = ipatter.readonly;
-            } 
+            }
 
 
             //console.log( ipatter.readonly);
@@ -522,15 +550,13 @@ function e__frm_all(a, b) {
 
             let H = document.createElement("td");
 
-            if(campo.required)
-            {
+            if (campo.required) {
                 H.innerHTML = '<i class="far fa-exclamation-circle obligatorio"></i>';
                 F.dataset._required = true;
-            }else
-            {
+            } else {
                 //console.log(campo);
             }
-           
+
 
             Q.appendChild(W);
             E.appendChild(F);
@@ -540,6 +566,67 @@ function e__frm_all(a, b) {
             tbl_new.appendChild(Q);
 
         }
+
+        ///// formulario para editar registro
+        if (campo.edit == true) {
+
+            /// se genera la linea
+            //console.log(campo.label);
+            let Q = document.createElement("tr");
+            Q.classList.add("frm_line");
+            ///se genera la etiqueta
+            let W = document.createElement("td");
+            W.classList.add("frm_label");
+            W.innerText = campo.label;
+            /// se genera el input
+
+            /// en caso de input type select
+            let E = document.createElement("td");
+            E.classList.add("frm_input");
+
+
+            let F;
+
+            if (campo.list) {
+                //console.log(campo.label)
+                F = document.createElement("select");
+                F.name = campo.attribute;
+                load_list(F, campo.attribute);
+            }
+            else {
+                F = document.createElement("input");
+                let ipatter = return_input_pattern(campo.input_pattern);
+                F.name = campo.attribute;
+                F.type = ipatter.type;
+                F.readOnly = ipatter.readonly;
+            }
+
+
+            //console.log( ipatter.readonly);
+
+
+            ///hint
+            let G = document.createElement("td");
+            G.classList.add("frm_hint");
+            G.innerText = campo.hint;
+
+            let H = document.createElement("td");
+
+            if (campo.required) {
+                H.innerHTML = '<i class="far fa-exclamation-circle obligatorio"></i>';
+                F.dataset._required = true;
+            } else {
+                //console.log(campo);
+            }
+
+            Q.appendChild(W);
+            E.appendChild(F);
+            Q.appendChild(E);
+            Q.appendChild(H);
+            Q.appendChild(G);
+            tbl_edit.appendChild(Q);
+        }
+
     }
 
 
@@ -561,26 +648,22 @@ function button_frm(a, b) {
             let _req = 1;
             let n = $("#tbl_new").find("select,textarea, input");
 
-            for (var i = 0; i < n.length; i++) 
-            {
+            for (var i = 0; i < n.length; i++) {
                 //console.log(n[i].dataset)
-                
-               if (n[i].dataset._required)
-               {
-                   if(n[i].value.length == 0)
-                   {
-                    _req = 0;  
-                   }
-               }
+
+                if (n[i].dataset._required) {
+                    if (n[i].value.length == 0) {
+                        _req = 0;
+                    }
+                }
             }
 
-            if(_req == 0)
-            {
+            if (_req == 0) {
                 mostrar_modal_error('Favor completar campos Obligatorios');
                 return null;
             }
 
-           
+
 
             let t = $("#tbl_new").find("select,textarea, input").serializeArray();
 
@@ -617,21 +700,66 @@ function button_frm(a, b) {
             });
             break;
 
+        case 'ELIMINAR':
+
+            let loc_2 = 'model_' + b + '.php';
+            let g = e__delete.join();
+            console.log(g)
+
+            let j_2 = { del: 1, d: g };
+
+            console.log(j_2);
+
+            var request_2 = $.ajax({
+                url: loc_2,
+                type: "POST",
+                data: j_2,
+                dataType: "text"
+            });
+            request_2.done(function (d) {
+                // console.log(d);
+                console.log(d);
+                frm_hide();
+                cerrar_modal();
+                let e__td = $("#__td");
+                e__put_td(entity, cols_grid, e__td, page);
+                e__text_paginator(entity);
+                $("#delete_count")[0].innerText = '';
+                e__delete = [];
+            });
+
+            request_2.fail(function (jqXHR, textStatus) {
+                console.log(textStatus);
+            });
+
+            break;
+
+
+        case 'EXPORTAR':
+            let loc_3 = 'model_' + b + '.php?exp=1&name=';
+            let xa = $("#export_name")[0].value;
+            loc_3 = loc_3 + xa;
+
+            console.log(loc_3);
+            downloadURI(loc_3, xa);
+            break;
+
+
     }
 
 }
 
 //carga las listas select segun la entidad
-function load_list(a,b)
-{
+function load_list(a, b) {
 
-    let loc = '../'+ b +'/model_' + b + '.php';
+    let loc = '../' + b + '/model_' + b + '.php';
 
     var request = $.ajax({
         url: loc,
         type: "POST",
         data: { e: 1, p: 1 },
-        dataType: "json"
+        dataType: "json",
+        async: false
     });
 
     //console.log(request);
@@ -643,40 +771,148 @@ function load_list(a,b)
     });
 
     function __tab(v) {
-      
+
         //console.log(v);
 
-        a.options.add( new Option('Seleccione...', '') );
+        a.options.add(new Option('Seleccione...', ''));
 
-        for (let i = 0; i <= v.length -1; i++) {
+        for (let i = 0; i <= v.length - 1; i++) {
 
 
-                let r = v[i];
-                //console.log(r);
+            let r = v[i];
+            //console.log(r);
 
-                let c = (r['id']);
-                let d = (r['descripcion']);
-                a.options.add( new Option(d, d) );
+            let c = (r['id']);
+            let d = (r['descripcion']);
+            a.options.add(new Option(d, d));
 
         }
-    }  
+    }
 
 
 
 }
 
-function mostrar_modal_error(m)
-{
-    $("#md_body_err")[0].innerText = m ;
+function mostrar_modal_error(m) {
+    $("#md_body_err")[0].innerText = m;
 
     $("#mgs_error").css("display", "flex");
-    
+
 }
 
-function cierra_error()
-{
+function cierra_error() {
     $("#mgs_error").css("display", "none");
 }
 
+/// carga el array de elementos a eliminar
+function chk_delete(e) {
+
+    console.log(e.checked);
+
+    if (e.checked) {
+        e.parentElement.parentElement.classList.add('deletable');
+        let i = e.parentElement.parentElement.children[2].innerText;
+        i = parseInt(i);
+
+        e__delete.indexOf(i) === -1 ? e__delete.push(i) : null;
+
+        console.log(e__delete);
+
+    } else {
+        e.parentElement.parentElement.classList.remove('deletable');
+        let i = e.parentElement.parentElement.children[2].innerText;
+        i = parseInt(i);
+        e__delete.remove(i);
+        console.log(e__delete);
+    }
+
+    //// contador de eliminados
+    if (e__delete.length == 0) {
+        $("#delete_count")[0].innerText = '';
+    } else {
+        $("#delete_count")[0].innerText = ' (' + e__delete.length + ')';
+    }
+
+}
+
+//// crea el remove para los arrays
+Array.prototype.remove = function () {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
+
+/// utilizadi en el boton exportar
+function downloadURI(uri, name) {
+    console.log('a');
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    delete link;
+}
+
+function carga_edit(e)
+{
+
+    let ins = $("#tbl_edit").find("select,textarea, input");
+
+    /// limpia los select
+    $("select").empty();
+
+    for (var i = 0; i < ins.length; i++) {
+        //recarga las listas
+        //console.log(ins[i].tagName);
+        if (ins[i].tagName == 'SELECT') {
+            load_list(ins[i], ins[i].name);
+        }
+    }
+    
+    //console.log(e['id']);
+
+    let n = $("#tbl_edit").find("select,textarea, input");
+
+    for (var i = 0; i < n.length; i++) {
+        //console.log(n[i].dataset)
+
+        if (ins[i].tagName == 'SELECT') {
+
+            let h = n[i].name;
+
+            let t = ins[i].options;
+            let x = e[''+ h +''];
+
+            //console.log(t);
+            //console.log(t.length);
+
+            for (let r = 0; r < t.length; r++)
+            {
+                //console.log('a');
+               // console.log(t[r]);
+
+                if(t[r].innerText == x){
+
+                    t[r].selected=true;
+                }
+            }
 
 
+
+        }else{
+            let h = n[i].name;
+            n[i].value = e[''+ h +''];
+        }
+       
+
+       
+    }
+
+
+}

@@ -465,3 +465,21 @@ th {
     font-size: 18px;
     color: burlywood;
   }
+
+  .deletable{
+    background: repeating-linear-gradient( 
+    121deg, 
+    rgba(253 249 249 / 20%), 
+    rgba(185 185 185 / 20%) 10px, 
+    rgba(245 5 5 / 30%) 10px, 
+    rgba(255 25 25 / 30%) 20px )
+  }
+
+  #frm_delete{
+    font-size: larger;
+    color: crimson;
+    display: flex;
+    /* text-align: center; */
+    justify-content: center;
+    align-self: stretch; 
+  }

@@ -77,45 +77,35 @@
         </div>
 
         <div class="form_content" id='frm_export'>
-        frm_export
             <table>
                 <tr>
                     <th>Campo</th>
                     <th> Valor</th>
                 </tr>
                 <tr>
-                    <td>Nombre</td>
-                    <td> <input> </input> </td>
+                    <td>Nombre del archivo</td>
+                    <td> <input id='export_name'> </input> </td>
                 </tr>
             </table>
         </div>
 
         <div class="form_content" id='frm_delete'>
-        frm_delete
-            <table>
-                <tr>
-                    <th>Campo</th>
-                    <th> Valor</th>
-                </tr>
-                <tr>
-                    <td>Nombre</td>
-                    <td> <input> </input> </td>
-                </tr>
-            </table>
+
         </div>
 
         <div class="form_content" id='frm_edit'>
-        frm_edit
-            <table>
+        
+        <table >
+            <tbody id="tbl_edit">
                 <tr>
                     <th>Campo</th>
-                    <th> Valor</th>
+                    <th>Ingresar Valor Nuevo</th>
+                    <th>Obligtorio</th>
+                    <th>Descripcion de ayuda</th>
                 </tr>
-                <tr>
-                    <td>Nombre</td>
-                    <td> <input> </input> </td>
-                </tr>
-            </table>
+            </tbody>
+
+        </table>
         </div>
 
 
@@ -137,7 +127,7 @@
             <div> &nbsp&nbsp<i class="fas fa-sync"></i><span> Recargar </span>&nbsp&nbsp </div>
         </div>
         <div class="agrupador" id="go_busq">
-            <div> &nbsp&nbsp<i class="fas fa-search"></i><span> Busqueda Avanzada</span>&nbsp&nbsp </div>
+            <div> &nbsp&nbsp<i class="fas fa-search"></i><span> Buscar </span>&nbsp&nbsp </div>
         </div>
         <div class="agrupador ag_exp" id="go_exp">
             <div> &nbsp&nbsp<i class="far fa-file-alt"></i><span></span> Exportar</span> &nbsp&nbsp</div>
@@ -146,7 +136,7 @@
             <div> &nbsp&nbsp <i class="fas fa-plus"></i> Nuevo Registro &nbsp&nbsp</div>
         </div>
         <div class="agrupador ag_red" id="go_delete">
-            <div> &nbsp&nbsp <i class="far fa-trash-alt"></i> Eliminar &nbsp&nbsp</div>
+            <div> &nbsp&nbsp <i class="far fa-trash-alt"></i> Eliminar <span id = "delete_count"></span> &nbsp&nbsp</div>
         </div>
     </div>
     <div id="t_bod">
