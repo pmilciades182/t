@@ -87,7 +87,7 @@ function e__put_td(g, e, f, _p) {
                 _a2.innerHTML = '<i class="fas fa-edit tabla_edit"></i>';
                 _a1.classList.add("t_ch");
                 _a2.classList.add("t_ch");
-                
+
 
                 //// formulario de edicion;
                 _a2.addEventListener("click", function (e) {
@@ -663,8 +663,6 @@ function button_frm(a, b) {
                 return null;
             }
 
-
-
             let t = $("#tbl_new").find("select,textarea, input").serializeArray();
 
             let arr = {};
@@ -743,8 +741,6 @@ function button_frm(a, b) {
             console.log(loc_3);
             downloadURI(loc_3, xa);
             break;
-
-
     }
 
 }
@@ -788,9 +784,6 @@ function load_list(a, b) {
 
         }
     }
-
-
-
 }
 
 function mostrar_modal_error(m) {
@@ -859,8 +852,7 @@ function downloadURI(uri, name) {
     delete link;
 }
 
-function carga_edit(e)
-{
+function carga_edit(e) {
 
     let ins = $("#tbl_edit").find("select,textarea, input");
 
@@ -874,7 +866,7 @@ function carga_edit(e)
             load_list(ins[i], ins[i].name);
         }
     }
-    
+
     //console.log(e['id']);
 
     let n = $("#tbl_edit").find("select,textarea, input");
@@ -887,32 +879,22 @@ function carga_edit(e)
             let h = n[i].name;
 
             let t = ins[i].options;
-            let x = e[''+ h +''];
+            let x = e['' + h + ''];
 
             //console.log(t);
             //console.log(t.length);
 
-            for (let r = 0; r < t.length; r++)
-            {
+            for (let r = 0; r < t.length; r++) {
                 //console.log('a');
-               // console.log(t[r]);
+                // console.log(t[r]);
 
-                if(t[r].innerText == x){
-
-                    t[r].selected=true;
+                if (t[r].innerText == x) {
+                    t[r].selected = true;
                 }
             }
-
-
-
-        }else{
+        } else {
             let h = n[i].name;
-            n[i].value = e[''+ h +''];
+            n[i].value = e['' + h + ''];
         }
-       
-
-       
     }
-
-
 }
