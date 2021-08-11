@@ -54,20 +54,18 @@ function e__put_td(g, e, f, _p, we) {
 
     console.log('we' + we_n);
 
-    let asx =   { e: 1, p: _p };
+    let asx = { e: 1, p: _p };
 
-    if(we_n == 0)
-    {
-        asx =   { e: 1, p: _p };
-    }else
-    {
-        asx =   { e: 1, p: _p , w: we };
+    if (we_n == 0) {
+        asx = { e: 1, p: _p };
+    } else {
+        asx = { e: 1, p: _p, w: we };
     }
 
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data:asx,
+        data: asx,
         dataType: "json"
     });
 
@@ -160,13 +158,11 @@ function e__paginador(a, e, we) {
     let we_n = we.length;
     let gb = { c: 1 };
 
-    if( we_n == 0)
-    {
+    if (we_n == 0) {
         gb = { c: 1 }
     }
-    else
-    {
-        gb = { c: 1, w:we }
+    else {
+        gb = { c: 1, w: we }
     }
 
     var request = $.ajax({
@@ -199,7 +195,7 @@ function e__paginador(a, e, we) {
             page = 1;
             let e__td = $("#__td");
             //console.log('Primer Boton');
-            e__put_td(entity, cols_grid, e__td, page,e__where);
+            e__put_td(entity, cols_grid, e__td, page, e__where);
             text_pag(page, ultima_pagina, cantidad);
             e__delete = [];
             $("#delete_count")[0].innerText = '';
@@ -214,7 +210,7 @@ function e__paginador(a, e, we) {
             page = page - 1;
             let e__td = $("#__td");
             //console.log('segundo Boton');
-            e__put_td(entity, cols_grid, e__td, page,e__where);
+            e__put_td(entity, cols_grid, e__td, page, e__where);
             text_pag(page, ultima_pagina, cantidad);
             e__delete = [];
             $("#delete_count")[0].innerText = '';
@@ -230,7 +226,7 @@ function e__paginador(a, e, we) {
             page = page + 1;
             let e__td = $("#__td");
             //console.log('tercer Boton');
-            e__put_td(entity, cols_grid, e__td, page,e__where);
+            e__put_td(entity, cols_grid, e__td, page, e__where);
             text_pag(page, ultima_pagina, cantidad);
             e__delete = [];
             $("#delete_count")[0].innerText = '';
@@ -246,7 +242,7 @@ function e__paginador(a, e, we) {
         else {
             let e__td = $("#__td");
             //console.log('Ultimo Boton');
-            e__put_td(entity, cols_grid, e__td, ultima_pagina,e__where);
+            e__put_td(entity, cols_grid, e__td, ultima_pagina, e__where);
             page = ultima_pagina;
             text_pag(page, ultima_pagina, cantidad);
             e__delete = [];
@@ -257,19 +253,17 @@ function e__paginador(a, e, we) {
     return null;
 }
 
-function e__text_paginator(e,we) {
+function e__text_paginator(e, we) {
     let loc = 'model_' + e + '.php';
     let cantidad = 0;
 
     let we_n = we.length;
     let yu = { c: 1 };
-    if(we_n == 0)
-    {
+    if (we_n == 0) {
         yu = { c: 1 };
     }
-    else
-    {
-        yu = { c: 1 ,w:we}
+    else {
+        yu = { c: 1, w: we }
     }
 
     var request = $.ajax({
@@ -784,8 +778,8 @@ function button_frm(a, b) {
                 frm_hide();
                 cerrar_modal();
                 let e__td = $("#__td");
-                e__put_td(entity, cols_grid, e__td, page,e__where);
-                e__text_paginator(entity,e__where);
+                e__put_td(entity, cols_grid, e__td, page, e__where);
+                e__text_paginator(entity, e__where);
             });
 
             request.fail(function (jqXHR, textStatus) {
@@ -815,8 +809,8 @@ function button_frm(a, b) {
                 frm_hide();
                 cerrar_modal();
                 let e__td = $("#__td");
-                e__put_td(entity, cols_grid, e__td, page,e__where);
-                e__text_paginator(entity,e__where);
+                e__put_td(entity, cols_grid, e__td, page, e__where);
+                e__text_paginator(entity, e__where);
                 $("#delete_count")[0].innerText = '';
                 e__delete = [];
             });
@@ -887,8 +881,8 @@ function button_frm(a, b) {
                 frm_hide();
                 cerrar_modal();
                 let e__td = $("#__td");
-                e__put_td(entity, cols_grid, e__td, page,e__where);
-                e__text_paginator(entity,e__where);
+                e__put_td(entity, cols_grid, e__td, page, e__where);
+                e__text_paginator(entity, e__where);
             });
 
             request.fail(function (jqXHR, textStatus) {
@@ -904,11 +898,10 @@ function button_frm(a, b) {
             let arr5 = {};
 
             for (var i = 0; i < t5.length; i++) {
-                if(t5[i].value != '')
-                {
-                    arr5['' + t5[i].name + ''] =  '/'+ t5[i].value +'/';
+                if (t5[i].value != '') {
+                    arr5['' + t5[i].name + ''] =  t5[i].value ;
                 }
-               
+
             }
 
             e__where = JSON.stringify(arr5);
@@ -918,8 +911,8 @@ function button_frm(a, b) {
             frm_hide();
             cerrar_modal();
             let e__td = $("#__td");
-            e__put_td(entity, cols_grid, e__td, page,e__where);
-            e__text_paginator(entity,e__where);
+            e__put_td(entity, cols_grid, e__td, page, e__where);
+            e__text_paginator(entity, e__where);
 
             break;
     }
