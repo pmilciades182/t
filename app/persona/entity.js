@@ -9,6 +9,10 @@ var page = 1;
 
 var e__delete = [];
 
+/// filtros aplicados en buscador
+
+var e__where = '';
+
 /// columnas de la grilla
 var cols_grid = [
     'id',
@@ -25,7 +29,7 @@ var cols_grid = [
     'direccion'
 ];
 
-/// campos formulario nuevo y  editar
+/// campos formulario nuevo y  editar /// tambien buscar
 var cols_form =
     [
         {
@@ -45,6 +49,7 @@ var cols_form =
             "hint": "Nombre de la Persona",
             "new": true,
             "edit": true,
+            "search": true,
             "input_pattern": 2,
             "list": false,
             "required" : true
@@ -56,6 +61,7 @@ var cols_form =
             "hint": "Apelldo de la Persona",
             "new": true,
             "edit": true,
+            "search": true,
             "input_pattern": 2,
             "list": false,
             "required" : true
@@ -122,6 +128,7 @@ var cols_form =
             "hint": "Numero de Documento de la Persona",
             "new": true,
             "edit": true,
+            "search": true,
             "input_pattern": 2,
             "list": false,
             "required" : true
@@ -165,9 +172,3 @@ var cols_form =
 
 
     ];
-
-var cols_search = [
-    'nombre',
-    'apellido',
-    'nro_documento'
-];

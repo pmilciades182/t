@@ -324,11 +324,14 @@ th {
       background-color: ghostwhite;
       justify-content: center;
       align-items: center;
-      width: 50%;
-      height: 80%;
+      width: 95%;
+      height: 97%;
       flex-direction: column;
       border-radius: 10px;
       min-width: 850px;
+      border: solid;
+      border-color: darkgrey;
+      border-width: thin;
   }
 
 

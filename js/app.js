@@ -36,7 +36,7 @@ function e__siglas(e) {
 }
 
 ///carga los datos a la tabla
-function e__put_td(g, e, f, _p) {
+function e__put_td(g, e, f, _p, we) {
 
     ///reset del f
 
@@ -50,10 +50,24 @@ function e__put_td(g, e, f, _p) {
 
     let loc = 'model_' + g + '.php';
 
+    let we_n = we.length;
+
+    console.log('we' + we_n);
+
+    let asx =   { e: 1, p: _p };
+
+    if(we_n == 0)
+    {
+        asx =   { e: 1, p: _p };
+    }else
+    {
+        asx =   { e: 1, p: _p , w: we };
+    }
+
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: _p },
+        data:asx,
         dataType: "json"
     });
 
@@ -132,7 +146,7 @@ function e__put_td(g, e, f, _p) {
     return null;
 }
 
-function e__paginador(a, e) {
+function e__paginador(a, e, we) {
 
     /// vacia lista de eliminados
     ////  e__delete = [];
@@ -142,6 +156,18 @@ function e__paginador(a, e) {
     //console.log(a.dataset.type);
     let loc = 'model_' + e + '.php';
     let cantidad = 0;
+
+    let we_n = we.length;
+    let gb = { c: 1 };
+
+    if( we_n == 0)
+    {
+        gb = { c: 1 }
+    }
+    else
+    {
+        gb = { c: 1, w:we }
+    }
 
     var request = $.ajax({
         url: loc,
@@ -173,7 +199,7 @@ function e__paginador(a, e) {
             page = 1;
             let e__td = $("#__td");
             //console.log('Primer Boton');
-            e__put_td(entity, cols_grid, e__td, page);
+            e__put_td(entity, cols_grid, e__td, page,e__where);
             text_pag(page, ultima_pagina, cantidad);
             e__delete = [];
             $("#delete_count")[0].innerText = '';
@@ -188,7 +214,7 @@ function e__paginador(a, e) {
             page = page - 1;
             let e__td = $("#__td");
             //console.log('segundo Boton');
-            e__put_td(entity, cols_grid, e__td, page);
+            e__put_td(entity, cols_grid, e__td, page,e__where);
             text_pag(page, ultima_pagina, cantidad);
             e__delete = [];
             $("#delete_count")[0].innerText = '';
@@ -204,7 +230,7 @@ function e__paginador(a, e) {
             page = page + 1;
             let e__td = $("#__td");
             //console.log('tercer Boton');
-            e__put_td(entity, cols_grid, e__td, page);
+            e__put_td(entity, cols_grid, e__td, page,e__where);
             text_pag(page, ultima_pagina, cantidad);
             e__delete = [];
             $("#delete_count")[0].innerText = '';
@@ -220,7 +246,7 @@ function e__paginador(a, e) {
         else {
             let e__td = $("#__td");
             //console.log('Ultimo Boton');
-            e__put_td(entity, cols_grid, e__td, ultima_pagina);
+            e__put_td(entity, cols_grid, e__td, ultima_pagina,e__where);
             page = ultima_pagina;
             text_pag(page, ultima_pagina, cantidad);
             e__delete = [];
@@ -231,15 +257,26 @@ function e__paginador(a, e) {
     return null;
 }
 
-function e__text_paginator(e) {
+function e__text_paginator(e,we) {
     let loc = 'model_' + e + '.php';
     let cantidad = 0;
+
+    let we_n = we.length;
+    let yu = { c: 1 };
+    if(we_n == 0)
+    {
+        yu = { c: 1 };
+    }
+    else
+    {
+        yu = { c: 1 ,w:we}
+    }
 
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { c: 1 },
-        dataType: "json",
+        data: yu,
+        dataType: "text",
         async: false
     });
 
@@ -429,7 +466,7 @@ function mostrar_modal(t) {
         //// editar
         case 5:
             $("#modal_title")[0].innerText = entity.toUpperCase() + ' - Editar Registro';
-            $("#text_button_modal")[0].innerText = 'EDITAR';
+            $("#text_button_modal")[0].innerText = 'ACTUALIZAR';
             $("#mgs_modal").css("background-color", "rgb(0 45 45 / 45%)");
 
             go_frm_edit();
@@ -493,7 +530,7 @@ function frm_hide() {
     $("#frm_export").css("display", "none");
 }
 
-function e__frm_all(a, b) {
+function e__frm_all(a) {
     /* generar formulario para registro nuevo */
 
     for (var i = 0; i < a.length; i++) {
@@ -503,6 +540,8 @@ function e__frm_all(a, b) {
         let tbl_new = $("#tbl_new")[0];
 
         let tbl_edit = $("#tbl_edit")[0];
+
+        let tbl_search = $("#tbl_search")[0];
 
         // formulario para nuevo registro
 
@@ -627,11 +666,67 @@ function e__frm_all(a, b) {
             tbl_edit.appendChild(Q);
         }
 
+        if (campo.search == true) {
+
+            /// se genera la linea
+            //console.log(campo.label);
+            let Q = document.createElement("tr");
+            Q.classList.add("frm_line");
+            ///se genera la etiqueta
+            let W = document.createElement("td");
+            W.classList.add("frm_label");
+            W.innerText = campo.label;
+            /// se genera el input
+
+            /// en caso de input type select
+            let E = document.createElement("td");
+            E.classList.add("frm_input");
+
+
+            let F;
+
+            if (campo.list) {
+                //console.log(campo.label)
+                F = document.createElement("select");
+                F.name = campo.attribute;
+                load_list(F, campo.attribute);
+            }
+            else {
+                F = document.createElement("input");
+                let ipatter = return_input_pattern(campo.input_pattern);
+                F.name = campo.attribute;
+                F.type = ipatter.type;
+                F.readOnly = ipatter.readonly;
+            }
+
+
+            //console.log( ipatter.readonly);
+
+
+            ///hint
+            let G = document.createElement("td");
+            G.classList.add("frm_hint");
+            G.innerText = campo.hint;
+
+            let H = document.createElement("td");
+
+
+            Q.appendChild(W);
+            E.appendChild(F);
+            Q.appendChild(E);
+
+            Q.appendChild(G);
+            tbl_search.appendChild(Q);
+        }
+
     }
 
 
     return null;
 }
+
+
+//// botones del modal
 
 function button_frm(a, b) {
 
@@ -643,8 +738,8 @@ function button_frm(a, b) {
         case 'INSERTAR':
 
             //mostrar_modal_error('Error 404');
-
             //comprueba campos requeridos
+
             let _req = 1;
             let n = $("#tbl_new").find("select,textarea, input");
 
@@ -689,8 +784,8 @@ function button_frm(a, b) {
                 frm_hide();
                 cerrar_modal();
                 let e__td = $("#__td");
-                e__put_td(entity, cols_grid, e__td, page);
-                e__text_paginator(entity);
+                e__put_td(entity, cols_grid, e__td, page,e__where);
+                e__text_paginator(entity,e__where);
             });
 
             request.fail(function (jqXHR, textStatus) {
@@ -720,8 +815,8 @@ function button_frm(a, b) {
                 frm_hide();
                 cerrar_modal();
                 let e__td = $("#__td");
-                e__put_td(entity, cols_grid, e__td, page);
-                e__text_paginator(entity);
+                e__put_td(entity, cols_grid, e__td, page,e__where);
+                e__text_paginator(entity,e__where);
                 $("#delete_count")[0].innerText = '';
                 e__delete = [];
             });
@@ -740,6 +835,92 @@ function button_frm(a, b) {
 
             console.log(loc_3);
             downloadURI(loc_3, xa);
+            break;
+
+        case 'ACTUALIZAR':
+
+            let _id = 0;
+            let _req4 = 1;
+            let n4 = $("#tbl_edit").find("select,textarea, input");
+
+            for (var i = 0; i < n4.length; i++) {
+                //console.log(n[i].dataset)
+                if (n4[i].name == 'id') {
+                    _id = n4[i].value;
+                }
+
+                if (n4[i].dataset._required) {
+                    if (n4[i].value.length == 0) {
+                        _req4 = 0;
+                    }
+                }
+            }
+
+            if (_req4 == 0) {
+                mostrar_modal_error('Favor completar campos Obligatorios');
+                return null;
+            }
+
+            let t4 = $("#tbl_edit").find("select,textarea, input").serializeArray();
+
+            let arr4 = {};
+            for (var i = 0; i < t4.length; i++) {
+                arr4['' + t4[i].name + ''] = t4[i].value;
+            }
+
+            let y4 = JSON.stringify(arr4);
+            //console.log(y);
+            let loc4 = 'model_' + b + '.php';
+            let j4 = { u: 0, d: arr4, id: _id };
+            //console.log(j);
+            var request = $.ajax({
+                url: loc4,
+                type: "POST",
+                data: j4,
+                dataType: "json"
+
+            });
+
+            request.done(function (d) {
+                //console.log(d);
+                //console.log(d);
+                frm_hide();
+                cerrar_modal();
+                let e__td = $("#__td");
+                e__put_td(entity, cols_grid, e__td, page,e__where);
+                e__text_paginator(entity,e__where);
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                console.log(textStatus);
+            });
+
+            break;
+
+        case 'BUSCAR':
+
+            let t5 = $("#tbl_search").find("select,textarea, input").serializeArray();
+
+            let arr5 = {};
+
+            for (var i = 0; i < t5.length; i++) {
+                if(t5[i].value != '')
+                {
+                    arr5['' + t5[i].name + ''] =  '/'+ t5[i].value +'/';
+                }
+               
+            }
+
+            e__where = JSON.stringify(arr5);
+
+            console.log(e__where);
+
+            frm_hide();
+            cerrar_modal();
+            let e__td = $("#__td");
+            e__put_td(entity, cols_grid, e__td, page,e__where);
+            e__text_paginator(entity,e__where);
+
             break;
     }
 

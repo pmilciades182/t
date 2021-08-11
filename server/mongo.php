@@ -56,9 +56,17 @@ function __collection($_CONN,$_DB,$_COLECCION)
     }
 }
 
-function __count($_CONN,$_DB,$_COLECCION)
+function __count($_CONN,$_DB,$_COLECCION,$_FILTRO)
 {
-    $command = new \MongoDB\Driver\Command(['count' => $_COLECCION ]);
+    if(count($_FILTRO) == 0)
+    {
+        $command = new \MongoDB\Driver\Command(['count' => $_COLECCION]);
+    }else
+    {
+        $command = new \MongoDB\Driver\Command(['count' => $_COLECCION , 'query' => $_FILTRO ]);
+    }
+    
+
     try 
     {
         $cursor = $_CONN->executeCommand($_DB, $command);
@@ -90,9 +98,26 @@ function __delete($_CONN,$_DB,$_COLECCION,$DATA)
     $DATA = intval($DATA);
     $bulk->delete(['id' => $DATA], ['limit' => 1]);
 
-    
+    $result = $_CONN->executeBulkWrite($_BASE, $bulk);
+    //var_dump($result);
+
+}
+
+
+function __update($_CONN,$_DB,$_COLECCION,$DATA,$ID)
+{
+    $_BASE = $_DB . '.' . $_COLECCION;
+
+    $bulk = new MongoDB\Driver\BulkWrite;
+
+    $bulk->update(
+        ['id' => $ID ],
+        ['$set' => $DATA ],
+        ['upsert' => true]
+    );
 
     $result = $_CONN->executeBulkWrite($_BASE, $bulk);
+
     //var_dump($result);
 
 }

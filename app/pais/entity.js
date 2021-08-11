@@ -9,6 +9,11 @@ var page = 1;
 
 var e__delete = [];
 
+/// filtros aplicados en buscador
+
+var e__where = '';
+
+
 /// columnas de la grilla
 var cols_grid = [
     'id',
@@ -38,7 +43,3 @@ var cols_form =
             "list": false
         }
     ];
-
-var cols_search = [
-    'descipcion'
-];

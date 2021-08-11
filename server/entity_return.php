@@ -38,7 +38,23 @@ if(isset($_POST['e']) or isset($_GET['e']) )
     ///letra w para definir un where
     if(isset($_POST['w']) or isset($_GET['w']) )
     {
-        $_FILTRO    = [];
+        $_WH = [];
+
+        if(isset($_POST['w']))
+        {
+            $_WH = $_POST['w'];
+        }else
+        {
+            $_WH = $_GET['w'];
+        }
+        $_WH = json_decode($_WH);
+        //var_dump($_WH);
+       
+
+        $_FILTRO    = [
+            '$and' => [$_WH]
+        ];
+
         $_OPCIONES   = ['sort' => ['id' => -1]];
         $_D = __select($_MONGO,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES );
     }
@@ -59,10 +75,42 @@ if(isset($_POST['e']) or isset($_GET['e']) )
 ///letra c para definir un count
 if(isset($_POST['c']) or isset($_GET['c']))
 {
-       $_FILTRO    = [];
-       $_OPCIONES   = [];
-       $_D = __count($_MONGO,$_DB, $_COLECCION);
-       echo $_D;
+
+    /// count con where
+    if(isset($_POST['w']) or isset($_GET['w']) )
+    {
+        $_WH = [];
+
+        if(isset($_POST['w']))
+        {
+            $_WH = $_POST['w'];
+        }else
+        {
+            $_WH = $_GET['w'];
+        }
+        $_WH = json_decode($_WH);
+        //var_dump($_WH);
+       
+
+        $_FILTRO    = [
+            '$and' => [$_WH]
+        ];
+
+       
+        $_OPCIONES   = [];
+        $_D = __count($_MONGO,$_DB, $_COLECCION,$_FILTRO);
+        
+    }
+    else
+    {
+        $_FILTRO    = [];
+        $_OPCIONES   = [];
+        $_D = __count($_MONGO,$_DB, $_COLECCION,$_FILTRO);
+      
+    }
+
+    echo $_D;
+
 }
 
 ///letra i para definir un insert
@@ -210,6 +258,33 @@ if(isset($_POST['exp']) or isset($_GET['exp']) )
            echo  "\r\n";
       }
         
+}
+
+
+///letra u para definir un update
+if(isset($_POST['u']) or isset($_GET['u']))
+{
+        ////letra d para datos a insertar
+        /// solo por post
+        if ( isset($_POST['d']) and isset($_POST['id']) )
+        {
+           
+            $DATA =   ($_POST['d']);
+            $ID   =   intval($_POST['id']);
+
+            $DATA['id'] = $ID;
+
+            $_D = __update($_MONGO,$_DB, $_COLECCION,$DATA,$ID);
+
+            echo '{"ok" : "update!"}';
+
+        }
+        else
+        {
+            //$DATA =   json_decode($_POST['d']);
+            echo '{ "Error" : "DATA - POST"} ';
+        }
+      
 }
 
 

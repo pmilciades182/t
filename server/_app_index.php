@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,17 +64,17 @@
         </div>
 
         <div class="form_content" id='frm_search'>
-        frm_search
-            <table>
+
+         <table >
+            <tbody id="tbl_search">
                 <tr>
                     <th>Campo</th>
-                    <th> Valor</th>
+                    <th>Ingresar Valor a Buscar</th>
+                    <th>Descripcion de ayuda</th>
                 </tr>
-                <tr>
-                    <td>Nombre</td>
-                    <td> <input> </input> </td>
-                </tr>
-            </table>
+            </tbody>
+
+        </table>
         </div>
 
         <div class="form_content" id='frm_export'>
@@ -158,10 +159,10 @@
         <div id="text_paginator">
         </div>
         <div class="agrupador">
-            <i class="fal fa-chevron-double-left pagination" data-type="1" onclick="e__paginador(this,entity)"></i>
-            <i class="fal fa-chevron-left pagination" data-type="2" onclick="e__paginador(this,entity)"></i>
-            <i class="fal fa-chevron-right pagination" data-type="3" onclick="e__paginador(this,entity)"></i>
-            <i class="fal fa-chevron-double-right pagination" data-type="4" onclick="e__paginador(this,entity)"></i>
+            <i class="fal fa-chevron-double-left pagination" data-type="1" onclick="e__paginador(this,entity,e__where)"></i>
+            <i class="fal fa-chevron-left pagination" data-type="2" onclick="e__paginador(this,entity,e__where)"></i>
+            <i class="fal fa-chevron-right pagination" data-type="3" onclick="e__paginador(this,entity,e__where)"></i>
+            <i class="fal fa-chevron-double-right pagination" data-type="4" onclick="e__paginador(this,entity,e__where)"></i>
         </div>
         <div id="text_copy">
             PG ANALITICA ©
@@ -170,16 +171,15 @@
 </div>
 <script>
     $(document).ready(function () {
+
         var e__th = $("#__th");
         var e__td = $("#__td");
         ///// funciones de entidad
         e__put_th(cols_grid, e__th);
-        e__put_td(entity, cols_grid, e__td, page);
-        e__text_paginator(entity);
+        e__put_td(entity, cols_grid, e__td, page,e__where);
+        e__text_paginator(entity,e__where);
 
-        e__frm_all(cols_form,cols_search);
-
-        
+        e__frm_all(cols_form);
 
     });
 </script>
