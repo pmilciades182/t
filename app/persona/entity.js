@@ -55,7 +55,7 @@ var cols_form =
             "required" : true
 
         },
-        {
+        { 
             "attribute": "apellido",
             "label": "Apellido",
             "hint": "Apelldo de la Persona",
