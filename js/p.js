@@ -18,7 +18,7 @@ function carga_menu(u) {
     u;
 
     $.getJSON("js/menu.json", function (data) {
-        // console.log(data);
+         console.log(data);
 
         let li = null;
         let i = null;
@@ -37,9 +37,9 @@ function carga_menu(u) {
 
         $.each(data, function (key, val) {
 
-            //console.log(  val[0]);
+            console.log(  key);
 
-            t = val[0];
+            t = val;
 
             _tipo = t._tipo;
             _class = t._class;

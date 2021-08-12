@@ -275,7 +275,7 @@ img.avatar {
 	list-style-type: none;
 	margin: 1px;
 	cursor: pointer;
-	padding-left: 15px;
+	padding-left: 2px;
 	border: solid 1px;
 	border-color: #E1E2E1;
 	margin-bottom: 5px;
@@ -360,7 +360,11 @@ img.avatar {
 	}
 
 	#w2{
-		height: 62%;
+		height: 70%;
+	}
+
+	#menu_ca{
+		font-size: 13px;
 	}
 
 

@@ -118,7 +118,7 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false,
+            "list": true,
             "required" : true
 
         },
@@ -131,6 +131,7 @@ var cols_form =
             "search": true,
             "input_pattern": 2,
             "list": false,
+            "list_entity" : "tipo_documento",
             "required" : true
 
         },

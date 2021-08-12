@@ -25,18 +25,6 @@
             <div id="w3">
                 <hr>
                 <ul class="li_ca" >
-                    <li class="li_de"
-                     onClick = "abre_prog(this)"
-                     data-prog="mensaje"
-                     data-id="90000"
-                     data-tit_pes = "Mensajes"
-                    ><i class="fas fa-envelope"></i> Mensajes (0)</li>
-                    <li class="li_de"
-                     onClick = "abre_prog(this)"
-                     data-prog="perfil"
-                     data-id="90001"
-                     data-tit_pes = "Mi Perfil"
-                    ><i class="fas fa-user"></i> Mi Perfil</li>
                     <li class="li_de" onClick="cerrar_sess()"> <i class="fas fa-times-circle"></i>  Cerrar Sesion </li>
                 </ul>
             </div>

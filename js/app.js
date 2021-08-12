@@ -52,7 +52,7 @@ function e__put_td(g, e, f, _p, we) {
 
     let we_n = we.length;
 
-    console.log('we' + we_n);
+    //console.log('we' + we_n);
 
     let asx = { e: 1, p: _p };
 
@@ -791,11 +791,11 @@ function button_frm(a, b) {
 
             let loc_2 = 'model_' + b + '.php';
             let g = e__delete.join();
-            console.log(g)
+            //console.log(g)
 
             let j_2 = { del: 1, d: g };
 
-            console.log(j_2);
+            //console.log(j_2);
 
             var request_2 = $.ajax({
                 url: loc_2,
@@ -805,7 +805,7 @@ function button_frm(a, b) {
             });
             request_2.done(function (d) {
                 // console.log(d);
-                console.log(d);
+                //console.log(d);
                 frm_hide();
                 cerrar_modal();
                 let e__td = $("#__td");
@@ -827,7 +827,7 @@ function button_frm(a, b) {
             let xa = $("#export_name")[0].value;
             loc_3 = loc_3 + xa;
 
-            console.log(loc_3);
+            //console.log(loc_3);
             downloadURI(loc_3, xa);
             break;
 
@@ -906,7 +906,7 @@ function button_frm(a, b) {
 
             e__where = JSON.stringify(arr5);
 
-            console.log(e__where);
+            //console.log(e__where);
 
             frm_hide();
             cerrar_modal();
@@ -974,7 +974,7 @@ function cierra_error() {
 /// carga el array de elementos a eliminar
 function chk_delete(e) {
 
-    console.log(e.checked);
+    //console.log(e.checked);
 
     if (e.checked) {
         e.parentElement.parentElement.classList.add('deletable');
@@ -983,14 +983,14 @@ function chk_delete(e) {
 
         e__delete.indexOf(i) === -1 ? e__delete.push(i) : null;
 
-        console.log(e__delete);
+        //console.log(e__delete);
 
     } else {
         e.parentElement.parentElement.classList.remove('deletable');
         let i = e.parentElement.parentElement.children[2].innerText;
         i = parseInt(i);
         e__delete.remove(i);
-        console.log(e__delete);
+        //console.log(e__delete);
     }
 
     //// contador de eliminados
@@ -1016,7 +1016,7 @@ Array.prototype.remove = function () {
 
 /// utilizadi en el boton exportar
 function downloadURI(uri, name) {
-    console.log('a');
+    //console.log('a');
     var link = document.createElement("a");
     link.download = name;
     link.href = uri;
