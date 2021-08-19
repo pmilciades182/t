@@ -16,7 +16,7 @@
         "_data_prog": "dsb_sucursal",
         "_data_id": "2",
         "_data_tit_pes": "DSB Sucursal",
-        "_icono": "envelope",
+        "_icono": "tachometer-alt-slow",
         "_titulo": "DSB Sucursal"
     },
     {
@@ -26,7 +26,7 @@
         "_data_prog": "dsb_empresa",
         "_data_id": "2",
         "_data_tit_pes": "DSB Empresa",
-        "_icono": "envelope",
+        "_icono": "tachometer-alt-fast",
         "_titulo": "DSB Empresa"
     },
     {
@@ -47,7 +47,7 @@
         "_data_prog": "rp_detalle_marcaciones",
         "_data_id": "2",
         "_data_tit_pes": "Det Marcac",
-        "_icono": "envelope",
+        "_icono": "file-chart-line",
         "_titulo": "Detalle Marcaciones"
     },
     {
@@ -57,7 +57,7 @@
         "_data_prog": "rp_horas_trabajadas",
         "_data_id": "2",
         "_data_tit_pes": "Horas Trabaj",
-        "_icono": "envelope",
+        "_icono": "file-chart-line",
         "_titulo": "Horas Trabajadas"
     },
     {
@@ -67,7 +67,7 @@
         "_data_prog": "rp_empleados_sucursal",
         "_data_id": "2",
         "_data_tit_pes": "Empleados Suc",
-        "_icono": "envelope",
+        "_icono": "file-chart-line",
         "_titulo": "Empleados Sucursal"
     },
 
@@ -77,7 +77,7 @@
         "_tipo": "2",
         "_class": "li_de",
         "_class2": "tit",
-        "_titulo": "- Personas -",
+        "_titulo": "- Colaboradores -",
         "_data_prog": "",
         "_data_id": "",
         "_data_tit_pes": "",
@@ -91,7 +91,7 @@
         "_data_prog": "persona",
         "_data_id": "1",
         "_data_tit_pes": "Personas",
-        "_icono": "envelope",
+        "_icono": "person-carry",
         "_titulo": "Personas"
     },
     {
@@ -101,7 +101,7 @@
         "_data_prog": "tipo_documento",
         "_data_id": "3",
         "_data_tit_pes": "Tipo Doc",
-        "_icono": "envelope",
+        "_icono": "passport",
         "_titulo": "Tipos Documentos"
     },
     {
@@ -111,7 +111,7 @@
         "_data_prog": "pais",
         "_data_id": "2",
         "_data_tit_pes": "Países",
-        "_icono": "envelope",
+        "_icono": "flag",
         "_titulo": "Países"
     },
     {
@@ -121,7 +121,7 @@
         "_data_prog": "ciudad",
         "_data_id": "2",
         "_data_tit_pes": "Ciudades",
-        "_icono": "envelope",
+        "_icono": "city",
         "_titulo": "Ciudades"
     },
     {
@@ -141,7 +141,7 @@
         "_data_prog": "empresa",
         "_data_id": "2",
         "_data_tit_pes": "Empresa",
-        "_icono": "envelope",
+        "_icono": "business-time",
         "_titulo": "Empresa"
     },
     {
@@ -151,19 +151,10 @@
         "_data_prog": "sucursal",
         "_data_id": "2",
         "_data_tit_pes": "Sucursal",
-        "_icono": "envelope",
+        "_icono": "store-alt",
         "_titulo": "Sucursales"
     },
-    {
-        "_tipo": "1",
-        "_class": "li_de",
-        "_class2": "tit",
-        "_data_prog": "ciudad",
-        "_data_id": "2",
-        "_data_tit_pes": "Ciudades",
-        "_icono": "envelope",
-        "_titulo": "Ciudades"
-    },
+  
     {
         "_tipo": "2",
         "_class": "li_de",
@@ -181,7 +172,7 @@
         "_data_prog": "lector",
         "_data_id": "2",
         "_data_tit_pes": "Lectores",
-        "_icono": "envelope",
+        "_icono": "webcam",
         "_titulo": "Lectores"
     },
     {
@@ -191,7 +182,7 @@
         "_data_prog": "usuario",
         "_data_id": "2",
         "_data_tit_pes": "Usuarios",
-        "_icono": "envelope",
+        "_icono": "user",
         "_titulo": "Usuarios"
     }
     ,
@@ -202,7 +193,7 @@
         "_data_prog": "grupo",
         "_data_id": "2",
         "_data_tit_pes": "Grupos",
-        "_icono": "envelope",
+        "_icono": "users",
         "_titulo": "Grupos"
     },
     {
@@ -212,7 +203,7 @@
         "_data_prog": "aplicacion",
         "_data_id": "2",
         "_data_tit_pes": "Aplicaciones",
-        "_icono": "envelope",
+        "_icono": "browser",
         "_titulo": "Aplicaciones"
     }
 ]
