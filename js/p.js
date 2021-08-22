@@ -18,7 +18,7 @@ function carga_menu(u) {
     u;
 
     $.getJSON("js/menu.json", function (data) {
-         console.log(data);
+         //console.log(data);
 
         let li = null;
         let i = null;
@@ -37,7 +37,7 @@ function carga_menu(u) {
 
         $.each(data, function (key, val) {
 
-            console.log(  key);
+            //console.log(  key);
 
             t = val;
 
@@ -243,7 +243,7 @@ function go_program(p, id) {
         g = '';
     }
     else {
-        g = 'app/' + p;
+        g = 'app/' + p + '?session_id=' + session_id;
     }
 
     f.src = g;

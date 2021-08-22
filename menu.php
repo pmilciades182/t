@@ -43,5 +43,9 @@
     </div>
 <script src="js/s.js"></script> 
 <script src="js/p.js"></script>
+
+<script>
+    console.log(session_id);
+</script>
 </html>
 

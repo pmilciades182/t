@@ -1,25 +1,4 @@
-<?php 
-
-$_ITS_OK = 0;
-
-if(isset($_GET['session_id']))
-{
-    /// verifica si dispone de acceso a la APP
-    $_ITS_OK = 1;
-}
-else
-{
-    /// sin acceso a la app
-}
-
-if($_ITS_OK == 0)
-{
-    //// sin acceso
-}
-else
-{
-
-?>
+<?php  include_once('manage_session.php'); ?>
 
 
 <!DOCTYPE html>
@@ -209,4 +188,3 @@ else
 
 </html>
 
-<?php } ?>
