@@ -4,7 +4,7 @@
 include_once('../../server/mongo.php');
 
 ///entidad
-$_COLECCION = 'pais';
+$_COLECCION = 'sucursal';
 
 include_once('../../server/entity_return.php');
 

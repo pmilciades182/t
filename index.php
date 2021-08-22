@@ -15,6 +15,7 @@ if(isset($_POST['user']))
      {
          /// comienza la session
          session_start();
+         $_SESSION['session_id'] = $RES;
          header('Location: menu');
          die();
      }

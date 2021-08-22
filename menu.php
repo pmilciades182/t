@@ -1,3 +1,6 @@
+<?php
+    include_once('server/manage_session.php');
+?>
 <html>
 <head>
     <title>ACCESO</title>

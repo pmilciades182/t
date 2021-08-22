@@ -1,10 +1,8 @@
 <?php
 
-include_once('util.php');
 include_once('mongo.php');
 
 $_COLECCION = 'usuario';
-
 
 if(isset($_GET['user']))
 {
@@ -29,11 +27,30 @@ if(isset($_GET['user']))
         }
         else
         {
-            echo '#123';
+            $_SSID =  base64_encode($_USER);
+            echo  '#' . $_SSID;
         }
     }
 }
 else
 {
     err_login('Error: Error de Get');
+}
+
+
+function err_login($e)
+{
+    echo "
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function(event) { 
+        var f = document.getElementById('error');
+        f.style.display = 'flex';
+        f.innerText = '$e';
+      });
+
+    </script>
+    
+    ";
+
 }

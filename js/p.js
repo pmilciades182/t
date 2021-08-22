@@ -274,7 +274,7 @@ Array.prototype.remove = function () {
 
 ////para cerrar sesion
 function cerrar_sess() {
-    window.location.replace("http://localhost/t");
+    window.location.replace("http://localhost/t/server/kill_session.php");
 }
 
 

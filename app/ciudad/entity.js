@@ -1,6 +1,6 @@
 /////globales de entidad
 
-var entity = 'pais';
+var entity = 'ciudad';
 
 //// pagina inicial
 var page = 1;

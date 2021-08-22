@@ -155,8 +155,10 @@ var cols_form =
             "new": true,
             "edit": true,
             "input_pattern": 2,
-            "list": false,
-            "required" : true
+            "list": true,
+            "required" : true,
+            "list_entity" : "ciudad"
+    
 
         },
         {

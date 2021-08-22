@@ -1,4 +1,27 @@
-<?php ?>
+<?php 
+
+$_ITS_OK = 0;
+
+if(isset($_GET['session_id']))
+{
+    /// verifica si dispone de acceso a la APP
+    $_ITS_OK = 1;
+}
+else
+{
+    /// sin acceso a la app
+}
+
+if($_ITS_OK == 0)
+{
+    //// sin acceso
+}
+else
+{
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,3 +208,5 @@
 </script>
 
 </html>
+
+<?php } ?>
