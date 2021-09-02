@@ -12,6 +12,8 @@
 <body>
     <div id="o2" class="noselect">
         <div id="q1">
+
+            <div id="w0"> <span id="menu_ham" onClick="menu_toggle()"> <i class="fas fa-bars ham"></i> </span> </div>
             <div id="w1">
                 <img src="img/f.png" alt="Avatar" class="logo" id="img_logo">
                 <input type="text" placeholder="Buscar..." name="buscar" class="buscador" id="busc_menu" autocomplete="off" >

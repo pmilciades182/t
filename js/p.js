@@ -3,6 +3,10 @@
 /// array que contiene las pestañas
 var arr_pes = [0];
 
+///variable de estado del menu hamburguesa
+
+var ham_menu = 1;
+
 //// inicio
 $(document).ready(function () {
     let usr = 'ADMIN';
@@ -345,6 +349,49 @@ if (!String.prototype.trim) {
             return this.replace(rtrim, '');
         };
     })();
+}
+
+
+function menu_toggle()
+{
+    ///// cambia los css segun sea el caso
+
+    let _w0 = $("#w0");
+    let _w1 = $("#w1");
+    let _w2 = $("#w2");
+    let _w3 = $("#w3");
+    let _q1 = $("#q1");
+    let _q2 = $("#q2");
+
+    if(ham_menu == 1)
+    {
+        _w1.css("display","none");
+        _w2.css("display","none");
+        _w3.css("display","none");
+
+        _q1.css("min-width","25px")
+        _q1.css("width","25px")
+        _q2.css("width","calc(100% - 25px)")
+
+    }else{
+        _w1.css("display","flex");
+        _w2.css("display","flex");
+        _w3.css("display","flex");
+
+        _q1.css("min-width","200px")
+        _q1.css("width","15%")
+        _q2.css("width","85%")
+    }
+
+
+    //// cambia de valor la variable global
+    if(ham_menu == 1)
+    {
+        ham_menu = 0;
+    }else{
+        ham_menu = 1;
+    }
+
 }
 
 

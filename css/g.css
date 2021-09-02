@@ -148,6 +148,20 @@ body {
 	width: 90%;
 }
 
+.ham{
+	font-size: 15px;
+	padding-right: 5px;
+    padding-top: 10px;
+	cursor: pointer;
+}
+
+#w0{
+	display: flex;
+    height: 25px;
+    justify-content: flex-end;
+ 
+}
+
 #w1 {
 	display: flex;
 	background-color: #E1E2E1;
