@@ -486,3 +486,13 @@ th {
     justify-content: center;
     align-self: stretch; 
   }
+
+  /* cabecera detalle en el modal de editar */
+
+  #frm_edit{
+    flex-direction: column;
+  }
+
+  .agrupador.detail{
+    background-color: cadetblue;
+  }

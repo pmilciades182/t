@@ -1,8 +1,8 @@
 <?php  include_once('manage_session.php'); ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link href="../../css/all.css" rel="stylesheet">
@@ -18,23 +18,23 @@
 <div id="mgs_error">
     <div id="md_cont_err">
 
-        <div id="md_head_err" class="noselect"> 
-            <span class="modal_head" id="modal_title_err"> <b>Alerta</b> </span> 
-           
+        <div id="md_head_err" class="noselect">
+            <span class="modal_head" id="modal_title_err"> <b>Alerta</b> </span>
+
         </div>
 
         <div id="md_body_err">
 
-        Mensaje de Error
+            Mensaje de Error
 
         </div>
 
-        <div id="md_foo_err" class="noselect"> 
+        <div id="md_foo_err" class="noselect">
 
-        <div class="agrupador b_modal" onclick="cierra_error()">
-            <div><span> OK </span>
-             </div>
-         </div>
+            <div class="agrupador b_modal" onclick="cierra_error()">
+                <div><span> OK </span>
+                </div>
+            </div>
 
 
         </div>
@@ -45,87 +45,98 @@
 <div id="mgs_modal">
 
     <div id="md_cont">
-        <div id="md_head" class="noselect"> 
-            <span class="modal_head" id="modal_title"> ... </span> 
-            <i class="fas fa-times modal_head close" id="close_modal"> </i> 
+        <div id="md_head" class="noselect">
+            <span class="modal_head" id="modal_title"> ... </span>
+            <i class="fas fa-times modal_head close" id="close_modal"> </i>
         </div>
         <div id="md_body">
 
-        <div class="form_content" id='frm_new'>
-         <table >
-            <tbody id="tbl_new">
-                <tr>
-                    <th>Campo</th>
-                    <th>Ingresar Valor Nuevo</th>
-                    <th>Obligtorio</th>
-                    <th>Descripcion de ayuda</th>
-                </tr>
-            </tbody>
+            <div class="form_content" id='frm_new'>
+                <table>
+                    <tbody id="tbl_new">
+                        <tr>
+                            <th>Campo</th>
+                            <th>Ingresar Valor Nuevo</th>
+                            <th>Obligtorio</th>
+                            <th>Descripcion de ayuda</th>
+                        </tr>
+                    </tbody>
 
-        </table>
+                </table>
+            </div>
+
+            <div class="form_content" id='frm_search'>
+
+                <table>
+                    <tbody id="tbl_search">
+                        <tr>
+                            <th>Campo</th>
+                            <th>Ingresar Valor a Buscar</th>
+                            <th>Descripcion de ayuda</th>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div class="form_content" id='frm_export'>
+                <table>
+                    <tr>
+                        <th>Campo</th>
+                        <th> Valor</th>
+                    </tr>
+                    <tr>
+                        <td>Nombre del archivo</td>
+                        <td> <input id='export_name'> </input> </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="form_content" id='frm_delete'>
+
+            </div>
+
+            <div class="form_content" id='frm_edit'>
+                
+           
+                    <div id="edit_tab_select_master" class="agrupador detail">Cabecera</div>
+                 
+              
+                <div id="edit_tab">
+                    <div id="edit_tab_master">
+                        <table>
+                            <tbody id="tbl_edit">
+                                <tr>
+                                    <th>Campo</th>
+                                    <th>Ingresar Valor Nuevo</th>
+                                    <th>Obligtorio</th>
+                                    <th>Descripcion de ayuda</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="edit_tab_select_detail" class="agrupador detail">Detalle</div>
+                    <div id="edit_tab_detail">
+                        Detalle
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+        <div id="md_foo" class="noselect">
 
-        <div class="form_content" id='frm_search'>
+            <div class="agrupador b_modal" id="go_frm_action" data-action="" onclick="button_frm(this,entity)">
+                <div><span id="text_button_modal"></span></div>
+            </div>
 
-         <table >
-            <tbody id="tbl_search">
-                <tr>
-                    <th>Campo</th>
-                    <th>Ingresar Valor a Buscar</th>
-                    <th>Descripcion de ayuda</th>
-                </tr>
-            </tbody>
-
-        </table>
-        </div>
-
-        <div class="form_content" id='frm_export'>
-            <table>
-                <tr>
-                    <th>Campo</th>
-                    <th> Valor</th>
-                </tr>
-                <tr>
-                    <td>Nombre del archivo</td>
-                    <td> <input id='export_name'> </input> </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="form_content" id='frm_delete'>
-
-        </div>
-
-        <div class="form_content" id='frm_edit'>
-        
-        <table >
-            <tbody id="tbl_edit">
-                <tr>
-                    <th>Campo</th>
-                    <th>Ingresar Valor Nuevo</th>
-                    <th>Obligtorio</th>
-                    <th>Descripcion de ayuda</th>
-                </tr>
-            </tbody>
-
-        </table>
-        </div>
-
-
-        </div>
-        <div id="md_foo" class="noselect"> 
-
-        <div class="agrupador b_modal"  id = "go_frm_action" data-action = "" onclick="button_frm(this,entity)">
-            <div><span id="text_button_modal"></span></div>
-        </div>
-       
 
         </div>
     </div>
 </div>
 <div id="t_con">
     <div id="t_hea" class="noselect">
- 
+
         <div class="agrupador" id="go_refresh">
             <div> &nbsp&nbsp<i class="fas fa-sync"></i><span> Recargar </span>&nbsp&nbsp </div>
         </div>
@@ -139,7 +150,7 @@
             <div> &nbsp&nbsp <i class="fas fa-plus"></i> Nuevo Registro &nbsp&nbsp</div>
         </div>
         <div class="agrupador ag_red" id="go_delete">
-            <div> &nbsp&nbsp <i class="far fa-trash-alt"></i> Eliminar <span id = "delete_count"></span> &nbsp&nbsp</div>
+            <div> &nbsp&nbsp <i class="far fa-trash-alt"></i> Eliminar <span id="delete_count"></span> &nbsp&nbsp</div>
         </div>
     </div>
     <div id="t_bod">
@@ -161,10 +172,12 @@
         <div id="text_paginator">
         </div>
         <div class="agrupador">
-            <i class="fal fa-chevron-double-left pagination" data-type="1" onclick="e__paginador(this,entity,e__where)"></i>
+            <i class="fal fa-chevron-double-left pagination" data-type="1"
+                onclick="e__paginador(this,entity,e__where)"></i>
             <i class="fal fa-chevron-left pagination" data-type="2" onclick="e__paginador(this,entity,e__where)"></i>
             <i class="fal fa-chevron-right pagination" data-type="3" onclick="e__paginador(this,entity,e__where)"></i>
-            <i class="fal fa-chevron-double-right pagination" data-type="4" onclick="e__paginador(this,entity,e__where)"></i>
+            <i class="fal fa-chevron-double-right pagination" data-type="4"
+                onclick="e__paginador(this,entity,e__where)"></i>
         </div>
         <div id="text_copy">
             PG ANALITICA ©
@@ -178,8 +191,8 @@
         var e__td = $("#__td");
         ///// funciones de entidad
         e__put_th(cols_grid, e__th);
-        e__put_td(entity, cols_grid, e__td, page,e__where);
-        e__text_paginator(entity,e__where);
+        e__put_td(entity, cols_grid, e__td, page, e__where);
+        e__text_paginator(entity, e__where);
 
         e__frm_all(cols_form);
 
@@ -187,4 +200,3 @@
 </script>
 
 </html>
-
