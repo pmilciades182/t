@@ -489,10 +489,16 @@ th {
 
   /* cabecera detalle en el modal de editar */
 
-  #frm_edit{
+  #frm_edit,#frm_new{
     flex-direction: column;
   }
 
   .agrupador.detail{
     background-color: cadetblue;
   }
+
+
+  select[multiple] {
+    overflow: hidden;
+  }
+

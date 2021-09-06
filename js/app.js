@@ -480,6 +480,7 @@ function go_frm_new(a) {
 
     //// limpia los inputs
     let ins = $("#tbl_new").find("select,textarea, input");
+    let ins_detail = $("#tbl_new_detail").find("select,textarea, input");
     /// limpia los select
     $("select").empty();
 
@@ -492,9 +493,22 @@ function go_frm_new(a) {
         }
     }
 
+    for (var i = 0; i < ins_detail.length; i++) {
+        ins_detail[i].value = '';
+        //recarga las listas
+        //console.log(ins[i].tagName);
+        if (ins_detail[i].tagName == 'SELECT') {
+            load_list_detail(ins_detail[i], ins_detail[i].name);
+        }
+    }
+
     $("#frm_new").css("display", "flex");
 }
 
+
+//// se maneja desde la creacion del registr
+
+/// queda sin efecto
 function go_frm_edit(a) {
     frm_hide();
     $("#frm_edit").css("display", "flex");
@@ -524,17 +538,14 @@ function frm_hide() {
     $("#frm_export").css("display", "none");
 }
 
-function e__frm_all(a) {
+function e__frm_all(a, b) {
     /* generar formulario para registro nuevo */
 
     for (var i = 0; i < a.length; i++) {
         //console.log(a[i]);
         let campo = a[i];
-
         let tbl_new = $("#tbl_new")[0];
-
         let tbl_edit = $("#tbl_edit")[0];
-
         let tbl_search = $("#tbl_search")[0];
 
         // formulario para nuevo registro
@@ -548,14 +559,14 @@ function e__frm_all(a) {
             ///se genera la etiqueta
             let W = document.createElement("td");
             W.classList.add("frm_label");
-            W.innerText = campo.label;
+            W.innerText = e__siglas(campo.label);
             /// se genera el input
 
             /// en caso de input type select
             let E = document.createElement("td");
             E.classList.add("frm_input");
 
-
+            /// elemento a insertar
             let F;
 
             if (campo.list) {
@@ -610,14 +621,14 @@ function e__frm_all(a) {
             ///se genera la etiqueta
             let W = document.createElement("td");
             W.classList.add("frm_label");
-            W.innerText = campo.label;
+            W.innerText = e__siglas(campo.label);
             /// se genera el input
 
             /// en caso de input type select
             let E = document.createElement("td");
             E.classList.add("frm_input");
 
-
+            ///elemento a insertar
             let F;
 
             if (campo.list) {
@@ -669,7 +680,7 @@ function e__frm_all(a) {
             ///se genera la etiqueta
             let W = document.createElement("td");
             W.classList.add("frm_label");
-            W.innerText = campo.label;
+            W.innerText = e__siglas(campo.label);
             /// se genera el input
 
             /// en caso de input type select
@@ -702,17 +713,114 @@ function e__frm_all(a) {
             G.classList.add("frm_hint");
             G.innerText = campo.hint;
 
-            let H = document.createElement("td");
-
+            //let H = document.createElement("td");
 
             Q.appendChild(W);
             E.appendChild(F);
             Q.appendChild(E);
-
             Q.appendChild(G);
             tbl_search.appendChild(Q);
         }
+    }
 
+    //console.log(b.length);
+    ///campos detail
+
+    for (var i = 0; i < b.length; i++) {
+
+        let campo = b[i];
+        let tbl_new_detail = $("#tbl_new_detail")[0];
+        let tbl_edit_detail = $("#tbl_edit_detail")[0];
+        //console.log(campo);
+        if (campo.new) {
+            /// se generan dos tr por campo
+            /// el primero para el nombre del campo y titulo de ayuda
+            /// el segundo para los valores y el texto de ayuda
+
+            let Q = document.createElement("tr");
+            let R = document.createElement("tr");
+
+            Q.classList.add("frm_line");
+            R.classList.add("frm_line");
+
+            // primer tr
+
+            let W = document.createElement("th");
+            let X = document.createElement("th");
+            W.innerText = campo.label;
+            X.innerText = 'Descripcion de Ayuda';
+            Q.appendChild(W);
+            Q.appendChild(X);
+
+            ///segundo tr
+            let Y = document.createElement("td");
+            let Z = document.createElement("td");
+
+            Z.classList.add("frm_hint");
+            Z.innerText = campo.hint;
+
+            let F;
+            F = document.createElement("select");
+            F.name = campo.attribute;
+            load_list_detail(F, campo.attribute);
+            F.multiple = true;
+            F.size = 10;
+
+            Y.appendChild(F);
+
+            R.appendChild(Y);
+            R.appendChild(Z);
+
+
+            tbl_new_detail.appendChild(Q);
+            tbl_new_detail.appendChild(R);
+
+        }
+
+        if (campo.edit) {
+            /// se generan dos tr por campo
+            /// el primero para el nombre del campo y titulo de ayuda
+            /// el segundo para los valores y el texto de ayuda
+
+            let Q = document.createElement("tr");
+            let R = document.createElement("tr");
+
+            Q.classList.add("frm_line");
+            R.classList.add("frm_line");
+
+            // primer tr
+
+            let W = document.createElement("th");
+            let X = document.createElement("th");
+            W.innerText = campo.label;
+            X.innerText = 'Descripcion de Ayuda';
+            Q.appendChild(W);
+            Q.appendChild(X);
+
+            ///segundo tr
+            let Y = document.createElement("td");
+            let Z = document.createElement("td");
+
+            Z.classList.add("frm_hint");
+            Z.innerText = campo.hint;
+
+            let F;
+            F = document.createElement("select");
+            F.name = campo.attribute;
+            load_list_detail(F, campo.attribute);
+            F.multiple = true;
+            F.size = 10;
+
+            Y.appendChild(F);
+
+            R.appendChild(Y);
+            R.appendChild(Z);
+
+
+            tbl_edit_detail.appendChild(Q);
+            tbl_edit_detail.appendChild(R);
+
+        }
     }
 
 
@@ -736,6 +844,7 @@ function button_frm(a, b) {
 
             let _req = 1;
             let n = $("#tbl_new").find("select,textarea, input");
+            let nd = $("#tbl_new_edit").find("select");
 
             for (var i = 0; i < n.length; i++) {
                 //console.log(n[i].dataset)
@@ -753,8 +862,16 @@ function button_frm(a, b) {
             }
 
             let t = $("#tbl_new").find("select,textarea, input").serializeArray();
+            let td = $("#tbl_new_detail").find("select").serializeArray();
+
+            td = merge_detail(td);
+
+            console.log(td);
 
             let arr = {};
+
+            t = t.concat(td);
+
             for (var i = 0; i < t.length; i++) {
                 arr['' + t[i].name + ''] = t[i].value;
             }
@@ -835,7 +952,9 @@ function button_frm(a, b) {
 
             let _id = 0;
             let _req4 = 1;
+
             let n4 = $("#tbl_edit").find("select,textarea, input");
+            let n4d = $("#tbl_edit").find("select");
 
             for (var i = 0; i < n4.length; i++) {
                 //console.log(n[i].dataset)
@@ -856,8 +975,14 @@ function button_frm(a, b) {
             }
 
             let t4 = $("#tbl_edit").find("select,textarea, input").serializeArray();
+            let t4d = $("#tbl_edit_detail").find("select").serializeArray();
+
+            t4d = merge_detail(t4d);
 
             let arr4 = {};
+
+            t4 = t4.concat(t4d);
+            
             for (var i = 0; i < t4.length; i++) {
                 arr4['' + t4[i].name + ''] = t4[i].value;
             }
@@ -899,7 +1024,7 @@ function button_frm(a, b) {
 
             for (var i = 0; i < t5.length; i++) {
                 if (t5[i].value != '') {
-                    arr5['' + t5[i].name + ''] =  t5[i].value ;
+                    arr5['' + t5[i].name + ''] = t5[i].value;
                 }
 
             }
@@ -943,8 +1068,50 @@ function load_list(a, b) {
     function __tab(v) {
 
         //console.log(v);
-
+        //console.log(a);
         a.options.add(new Option('Seleccione...', ''));
+
+        for (let i = 0; i <= v.length - 1; i++) {
+
+
+            let r = v[i];
+            //console.log(r);
+
+            let c = (r['id']);
+            let d = (r['descripcion']);
+            a.options.add(new Option(d, d));
+
+        }
+    }
+}
+
+//carga las listas select segun la entidad
+function load_list_detail(a, b) {
+
+    let loc = '../' + b + '/model_' + b + '.php';
+
+    var request = $.ajax({
+        url: loc,
+        type: "POST",
+        data: { e: 1, p: 1 },
+        dataType: "json",
+        async: false
+    });
+
+    //console.log(request);
+
+    request.done(function (v) {
+        // console.log(d);
+        //console.log(v);
+        __tab(v);
+    });
+
+    function __tab(v) {
+
+        // console.log(v);
+        // console.log(a);
+
+
 
         for (let i = 0; i <= v.length - 1; i++) {
 
@@ -1029,6 +1196,7 @@ function downloadURI(uri, name) {
 function carga_edit(e) {
 
     let ins = $("#tbl_edit").find("select,textarea, input");
+    let ins_detail = $("#tbl_edit_detail").find("select");
 
     /// limpia los select
     $("select").empty();
@@ -1041,9 +1209,18 @@ function carga_edit(e) {
         }
     }
 
+    for (var i = 0; i < ins_detail.length; i++) {
+        //recarga las listas
+        //console.log(ins[i].tagName);
+        if (ins_detail[i].tagName == 'SELECT') {
+            load_list_detail(ins_detail[i], ins_detail[i].name);
+        }
+    }
+
     //console.log(e['id']);
 
     let n = $("#tbl_edit").find("select,textarea, input");
+    let nd = $("#tbl_edit_detail").find("select");
 
     for (var i = 0; i < n.length; i++) {
         //console.log(n[i].dataset)
@@ -1071,4 +1248,92 @@ function carga_edit(e) {
             n[i].value = e['' + h + ''];
         }
     }
+
+    for (var i = 0; i < nd.length; i++) {
+        //console.log(n[i].dataset)
+
+        if (ins_detail[i].tagName == 'SELECT') {
+
+            let h = nd[i].name;
+
+            let t = ins_detail[i].options;
+            let x = e['' + h + ''];
+
+            console.log(x);
+            //console.log(t);
+            //console.log(t.length);
+
+            for (let r = 0; r < t.length; r++) {
+                
+                console.log(t[r].innerText);
+
+                if(x){
+
+                    if ( x.toString().includes(t[r].innerText.toString())) {
+                        t[r].selected = true;
+                        //console.log('a');
+                    }
+                    
+                 }
+            }
+        }
+    }
 }
+
+
+///// funcion que oculta master detail 
+
+function e__hide_master_detail(e) {
+    if (e == 0 || e == undefined) {
+        let nc = $("#new_tab_select_master");
+        let nd = $("#new_tab_select_detail");
+        let nt = $("#new_tab_detail");
+        let ec = $("#edit_tab_select_master");
+        let ed = $("#edit_tab_select_detail");
+        let et = $("#edit_tab_detail");
+
+        nc.css("display", "none");
+        nd.css("display", "none");
+        nt.css("display", "none");
+        ec.css("display", "none");
+        ed.css("display", "none");
+        et.css("display", "none");
+
+    }
+}
+
+
+
+function merge_detail(e) {
+
+    let _new = [];
+
+   //console.log(e);
+
+    for (let i = 0; i < e.length; i++) {
+        let _name = e[i].name;
+        let check_1 = _new.find(o => o.name === _name);
+        //console.log(check_1);
+
+        if (check_1 === undefined) {
+
+            _new.push({
+                name:e[i].name,
+                value:e[i].value
+            });
+
+        }else
+        {
+            check_1.value = check_1.value + ',' + e[i].value;
+        }
+
+
+    }
+
+
+    //console.log(_new);
+
+    return _new;
+}
+
+

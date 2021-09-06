@@ -52,6 +52,8 @@
         <div id="md_body">
 
             <div class="form_content" id='frm_new'>
+                <div id="new_tab_select_master" class="agrupador detail">Cabecera</div>
+
                 <table>
                     <tbody id="tbl_new">
                         <tr>
@@ -63,6 +65,15 @@
                     </tbody>
 
                 </table>
+                <div id="new_tab_select_detail" class="agrupador detail">Detalle</div>
+                 <div id="new_tab_detail">
+                    <table>
+                        <tbody id="tbl_new_detail">
+                           
+                        </tbody>
+                    </table>
+                    </div>
+
             </div>
 
             <div class="form_content" id='frm_search'>
@@ -97,11 +108,9 @@
             </div>
 
             <div class="form_content" id='frm_edit'>
-                
-           
-                    <div id="edit_tab_select_master" class="agrupador detail">Cabecera</div>
-                 
-              
+
+                <div id="edit_tab_select_master" class="agrupador detail">Cabecera</div>
+
                 <div id="edit_tab">
                     <div id="edit_tab_master">
                         <table>
@@ -117,7 +126,11 @@
                     </div>
                     <div id="edit_tab_select_detail" class="agrupador detail">Detalle</div>
                     <div id="edit_tab_detail">
-                        Detalle
+                        <table>
+                            <tbody id="tbl_edit_detail">
+                               
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -193,8 +206,8 @@
         e__put_th(cols_grid, e__th);
         e__put_td(entity, cols_grid, e__td, page, e__where);
         e__text_paginator(entity, e__where);
-
-        e__frm_all(cols_form);
+        e__frm_all(cols_form,cols_form_detail);
+        e__hide_master_detail(master_detail);
 
     });
 </script>

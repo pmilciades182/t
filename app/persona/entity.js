@@ -5,6 +5,9 @@ var entity = 'persona';
 //// pagina inicial
 var page = 1;
 
+/// check si necesitamos cabecera detalle en los registros
+var master_detail = 1;
+
 //// elementos a eliminar
 
 var e__delete = [];
@@ -29,7 +32,7 @@ var cols_grid = [
     'direccion'
 ];
 
-/// campos formulario nuevo y  editar /// tambien buscar
+/// campos formulario nuevo y  editar /// tambien buscar /// solo cabecera
 var cols_form =
     [
         {
@@ -175,3 +178,19 @@ var cols_form =
 
 
     ];
+
+
+    ///// columnas correspondientes a los campos N:N /// detalle
+
+    var cols_form_detail = [
+        {
+            "attribute": "movilidad",
+            "label": "Movilidad Propia",
+            "hint": "Movilidad Propia con la que cuenta. Seleccionar varias opciones con la tecla Ctrl",
+            "new": true,
+            "edit": true,
+            "required" : true,
+            "check": true,
+            "check_entity" : "movilidad"
+        }
+    ]
