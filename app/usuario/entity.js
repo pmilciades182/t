@@ -5,6 +5,9 @@ var entity = 'usuario';
 //// pagina inicial
 var page = 1;
 
+/// check si necesitamos cabecera detalle en los registros
+var master_detail = 1;
+
 //// elementos a eliminar
 
 var e__delete = [];
@@ -17,7 +20,8 @@ var e__where = '';
 /// columnas de la grilla
 var cols_grid = [
     'id',
-    'descripcion'
+    'usuario',
+    'activo'
 ];
 
 /// campos formulario nuevo y  editar
@@ -34,12 +38,33 @@ var cols_form =
 
         },
         {
-            "attribute": "descripcion",
-            "label": "Descripcion",
-            "hint": "Nombre del Pais o Nacion",
+            "attribute": "usuario",
+            "label": "Nombre de Usuario",
+            "hint": "Nombre de usuario para iniciar sesion en el sistema",
             "new": true,
             "edit": true,
             "input_pattern": 2,
             "list": false
+        },
+        {
+            "attribute": "password",
+            "label": "Contraseña",
+            "hint": "Contraseña para inicio de sesion en el sistema",
+            "new": true,
+            "edit": true,
+            "input_pattern": 2,
+            "list": false
+        },
+        {
+            "attribute": "activo",
+            "label": "Usuario Activo?",
+            "hint": "Un usuario Inactivo ya no puede acceder al sistema",
+            "new": true,
+            "edit": true,
+            "input_pattern": 2,
+            "list": true,
+            "list_entity" : "activo",
         }
     ];
+
+    var cols_form_detail = [];
