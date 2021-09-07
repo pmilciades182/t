@@ -21,7 +21,8 @@ var e__where = '';
 var cols_grid = [
     'id',
     'usuario',
-    'activo'
+    'activo',
+    'grupo'
 ];
 
 /// campos formulario nuevo y  editar
@@ -67,4 +68,17 @@ var cols_form =
         }
     ];
 
-    var cols_form_detail = [];
+    //// columnas detalle
+
+    var cols_form_detail = [
+        {
+            "attribute": "grupo",
+            "label": "Grupos",
+            "hint": "Un Grupo concede acceso a los diversos modulos del sistema. Seleccionar varias opciones con la tecla Ctrl",
+            "new": true,
+            "edit": true,
+            "required" : true,
+            "check": true,
+            "check_entity" : "grupo"
+        }
+    ]

@@ -4,6 +4,10 @@ __collection($_MONGO , $_DB, $_COLECCION);
 
 ///letra e utilizado para select
 
+/// limite standard
+
+$_LIMIT = 10;
+
 if(isset($_POST['e']) or isset($_GET['e']) )
 {
     //// p es para la paginacion
@@ -33,6 +37,11 @@ if(isset($_POST['e']) or isset($_GET['e']) )
     {
         $_P = (intval($_P) - 1) * 10;
     }
+
+    if(isset($_POST['detail']) or isset($_GET['detail']) )
+    {
+        $_LIMIT = 1000;
+    }
    
 
     ///letra w para definir un where
@@ -49,8 +58,9 @@ if(isset($_POST['e']) or isset($_GET['e']) )
         }
         $_WH = json_decode($_WH);
         //var_dump($_WH);
-       
 
+        /// limite aumentado para listas detalle en formulario
+       
         $_FILTRO    = [
             '$and' => [$_WH]
         ];
@@ -64,7 +74,7 @@ if(isset($_POST['e']) or isset($_GET['e']) )
        $_OPCIONES   = [
            'sort' => ['id' => -1]  ,
            'skip' => $_P,
-           'limit' => 10
+           'limit' => $_LIMIT
         ];
        $_D = __select($_MONGO,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES );
     }

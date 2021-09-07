@@ -114,7 +114,11 @@ function e__put_td(g, e, f, _p, we) {
                     let r = d[i];
                     let _q = document.createElement("td");
                     //console.log(r[''+ t+'']);
+                    if( (r['' + t + ''])){
                     _q.innerText = (r['' + t + '']);
+                }else{
+                    _q.innerText ='_';
+                }
                     k.appendChild(_q);
                 }
             }
@@ -1052,7 +1056,7 @@ function load_list(a, b) {
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1 },
+        data: { e: 1, p: 1, detail:1 },
         dataType: "json",
         async: false
     });
@@ -1093,7 +1097,7 @@ function load_list_detail(a, b) {
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1 },
+        data: { e: 1, p: 1, detail:1 },
         dataType: "json",
         async: false
     });
@@ -1259,13 +1263,13 @@ function carga_edit(e) {
             let t = ins_detail[i].options;
             let x = e['' + h + ''];
 
-            console.log(x);
+            //console.log(x);
             //console.log(t);
             //console.log(t.length);
 
             for (let r = 0; r < t.length; r++) {
                 
-                console.log(t[r].innerText);
+                //console.log(t[r].innerText);
 
                 if(x){
 

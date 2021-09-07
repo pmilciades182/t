@@ -5,9 +5,12 @@ var entity = 'aplicacion';
 //// pagina inicial
 var page = 1;
 
-//// elementos a eliminar
+//// elementos a eliminar 
 
 var e__delete = [];
+
+/// check si necesitamos cabecera detalle en los registros
+var master_detail = 0;
 
 /// filtros aplicados en buscador
 
@@ -43,3 +46,7 @@ var cols_form =
             "list": false
         }
     ];
+
+        ///// columnas correspondientes a los campos N:N /// detalle
+
+        var cols_form_detail = [];
