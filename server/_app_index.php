@@ -1,4 +1,8 @@
-<?php  include_once('manage_session.php'); ?>
+<?php  
+
+include_once('manage_session.php');
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -208,6 +212,8 @@
         e__text_paginator(entity, e__where);
         e__frm_all(cols_form,cols_form_detail);
         e__hide_master_detail(master_detail);
+
+        console.log(entity + ' | ' + session_id);
 
     });
 </script>

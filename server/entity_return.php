@@ -150,6 +150,8 @@ if(isset($_POST['i']) or isset($_GET['i']))
             $DATA['id'] = $N;
             //var_dump($DATA);
 
+            $DATA = __toarray($DATA, $_COLECCION);
+
             $_D = __insert($_MONGO,$_DB, $_COLECCION,$DATA);
             echo '{"ok" : "insert!"}';
         }
@@ -284,6 +286,8 @@ if(isset($_POST['u']) or isset($_GET['u']))
 
             $DATA['id'] = $ID;
 
+            $DATA =  __toarray($DATA, $_COLECCION);
+
             $_D = __update($_MONGO,$_DB, $_COLECCION,$DATA,$ID);
 
             echo '{"ok" : "update!"}';
@@ -295,6 +299,30 @@ if(isset($_POST['u']) or isset($_GET['u']))
             echo '{ "Error" : "DATA - POST"} ';
         }
       
+}
+
+
+
+//// funcion que convierte strings separados por coma a array en mongo
+
+function __toarray($DATA, $_COLECCION)
+{
+    if( $_COLECCION == 'persona')
+    {
+        $DATA['movilidad'] = explode(",",$DATA['movilidad']);
+    }
+
+    if( $_COLECCION == 'usuario')
+    {
+        $DATA['grupo'] = explode(",",$DATA['grupo']);
+    }
+
+    if( $_COLECCION == 'grupo')
+    {
+        $DATA['aplicacion'] = explode(",",$DATA['aplicacion']);
+    }
+
+    return $DATA;
 }
 
 
