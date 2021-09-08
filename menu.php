@@ -1,5 +1,5 @@
 <?php
-    const APP_ID = 0;
+    const APP_ID = 1;
     include_once('server/manage_session.php');
 ?>
 <html>

@@ -20,7 +20,8 @@ var master_detail = 1;
 /// columnas de la grilla
 var cols_grid = [
     'id',
-    'descripcion'
+    'descripcion',
+    'aplicacion'
 ];
 
 /// campos formulario nuevo y  editar
