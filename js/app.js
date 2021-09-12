@@ -57,9 +57,9 @@ function e__put_td(g, e, f, _p, we) {
     let asx = { e: 1, p: _p };
 
     if (we_n == 0) {
-        asx = { e: 1, p: _p, coleccion:entity };
+        asx = { e: 1, p: _p, coleccion: entity };
     } else {
-        asx = { e: 1, p: _p, w: we,coleccion:entity  };
+        asx = { e: 1, p: _p, w: we, coleccion: entity };
     }
 
     var request = $.ajax({
@@ -114,11 +114,11 @@ function e__put_td(g, e, f, _p, we) {
                     let r = d[i];
                     let _q = document.createElement("td");
                     //console.log(r[''+ t+'']);
-                    if( (r['' + t + ''])){
-                    _q.innerText = (r['' + t + '']);
-                }else{
-                    _q.innerText ='_';
-                }
+                    if ((r['' + t + ''])) {
+                        _q.innerText = (r['' + t + '']);
+                    } else {
+                        _q.innerText = '_';
+                    }
                     k.appendChild(_q);
                 }
             }
@@ -163,10 +163,10 @@ function e__paginador(a, e, we) {
     let gb = { c: 1 };
 
     if (we_n == 0) {
-        gb = { c: 1, coleccion:entity }
+        gb = { c: 1, coleccion: entity }
     }
     else {
-        gb = { c: 1, w: we, coleccion:entity }
+        gb = { c: 1, w: we, coleccion: entity }
     }
 
     var request = $.ajax({
@@ -264,10 +264,10 @@ function e__text_paginator(e, we) {
     let we_n = we.length;
     let yu = { c: 1 };
     if (we_n == 0) {
-        yu = { c: 1, coleccion:entity };
+        yu = { c: 1, coleccion: entity };
     }
     else {
-        yu = { c: 1, w: we , coleccion:entity}
+        yu = { c: 1, w: we, coleccion: entity }
     }
 
     var request = $.ajax({
@@ -883,7 +883,7 @@ function button_frm(a, b) {
             let y = JSON.stringify(arr);
             //console.log(y);
             let loc = '../../server/entity_return.php';
-            let j = { i: 0, d: arr, coleccion:entity };
+            let j = { i: 0, d: arr, coleccion: entity };
             //console.log(j);
             var request = $.ajax({
                 url: loc,
@@ -914,7 +914,7 @@ function button_frm(a, b) {
             let g = e__delete.join();
             //console.log(g)
 
-            let j_2 = { del: 1, d: g , coleccion:entity};
+            let j_2 = { del: 1, d: g, coleccion: entity };
 
             //console.log(j_2);
 
@@ -944,7 +944,7 @@ function button_frm(a, b) {
 
 
         case 'EXPORTAR':
-            let loc_3 = '../../server/entity_return.php?exp=1&coleccion=' + b +'name=';
+            let loc_3 = '../../server/entity_return.php?exp=1&coleccion=' + b + 'name=';
             let xa = $("#export_name")[0].value;
             loc_3 = loc_3 + xa;
 
@@ -986,7 +986,7 @@ function button_frm(a, b) {
             let arr4 = {};
 
             t4 = t4.concat(t4d);
-            
+
             for (var i = 0; i < t4.length; i++) {
                 arr4['' + t4[i].name + ''] = t4[i].value;
             }
@@ -994,7 +994,7 @@ function button_frm(a, b) {
             let y4 = JSON.stringify(arr4);
             //console.log(y);
             let loc4 = '../../server/entity_return.php';
-            let j4 = { u: 0, d: arr4, id: _id, coleccion:entity };
+            let j4 = { u: 0, d: arr4, id: _id, coleccion: entity };
             //console.log(j);
             var request = $.ajax({
                 url: loc4,
@@ -1056,7 +1056,7 @@ function load_list(a, b) {
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1, detail:1, coleccion:b },
+        data: { e: 1, p: 1, detail: 1, coleccion: b },
         dataType: "json",
         async: false
     });
@@ -1092,12 +1092,12 @@ function load_list(a, b) {
 //carga las listas select segun la entidad
 function load_list_detail(a, b) {
 
-   let loc = '../../server/entity_return.php';
+    let loc = '../../server/entity_return.php';
 
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1, detail:1, coleccion:b },
+        data: { e: 1, p: 1, detail: 1, coleccion: b },
         dataType: "json",
         async: false
     });
@@ -1268,17 +1268,17 @@ function carga_edit(e) {
             //console.log(t.length);
 
             for (let r = 0; r < t.length; r++) {
-                
+
                 //console.log(t[r].innerText);
 
-                if(x){
+                if (x) {
 
-                    if ( x.toString().includes(t[r].innerText.toString())) {
+                    if (x.toString().includes(t[r].innerText.toString())) {
                         t[r].selected = true;
                         //console.log('a');
                     }
-                    
-                 }
+
+                }
             }
         }
     }
@@ -1312,7 +1312,7 @@ function merge_detail(e) {
 
     let _new = [];
 
-   //console.log(e);
+    //console.log(e);
 
     for (let i = 0; i < e.length; i++) {
         let _name = e[i].name;
@@ -1322,12 +1322,11 @@ function merge_detail(e) {
         if (check_1 === undefined) {
 
             _new.push({
-                name:e[i].name,
-                value:e[i].value
+                name: e[i].name,
+                value: e[i].value
             });
 
-        }else
-        {
+        } else {
             check_1.value = check_1.value + ',' + e[i].value;
         }
 
