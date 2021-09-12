@@ -1,4 +1,32 @@
 <?php
+
+/// incluye la conexion a la bd
+include_once('mongo.php');
+
+if(isset($_POST['coleccion'] ) or isset($_GET['coleccion']) )
+{
+    ///entidad
+
+    if(isset($_POST['coleccion']))
+    {
+        $_COLECCION = $_POST['coleccion'];
+    }
+
+    if(isset($_GET['coleccion']))
+    {
+        $_COLECCION = $_GET['coleccion'];
+    }
+
+}else{
+    echo 'coleccion no definida';
+
+    return null;
+
+    exit();
+}
+
+
+
 ///crear collection
 __collection($_MONGO , $_DB, $_COLECCION);
 

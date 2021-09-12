@@ -173,12 +173,9 @@ var cols_form =
             "input_pattern": 2,
             "list": false,
             "required" : true
-
         }
 
-
     ];
-
 
     ///// columnas correspondientes a los campos N:N /// detalle
 

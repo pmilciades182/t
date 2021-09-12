@@ -48,7 +48,7 @@ function e__put_td(g, e, f, _p, we) {
 
     $(".registro").remove();
 
-    let loc = 'model_' + g + '.php';
+    let loc = '../../server/entity_return.php';
 
     let we_n = we.length;
 
@@ -57,9 +57,9 @@ function e__put_td(g, e, f, _p, we) {
     let asx = { e: 1, p: _p };
 
     if (we_n == 0) {
-        asx = { e: 1, p: _p };
+        asx = { e: 1, p: _p, coleccion:entity };
     } else {
-        asx = { e: 1, p: _p, w: we };
+        asx = { e: 1, p: _p, w: we,coleccion:entity  };
     }
 
     var request = $.ajax({
@@ -156,17 +156,17 @@ function e__paginador(a, e, we) {
 
 
     //console.log(a.dataset.type);
-    let loc = 'model_' + e + '.php';
+    let loc = '../../server/entity_return.php';
     let cantidad = 0;
 
     let we_n = we.length;
     let gb = { c: 1 };
 
     if (we_n == 0) {
-        gb = { c: 1 }
+        gb = { c: 1, coleccion:entity }
     }
     else {
-        gb = { c: 1, w: we }
+        gb = { c: 1, w: we, coleccion:entity }
     }
 
     var request = $.ajax({
@@ -258,16 +258,16 @@ function e__paginador(a, e, we) {
 }
 
 function e__text_paginator(e, we) {
-    let loc = 'model_' + e + '.php';
+    let loc = '../../server/entity_return.php';
     let cantidad = 0;
 
     let we_n = we.length;
     let yu = { c: 1 };
     if (we_n == 0) {
-        yu = { c: 1 };
+        yu = { c: 1, coleccion:entity };
     }
     else {
-        yu = { c: 1, w: we }
+        yu = { c: 1, w: we , coleccion:entity}
     }
 
     var request = $.ajax({
@@ -882,8 +882,8 @@ function button_frm(a, b) {
 
             let y = JSON.stringify(arr);
             //console.log(y);
-            let loc = 'model_' + b + '.php';
-            let j = { i: 0, d: arr };
+            let loc = '../../server/entity_return.php';
+            let j = { i: 0, d: arr, coleccion:entity };
             //console.log(j);
             var request = $.ajax({
                 url: loc,
@@ -910,11 +910,11 @@ function button_frm(a, b) {
 
         case 'ELIMINAR':
 
-            let loc_2 = 'model_' + b + '.php';
+            let loc_2 = '../../server/entity_return.php';
             let g = e__delete.join();
             //console.log(g)
 
-            let j_2 = { del: 1, d: g };
+            let j_2 = { del: 1, d: g , coleccion:entity};
 
             //console.log(j_2);
 
@@ -944,7 +944,7 @@ function button_frm(a, b) {
 
 
         case 'EXPORTAR':
-            let loc_3 = 'model_' + b + '.php?exp=1&name=';
+            let loc_3 = '../../server/entity_return.php?exp=1&coleccion=' + b +'name=';
             let xa = $("#export_name")[0].value;
             loc_3 = loc_3 + xa;
 
@@ -993,8 +993,8 @@ function button_frm(a, b) {
 
             let y4 = JSON.stringify(arr4);
             //console.log(y);
-            let loc4 = 'model_' + b + '.php';
-            let j4 = { u: 0, d: arr4, id: _id };
+            let loc4 = '../../server/entity_return.php';
+            let j4 = { u: 0, d: arr4, id: _id, coleccion:entity };
             //console.log(j);
             var request = $.ajax({
                 url: loc4,
@@ -1051,12 +1051,12 @@ function button_frm(a, b) {
 //carga las listas select segun la entidad
 function load_list(a, b) {
 
-    let loc = '../' + b + '/model_' + b + '.php';
+    let loc = '../../server/entity_return.php';
 
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1, detail:1 },
+        data: { e: 1, p: 1, detail:1, coleccion:b },
         dataType: "json",
         async: false
     });
@@ -1092,12 +1092,12 @@ function load_list(a, b) {
 //carga las listas select segun la entidad
 function load_list_detail(a, b) {
 
-    let loc = '../' + b + '/model_' + b + '.php';
+   let loc = '../../server/entity_return.php';
 
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1, detail:1 },
+        data: { e: 1, p: 1, detail:1, coleccion:b },
         dataType: "json",
         async: false
     });
