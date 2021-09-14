@@ -944,7 +944,7 @@ function button_frm(a, b) {
 
 
         case 'EXPORTAR':
-            let loc_3 = '../../server/entity_return.php?exp=1&coleccion=' + b + 'name=';
+            let loc_3 = '../../server/entity_return.php?exp=1&coleccion=' + b + '&name=';
             let xa = $("#export_name")[0].value;
             loc_3 = loc_3 + xa;
 
