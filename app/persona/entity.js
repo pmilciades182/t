@@ -18,6 +18,7 @@ var e__where = '';
 
 /// columnas de la grilla
 var cols_grid = [
+    'rf',
     'id',
     'nombre',
     'apellido',

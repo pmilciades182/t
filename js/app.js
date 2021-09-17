@@ -31,7 +31,8 @@ function capitalizeTheFirstLetterOfEachWord(words) {
 ////funcion que hace mayusculas a siglas
 function e__siglas(e) {
     if (e.toUpperCase() == 'ID' ||
-        e.toUpperCase() == 'RUC') { e = e.toUpperCase(); }
+        e.toUpperCase() == 'RUC'||
+        e.toUpperCase() == 'RF') { e = e.toUpperCase(); }
     return e;
 }
 
@@ -117,7 +118,8 @@ function e__put_td(g, e, f, _p, we) {
                     if ((r['' + t + ''])) {
                         _q.innerText = (r['' + t + '']);
                     } else {
-                        _q.innerText = '_';
+                        //// campos especiales
+                        _q.innerHTML = e__td_exeptions(entity,t);
                     }
                     k.appendChild(_q);
                 }
@@ -148,6 +150,18 @@ function e__put_td(g, e, f, _p, we) {
     return null;
 }
 
+
+////campos especiales
+
+function e__td_exeptions(entity,t){
+    let content = 'UwU';
+
+    console.log(entity);
+    console.log(t);
+
+    return content;
+}
+
 function e__paginador(a, e, we) {
 
     /// vacia lista de eliminados
@@ -172,13 +186,13 @@ function e__paginador(a, e, we) {
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { c: 1 },
-        dataType: "json",
+        data: gb,
+        dataType: "text",
         async: false
     });
 
     request.done(function (d) {
-        // console.log(d);
+       // console.log(d);
         cantidad = d;
     });
     request.fail(function (jqXHR, textStatus) {
