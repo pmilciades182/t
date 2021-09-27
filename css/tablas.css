@@ -7,6 +7,18 @@
 .tabla_edit{
     cursor: pointer;
 }
+
+.rf_persona_ok{
+  cursor: pointer;
+  color: rgb(53, 110, 53);
+  font-size: 19px;
+}
+
+.rf_persona_error{
+  cursor: pointer;
+  color:rgb(143, 15, 15);
+  font-size: 19px;
+}
 .pagination{
     padding-left: 15px;
     padding-right: 15px;

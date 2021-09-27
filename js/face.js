@@ -16,9 +16,8 @@ Promise.all([
 
     faceapi.nets.tinyFaceDetector.loadFromUri('../../js/models'),
     faceapi.nets.faceLandmark68Net.loadFromUri('../../js/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('../../js/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('../../js/models'),
-    faceapi.nets.ageGenderNet.loadFromUri('../../js/models')
+    faceapi.nets.faceRecognitionNet.loadFromUri('../../js/models')
+
 
 ]).then(startVideo);
 
@@ -32,12 +31,33 @@ video.addEventListener('play', ()=>{
 
     setInterval( async ()=>{
 
-        const detections = await faceapi.detectAllFaces(
+        const detections = await faceapi.detectSingleFace(
             video, new faceapi.TinyFaceDetectorOptions() 
-        ).withFaceLandmarks();
+        ).withFaceLandmarks().withFaceDescriptor();
             
 
-        //console.log(detections); 
+
+        if(detections.descriptor)
+        {
+            //console.log(detections.descriptor); 
+            //// cargar el descriptor a la persona
+            let elbody =  document.getElementsByTagName('body')[0];
+
+            //console.log(elbody);
+            
+
+            enviar_descripcion(detections.descriptor);
+
+            setTimeout(function () {
+                elbody.style.backgroundColor = 'green';
+                redirigir_a_persona();
+            }, 100);
+
+           
+
+        
+
+        }
 
         const resizedDetections = faceapi.resizeResults(detections, displaySize);
 
@@ -52,3 +72,40 @@ video.addEventListener('play', ()=>{
 
 
 });
+
+function enviar_descripcion(e){
+
+    let arr = {};
+    arr['face_description'] = e;
+
+    console.log('global_id ' + global_id);
+
+    let loc = '../../server/entity_return.php';
+    let entity = 'persona';
+    let j = { u: 0, d: arr, id: global_id , coleccion: entity };
+
+    var request = $.ajax({
+        url: loc,
+        type: "POST",
+        data: j,
+        dataType: "json"
+
+    });
+
+    request.done(function (d) {
+        console.log(d);
+        //console.log(d);
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+    });
+
+    return null;
+
+}
+
+
+function redirigir_a_persona(){
+    window.location.href = '../persona/index.php';
+}

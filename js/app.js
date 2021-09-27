@@ -119,7 +119,7 @@ function e__put_td(g, e, f, _p, we) {
                         _q.innerText = (r['' + t + '']);
                     } else {
                         //// campos especiales
-                        _q.innerHTML = e__td_exeptions(entity,t);
+                        _q.innerHTML = e__td_exeptions(entity,t,r);
                     }
                     k.appendChild(_q);
                 }
@@ -153,11 +153,35 @@ function e__put_td(g, e, f, _p, we) {
 
 ////campos especiales
 
-function e__td_exeptions(entity,t){
-    let content = 'UwU';
+function go_lector(e) {
+    console.log(e.dataset.id)
+    let _id = e.dataset.id;
+    window.location.replace("../../app/persona/lectura.php?id=" +_id );
+    
+}
 
-    console.log(entity);
-    console.log(t);
+function e__td_exeptions(entity,t,r){
+
+    let content = '';
+    //console.log(r);
+
+    let _class = '';
+
+    if( r['face_description'] )
+    {
+        _class = 'rf_persona_ok';
+    }
+    else
+    {
+        _class = 'rf_persona_error';
+    }
+
+    if(entity == 'persona' && t == 'rf'){
+        content = '<i class="fas fa-webcam '+ _class  +'" data-id="' + r['id'] + '"  onclick="go_lector(this)"></i>';
+    }
+
+    //console.log(entity);
+    //console.log(t);
 
     return content;
 }
@@ -1005,7 +1029,7 @@ function button_frm(a, b) {
                 arr4['' + t4[i].name + ''] = t4[i].value;
             }
 
-            let y4 = JSON.stringify(arr4);
+            //let y4 = JSON.stringify(arr4);
             //console.log(y);
             let loc4 = '../../server/entity_return.php';
             let j4 = { u: 0, d: arr4, id: _id, coleccion: entity };
