@@ -44,15 +44,8 @@
 		
 	</body>
 </html>
-<?php 
-if(isset($_GET['id']))
-{
 
-echo '<script>';
-echo ' var global_id = ' . $_GET['id'] . ';';
-echo '</script>';
 
-}
-?>
+
 <script src="../../js/s.js"></script>
-<script src="../../js/face.js"></script>
+<script src="../../js/lector.js"></script>

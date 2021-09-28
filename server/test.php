@@ -1,4 +1,5 @@
 <?php
+/*
 //// laboratorio
 include_once('mongo.php');
 
@@ -82,5 +83,79 @@ function _br(){
 function _e($e){
     echo $e;
 }
-
+*/
 ?>
+
+<script src="../js/s.js"></script>
+
+<script>
+
+load_personas();
+
+
+function load_personas(){
+
+    let loc = 'entity_return.php';
+
+    var g_labels = null;
+    var g_descriptors =  null;
+
+    var request = $.ajax({
+        url: loc,
+        type: "POST",
+        data: { e: 1, p: 1, detail: 1, coleccion: 'persona' },
+        dataType: "json",
+        async: false
+    });
+
+    //console.log(request);
+
+    request.done(function (v) {
+        // console.log(d);
+        //console.log(v);
+        g_labels        = __separar(v,1);
+        g_descriptors   = __separar(v,2);
+    });
+
+    
+
+    function __separar(v,x) {
+
+        let labels = [];
+        let descriptors = [];
+
+        for (let i = 0; i <= v.length - 1; i++) {
+
+
+            let r = v[i];
+            
+
+            let c = (r['nombre']);
+            let d = (r['face_description']);
+
+            labels[i]       = c ;
+            descriptors[i]  = d;
+
+            
+
+        }
+
+        //console.log(labels);
+        //console.log(descriptors);
+
+        if(x == 1){
+            return labels;
+        }else{
+            return descriptors;
+        }
+
+    }
+
+    console.log(g_labels);
+    console.log(g_descriptors);
+    
+
+};
+
+
+</script>
