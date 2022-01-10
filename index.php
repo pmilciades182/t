@@ -50,7 +50,7 @@ else
                     <img src="img/f.png" alt="Avatar" class="avatar">
                 </div>
                 <div class="container">
-                    <h1>Iniciar Sesión 99</h1>
+                    <h1>Iniciar Sesión</h1>
                     <span>Usuario:</span>
                     <input type="text" placeholder="Ingrese su Usuario" name="user" required>
                       <span>Contraseña:</span>

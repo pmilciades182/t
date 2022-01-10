@@ -19,8 +19,11 @@ async function startVideo() {
 Promise.all([
 
     faceapi.nets.tinyFaceDetector.loadFromUri('../../js/models'),
+   
     faceapi.nets.faceLandmark68Net.loadFromUri('../../js/models'),
+  
     faceapi.nets.faceRecognitionNet.loadFromUri('../../js/models')
+    
 
 
 ]).then(startVideo);
@@ -29,6 +32,7 @@ Promise.all([
 
 
 video.addEventListener('play', () => {
+    console.log('play');
 
     const canvas = faceapi.createCanvasFromMedia(video);
     document.body.append(canvas);
@@ -36,31 +40,11 @@ video.addEventListener('play', () => {
     const displaySize = { width: video.width, height: video.height };
     faceapi.matchDimensions(canvas, displaySize);
 
-    setInterval(async () => {
+    setInterval( async () => {
 
         const detections = await faceapi.detectSingleFace(
             video, new faceapi.TinyFaceDetectorOptions()
         ).withFaceLandmarks().withFaceDescriptor();
-
-
-
-        if (detections.descriptor) {
-            //console.log(detections.descriptor); 
-            //// cargar el descriptor a la persona
-            let elbody = document.getElementsByTagName('body')[0];
-
-            //console.log(elbody);
-
-
-            //enviar_descripcion(detections.descriptor);
-            /*
-            setTimeout(function () {
-                elbody.style.backgroundColor = 'green';
-                //redirigir_a_persona();
-            }, 5000);
-            */
-           }
-
 
         console.log(r);
 
@@ -76,6 +60,10 @@ video.addEventListener('play', () => {
 
       
         console.log(results);
+        let nombre = '';
+        if(results._label){
+            nombre = results._label;
+        }
 
         //// limpiar canvas
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
@@ -84,7 +72,7 @@ video.addEventListener('play', () => {
 
         const box = resizedDetections.detection.box;
 
-        const drawBox = new faceapi.draw.DrawBox( box, {label: 'Prueba'});
+        const drawBox = new faceapi.draw.DrawBox( box, {label: 'Analizando... ' + nombre});
 
         
 
@@ -93,7 +81,7 @@ video.addEventListener('play', () => {
         drawBox.draw(canvas);
         //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
 
-    }, 5000);
+    }, 500);
 
 
 });
@@ -119,7 +107,7 @@ function load_personas() {
          console.log(res);
          return res;
        
-    });
+    }); 
 
 
 
@@ -131,7 +119,7 @@ function load_personas() {
         {
 
             let r = v[i];
-            let c = (r['nombre']);
+            let c = (r['nombre']) + ' ' + (r['apellido']);
             let d = (r['face_description']);
 
             console.log(c);
