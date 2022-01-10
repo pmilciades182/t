@@ -48,3 +48,11 @@ var cols_form =
 
 
     ];
+
+    ///// columnas correspondientes a los campos N:N /// detalle
+
+var cols_form_detail = [];
+
+/// check si necesitamos cabecera detalle en los registros
+var master_detail = 0;
+
