@@ -33,7 +33,7 @@ function __select($_CONN,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES )
         return $_DATOS;
     }
 
-}
+} 
 
 ///crea la collection
 function __collection($_CONN,$_DB,$_COLECCION)
@@ -82,6 +82,19 @@ function __count($_CONN,$_DB,$_COLECCION,$_FILTRO)
 function __insert($_CONN,$_DB,$_COLECCION,$DATA)
 {
     $_BASE = $_DB . '.' . $_COLECCION;
+
+    if( strtoupper($_COLECCION) == 'MARCACION'){
+
+        $tz = 'America/Asuncion';
+        $timestamp = time();
+        $dt = new DateTime("now", new DateTimeZone($tz)); 
+        $dt->setTimestamp($timestamp);
+        $dt = date_modify($dt, "-3 hour"); /// fix hora paraguaya
+
+        $mDate = new \MongoDB\BSON\UTCDateTime( ($dt->format('U') * 1000) -10800);
+
+        $DATA['times'] = $mDate;
+    }
 
     $bulk = new MongoDB\Driver\BulkWrite;
     $_id1 = $bulk->insert($DATA);

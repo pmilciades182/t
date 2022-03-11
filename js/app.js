@@ -25,6 +25,9 @@ function capitalizeTheFirstLetterOfEachWord(words) {
     }
     let g = separateWord.join(' ');
     g = e__siglas(g);
+
+    g = e__thexeptions(g);
+
     return g;
 }
 
@@ -33,6 +36,19 @@ function e__siglas(e) {
     if (e.toUpperCase() == 'ID' ||
         e.toUpperCase() == 'RUC'||
         e.toUpperCase() == 'RF') { e = e.toUpperCase(); }
+
+
+    return e;
+}
+
+function e__thexeptions(e){
+
+    console.log(e);
+
+    if(e.toUpperCase() == 'LEC LINK' ){
+        e = 'LINK';
+    }
+
     return e;
 }
 
@@ -160,6 +176,13 @@ function go_lector(e) {
     
 }
 
+function go_link_lector(e) {
+    console.log(e.dataset.id)
+    let _id = e.dataset.id;
+    window.open("../../app/persona/lector.php?id=" +_id , '_blank');
+    
+}
+
 function e__td_exeptions(entity,t,r){
 
     let content = '';
@@ -178,6 +201,10 @@ function e__td_exeptions(entity,t,r){
 
     if(entity == 'persona' && t == 'rf'){
         content = '<i class="fas fa-webcam '+ _class  +'" data-id="' + r['id'] + '"  onclick="go_lector(this)"></i>';
+    }
+
+    if(entity == 'lector' && t == 'lec_link'){
+        content = '<i class="fas fa-external-link '+ _class  +'" data-id="' + r['id'] + '"  onclick="go_link_lector(this)"></i>';
     }
 
     //console.log(entity);
@@ -950,11 +977,11 @@ function button_frm(a, b) {
 
             let loc_2 = '../../server/entity_return.php';
             let g = e__delete.join();
-            //console.log(g)
+            console.log(g)
 
             let j_2 = { del: 1, d: g, coleccion: entity };
 
-            //console.log(j_2);
+            console.log(j_2);
 
             var request_2 = $.ajax({
                 url: loc_2,
@@ -962,9 +989,10 @@ function button_frm(a, b) {
                 data: j_2,
                 dataType: "text"
             });
+
             request_2.done(function (d) {
-                // console.log(d);
-                //console.log(d);
+                 console.log(d);
+                console.log(d);
                 frm_hide();
                 cerrar_modal();
                 let e__td = $("#__td");
@@ -1187,8 +1215,20 @@ function chk_delete(e) {
 
     if (e.checked) {
         e.parentElement.parentElement.classList.add('deletable');
-        let i = e.parentElement.parentElement.children[2].innerText;
+        let i = null;
+        if(entity == 'persona')
+        {
+            i = e.parentElement.parentElement.children[3].innerText;
+        }else{
+            i = e.parentElement.parentElement.children[2].innerText;
+        }
+        
+
+        console.log(i);
+
         i = parseInt(i);
+
+
 
         e__delete.indexOf(i) === -1 ? e__delete.push(i) : null;
 

@@ -180,6 +180,8 @@ if(isset($_POST['i']) or isset($_GET['i']))
 
             $DATA = __toarray($DATA, $_COLECCION);
 
+            $DATA['insert_date'] = date('Y-m-d H:i:s');
+
             $_D = __insert($_MONGO,$_DB, $_COLECCION,$DATA);
             echo '{"ok" : "insert!"}';
         }
@@ -299,7 +301,7 @@ if(isset($_POST['exp']) or isset($_GET['exp']) )
       }
         
 }
-
+ 
 
 ///letra u para definir un update
 if(isset($_POST['u']) or isset($_GET['u']))

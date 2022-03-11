@@ -18,7 +18,8 @@ var e__where = '';
 /// columnas de la grilla
 var cols_grid = [
     'id',
-    'descripcion'
+    'descripcion',
+    'lec_link'
 ];
 
 /// campos formulario nuevo y  editar

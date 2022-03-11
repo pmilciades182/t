@@ -13,16 +13,6 @@
         "_tipo": "1",
         "_class": "li_de",
         "_class2": "tit",
-        "_data_prog": "dsb_sucursal",
-        "_data_id": "1",
-        "_data_tit_pes": "DSB Sucursal",
-        "_icono": "tachometer-alt-slow",
-        "_titulo": "DSB Sucursal"
-    },
-    {
-        "_tipo": "1",
-        "_class": "li_de",
-        "_class2": "tit",
         "_data_prog": "dsb_empresa",
         "_data_id": "2",
         "_data_tit_pes": "DSB Empresa",
