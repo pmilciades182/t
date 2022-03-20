@@ -30,7 +30,9 @@ var cols_grid = [
     'nro_documento',
     'pais',
     'ciudad',
-    'direccion'
+    'direccion',
+    'empresa',
+    'sucursal'
 ];
 
 /// campos formulario nuevo y  editar /// tambien buscar /// solo cabecera
@@ -174,6 +176,32 @@ var cols_form =
             "input_pattern": 2,
             "list": false,
             "required" : true
+        },
+        {
+            "attribute": "empresa",
+            "label": "empresa",
+            "hint": "Empresa",
+            "new": true,
+            "edit": true,
+            "input_pattern": 2,
+            "list": true,
+            "required" : true,
+            "list_entity" : "empresa"
+    
+
+        },
+        {
+            "attribute": "sucursal",
+            "label": "sucursal",
+            "hint": "Sucursal",
+            "new": true,
+            "edit": true,
+            "input_pattern": 2,
+            "list": true,
+            "required" : true,
+            "list_entity" : "sucursal"
+    
+
         }
 
     ];

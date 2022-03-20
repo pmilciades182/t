@@ -1,9 +1,12 @@
 /////globales de entidad
 
-var entity = 'turno';
+var entity = 'marcacion';
 
 //// pagina inicial
 var page = 1;
+
+/// check si necesitamos cabecera detalle en los registros
+var master_detail = 0;
 
 //// elementos a eliminar
 
@@ -13,14 +16,16 @@ var e__delete = [];
 
 var e__where = '';
 
-
 /// columnas de la grilla
 var cols_grid = [
+  
     'id',
-    'descripcion'
+    'persona',
+    'lector',
+    'insert_date'
 ];
 
-/// campos formulario nuevo y  editar
+/// campos formulario nuevo y  editar /// tambien buscar /// solo cabecera
 var cols_form =
     [
         {
@@ -30,24 +35,13 @@ var cols_form =
             "new": false,
             "edit": true,
             "input_pattern": 1,
-            "list": false
+            "list": false,
+            "required" : true
 
-        },
-        {
-            "attribute": "descripcion",
-            "label": "Descripcion",
-            "hint": "Nombre del Turno",
-            "new": true,
-            "edit": true,
-            "input_pattern": 2,
-            "list": false
         }
+
     ];
 
     ///// columnas correspondientes a los campos N:N /// detalle
 
-var cols_form_detail = [];
-
-/// check si necesitamos cabecera detalle en los registros
-var master_detail = 0;
-
+    var cols_form_detail = [];

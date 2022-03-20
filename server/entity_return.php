@@ -66,6 +66,8 @@ if(isset($_POST['e']) or isset($_GET['e']) )
         $_P = (intval($_P) - 1) * 10;
     }
 
+    /// limite aumentado para listas detalle en formulario
+
     if(isset($_POST['detail']) or isset($_GET['detail']) )
     {
         $_LIMIT = 1000;
@@ -87,7 +89,7 @@ if(isset($_POST['e']) or isset($_GET['e']) )
         $_WH = json_decode($_WH);
         //var_dump($_WH);
 
-        /// limite aumentado para listas detalle en formulario
+        
        
         $_FILTRO    = [
             '$and' => [$_WH]
@@ -353,6 +355,82 @@ function __toarray($DATA, $_COLECCION)
     }
 
     return $DATA;
+}
+
+
+///funcion especial que se encarga de resumir el proceso de insertar o actualzar un turno
+
+if(isset($_POST['turno']) or isset($_GET['turno']))
+{
+
+    /// count con where
+    if(isset($_POST['w']) or isset($_GET['w']) )
+    {
+        $_WH = [];
+        $DATA =   ($_POST['d']);
+
+        if(isset($_POST['w']))
+        {
+            $_WH = $_POST['w'];
+        }else
+        {
+            $_WH = $_GET['w'];
+        }
+        $_WH = json_decode($_WH);
+        //var_dump($_WH);
+       
+
+        $_FILTRO    = [
+            '$and' => [$_WH]
+        ];
+
+        
+        $_D = __count($_MONGO,$_DB, $_COLECCION,$_FILTRO);
+
+
+        if( intval($_D) == 0)
+        {
+            $_FILTRO    = [];
+            $_OPCIONES   = [
+                'sort' => ['id' => -1]  ,
+                'skip' => 0,
+                'limit' => 1
+             ];
+
+            $_K = __select($_MONGO,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES );
+            $N  = json_decode($_K);
+            $N  = $N[0]->id;
+            $N  = intval($N) +1;
+
+            $DATA['id'] = $N;
+            __insert($_MONGO,$_DB, $_COLECCION,$DATA);
+
+        }
+        else
+        {
+
+            $_OPCIONES   = [
+                'sort' => ['id' => -1]  ,
+                'skip' => 0,
+                'limit' => 1
+             ];
+
+            $_K = __select($_MONGO,$_DB, $_COLECCION, $_FILTRO , $_OPCIONES );
+            $N  = json_decode($_K);
+            $ID  = $N[0]->id;
+           
+            __update($_MONGO,$_DB, $_COLECCION,$DATA,$ID);
+        }
+
+
+
+
+
+        
+    }
+ 
+    echo $_D;
+
 }
 
 

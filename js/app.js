@@ -43,7 +43,7 @@ function e__siglas(e) {
 
 function e__thexeptions(e){
 
-    console.log(e);
+    //console.log(e);
 
     if(e.toUpperCase() == 'LEC LINK' ){
         e = 'LINK';
@@ -51,7 +51,7 @@ function e__thexeptions(e){
 
     return e;
 }
-
+ 
 ///carga los datos a la tabla
 function e__put_td(g, e, f, _p, we) {
 
@@ -99,6 +99,7 @@ function e__put_td(g, e, f, _p, we) {
         }, 400);
         console.log(textStatus);
     });
+    
     ///// carga los datos a la grilla
     function __tab(d) {
         let can = 9;
@@ -133,6 +134,9 @@ function e__put_td(g, e, f, _p, we) {
                     //console.log(r[''+ t+'']);
                     if ((r['' + t + ''])) {
                         _q.innerText = (r['' + t + '']);
+
+                    lookup_exeptions(entity,t,r['' + t + ''],_q);
+
                     } else {
                         //// campos especiales
                         _q.innerHTML = e__td_exeptions(entity,t,r);
@@ -1143,13 +1147,59 @@ function load_list(a, b) {
 
         for (let i = 0; i <= v.length - 1; i++) {
 
+            let r = v[i];
+            //console.log(r);
+
+            let c = (r['id']);
+            let d = (r['descripcion']);
+            if(b == 'sucursal')
+            {
+                a.options.add(new Option(d, c));
+            }
+            else
+            {
+                a.options.add(new Option(d, d));
+            }
+        }
+    }
+}
+
+//carga las listas select segun la entidad - con ID
+function load_list_id(a, b) {
+
+    let loc = '../../server/entity_return.php';
+
+    var request = $.ajax({
+        url: loc,
+        type: "POST",
+        data: { e: 1, p: 1, detail: 1, coleccion: b },
+        dataType: "json",
+        async: false
+    });
+
+    //console.log(request);
+
+    request.done(function (v) {
+        // console.log(d);
+        //console.log(v);
+        __tab(v);
+    });
+
+    function __tab(v) {
+
+        //console.log(v);
+        //console.log(a);
+        a.options.add(new Option('Seleccione...', ''));
+
+        for (let i = 0; i <= v.length - 1; i++) {
+
 
             let r = v[i];
             //console.log(r);
 
             let c = (r['id']);
             let d = (r['descripcion']);
-            a.options.add(new Option(d, d));
+            a.options.add(new Option(d, c));
 
         }
     }
@@ -1321,9 +1371,11 @@ function carga_edit(e) {
                 //console.log('a');
                 // console.log(t[r]);
 
-                if (t[r].innerText == x) {
+                if (t[r].innerText == x || t[r].value ) {
                     t[r].selected = true;
                 }
+
+
             }
         } else {
             let h = n[i].name;
@@ -1417,4 +1469,55 @@ function merge_detail(e) {
     return _new;
 }
 
+
+///exepciones lookup de la grilla
+
+function lookup_exeptions(entity, atributo , id_atributo,campo)
+{
+   //console.log( entity + ' ' +atributo );
+   //console.log(campo);
+    if(entity == 'persona' && atributo == 'sucursal'){
+
+    campo.innerText = 'OJO';
+
+
+   let loc = '../../server/entity_return.php';
+
+
+   let arrw = '{"id":'+id_atributo+'}';
+
+   //arrw = JSON.stringify(arrw);
+
+   asx = { e: 1, coleccion: atributo, w:arrw };
+
+   //console.log(asx);
+
+    var request = $.ajax({
+        url: loc,
+        type: "POST",
+        data: asx,
+        dataType: "json"
+    });
+
+    //console.log(request);
+
+    request.done(function (d) {
+
+        //console.log(d[0].descripcion);
+        campo.innerHTML = d[0].descripcion;
+     
+
+    });
+
+    request.fail(function (jqXHR, textStatus) {
+        setTimeout(function () {
+            _wait.style.display = 'none';
+        }, 400);
+        console.log(textStatus);
+    });
+
+
+
+    }
+}
 

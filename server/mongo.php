@@ -102,7 +102,7 @@ function __insert($_CONN,$_DB,$_COLECCION,$DATA)
     $result = $_CONN->executeBulkWrite($_BASE, $bulk);
 
 }
-
+ 
 function __delete($_CONN,$_DB,$_COLECCION,$DATA)
 {
     $_BASE = $_DB . '.' . $_COLECCION;

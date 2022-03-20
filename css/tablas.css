@@ -509,4 +509,77 @@ th {
     background-color: cadetblue;
   }
 
+  .dsb_content{
+    display: flex;
+    height: 100%;
+    padding: 20px;
+    flex-direction: column;
+    }
 
+.dsb_line{
+    display: flex;
+    width: 100%;
+}
+
+.dsb_card4{
+    display: flex;
+    width: 25%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.dsb_card1{
+    display: flex;
+    width: 100%;
+    height: 800px;
+    
+}
+
+.dsb_card1b{
+  display: flex;
+  width: 100%;
+  height: 100px;
+  justify-content: center;
+    align-items: center;
+  
+}
+
+.dsb_card{
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    background-color: white;
+    margin: 10px;
+}
+.dsb_number{
+    font-size: 20px;
+    font-weight: 900;
+}
+
+#content_sucursales{
+  flex-direction: column;
+}
+
+#__td_date{
+  align-self:center;
+}
+
+.t_emoji{
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.tab_title{
+  text-align: center;
+}
+
+.clase_fecha_cabecera{
+  text-align: center;
+  width: 120px;
+}
+
+.clase_registro_empleado{
+  width: 120px;
+}
