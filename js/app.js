@@ -25,33 +25,34 @@ function capitalizeTheFirstLetterOfEachWord(words) {
     }
     let g = separateWord.join(' ');
     g = e__siglas(g);
-
     g = e__thexeptions(g);
-
     return g;
 }
 
 ////funcion que hace mayusculas a siglas
 function e__siglas(e) {
     if (e.toUpperCase() == 'ID' ||
-        e.toUpperCase() == 'RUC'||
+        e.toUpperCase() == 'RUC' ||
         e.toUpperCase() == 'RF') { e = e.toUpperCase(); }
-
-
     return e;
 }
 
-function e__thexeptions(e){
+function e__thexeptions(e) {
 
     //console.log(e);
 
-    if(e.toUpperCase() == 'LEC LINK' ){
+    if (e.toUpperCase() == 'LEC LINK') {
         e = 'LINK';
     }
 
+    if (e.toUpperCase() == 'INSERT DATE') {
+        e = 'FECHA HORA';
+    }
+
+
     return e;
 }
- 
+
 ///carga los datos a la tabla
 function e__put_td(g, e, f, _p, we) {
 
@@ -99,7 +100,7 @@ function e__put_td(g, e, f, _p, we) {
         }, 400);
         console.log(textStatus);
     });
-    
+
     ///// carga los datos a la grilla
     function __tab(d) {
         let can = 9;
@@ -135,11 +136,11 @@ function e__put_td(g, e, f, _p, we) {
                     if ((r['' + t + ''])) {
                         _q.innerText = (r['' + t + '']);
 
-                    lookup_exeptions(entity,t,r['' + t + ''],_q);
+                        lookup_exeptions(entity, t, r['' + t + ''], _q);
 
                     } else {
                         //// campos especiales
-                        _q.innerHTML = e__td_exeptions(entity,t,r);
+                        _q.innerHTML = e__td_exeptions(entity, t, r);
                     }
                     k.appendChild(_q);
                 }
@@ -176,39 +177,37 @@ function e__put_td(g, e, f, _p, we) {
 function go_lector(e) {
     console.log(e.dataset.id)
     let _id = e.dataset.id;
-    window.location.replace("../../app/persona/lectura.php?id=" +_id );
-    
+    window.location.replace("../../app/persona/lectura.php?id=" + _id);
+
 }
 
 function go_link_lector(e) {
     console.log(e.dataset.id)
     let _id = e.dataset.id;
-    window.open("../../app/persona/lector.php?id=" +_id , '_blank');
-    
+    window.open("../../app/persona/lector.php?id=" + _id, '_blank');
+
 }
 
-function e__td_exeptions(entity,t,r){
+function e__td_exeptions(entity, t, r) {
 
     let content = '';
     //console.log(r);
 
     let _class = '';
 
-    if( r['face_description'] )
-    {
+    if (r['face_description']) {
         _class = 'rf_persona_ok';
     }
-    else
-    {
+    else {
         _class = 'rf_persona_error';
     }
 
-    if(entity == 'persona' && t == 'rf'){
-        content = '<i class="fas fa-webcam '+ _class  +'" data-id="' + r['id'] + '"  onclick="go_lector(this)"></i>';
+    if (entity == 'persona' && t == 'rf') {
+        content = '<i class="fas fa-webcam ' + _class + '" data-id="' + r['id'] + '"  onclick="go_lector(this)"></i>';
     }
 
-    if(entity == 'lector' && t == 'lec_link'){
-        content = '<i class="fas fa-external-link '+ _class  +'" data-id="' + r['id'] + '"  onclick="go_link_lector(this)"></i>';
+    if (entity == 'lector' && t == 'lec_link') {
+        content = '<i class="fas fa-external-link ' + _class + '" data-id="' + r['id'] + '"  onclick="go_link_lector(this)"></i>';
     }
 
     //console.log(entity);
@@ -247,7 +246,7 @@ function e__paginador(a, e, we) {
     });
 
     request.done(function (d) {
-       // console.log(d);
+        // console.log(d);
         cantidad = d;
     });
     request.fail(function (jqXHR, textStatus) {
@@ -995,7 +994,7 @@ function button_frm(a, b) {
             });
 
             request_2.done(function (d) {
-                 console.log(d);
+                console.log(d);
                 console.log(d);
                 frm_hide();
                 cerrar_modal();
@@ -1152,12 +1151,10 @@ function load_list(a, b) {
 
             let c = (r['id']);
             let d = (r['descripcion']);
-            if(b == 'sucursal')
-            {
+            if (b == 'sucursal') {
                 a.options.add(new Option(d, c));
             }
-            else
-            {
+            else {
                 a.options.add(new Option(d, d));
             }
         }
@@ -1266,13 +1263,12 @@ function chk_delete(e) {
     if (e.checked) {
         e.parentElement.parentElement.classList.add('deletable');
         let i = null;
-        if(entity == 'persona')
-        {
+        if (entity == 'persona') {
             i = e.parentElement.parentElement.children[3].innerText;
-        }else{
+        } else {
             i = e.parentElement.parentElement.children[2].innerText;
         }
-        
+
 
         console.log(i);
 
@@ -1371,7 +1367,7 @@ function carga_edit(e) {
                 //console.log('a');
                 // console.log(t[r]);
 
-                if (t[r].innerText == x || t[r].value ) {
+                if (t[r].innerText == x || t[r].value) {
                     t[r].selected = true;
                 }
 
@@ -1459,10 +1455,7 @@ function merge_detail(e) {
         } else {
             check_1.value = check_1.value + ',' + e[i].value;
         }
-
-
     }
-
 
     //console.log(_new);
 
@@ -1472,52 +1465,83 @@ function merge_detail(e) {
 
 ///exepciones lookup de la grilla
 
-function lookup_exeptions(entity, atributo , id_atributo,campo)
-{
-   //console.log( entity + ' ' +atributo );
-   //console.log(campo);
-    if(entity == 'persona' && atributo == 'sucursal'){
-
-    campo.innerText = 'OJO';
-
-
-   let loc = '../../server/entity_return.php';
-
-
-   let arrw = '{"id":'+id_atributo+'}';
-
-   //arrw = JSON.stringify(arrw);
-
-   asx = { e: 1, coleccion: atributo, w:arrw };
-
-   //console.log(asx);
-
-    var request = $.ajax({
-        url: loc,
-        type: "POST",
-        data: asx,
-        dataType: "json"
-    });
-
-    //console.log(request);
-
-    request.done(function (d) {
-
-        //console.log(d[0].descripcion);
-        campo.innerHTML = d[0].descripcion;
-     
-
-    });
-
-    request.fail(function (jqXHR, textStatus) {
-        setTimeout(function () {
-            _wait.style.display = 'none';
-        }, 400);
-        console.log(textStatus);
-    });
-
-
-
+function lookup_exeptions(entity, atributo, id_atributo, campo) {
+    //console.log( entity + ' ' +atributo );
+    //console.log(campo);
+    if (entity == 'persona' && atributo == 'sucursal') {
+        let loc = '../../server/entity_return.php';
+        let arrw = '{"id":' + id_atributo + '}';
+        //arrw = JSON.stringify(arrw);
+        asx = { e: 1, coleccion: atributo, w: arrw };
+        //console.log(asx);
+        var request = $.ajax({
+            url: loc,
+            type: "POST",
+            data: asx,
+            dataType: "json"
+        });
+        //console.log(request);
+        request.done(function (d) {
+            //console.log(d[0].descripcion);
+            campo.innerHTML = d[0].descripcion;
+        });
+        request.fail(function (jqXHR, textStatus) {
+            setTimeout(function () {
+                _wait.style.display = 'none';
+            }, 400);
+            console.log(textStatus);
+        });
     }
+
+    if (entity == 'marcacion' && atributo == 'persona') {
+        let loc = '../../server/entity_return.php';
+        let arrw = '{"id":' + id_atributo + '}';
+        //arrw = JSON.stringify(arrw);
+        asx = { e: 1, coleccion: atributo, w: arrw };
+        //console.log(asx);
+        var request = $.ajax({
+            url: loc,
+            type: "POST",
+            data: asx,
+            dataType: "json"
+        });
+        //console.log(request);
+        request.done(function (d) {
+            //console.log(d[0].descripcion);
+            campo.innerHTML = d[0].nombre + ' ' + d[0].apellido;
+        });
+        request.fail(function (jqXHR, textStatus) {
+            setTimeout(function () {
+                _wait.style.display = 'none';
+            }, 400);
+            console.log(textStatus);
+        });
+    }
+
+    if (entity == 'marcacion' && atributo == 'lector') {
+        let loc = '../../server/entity_return.php';
+        let arrw = '{"id":' + id_atributo + '}';
+        //arrw = JSON.stringify(arrw);
+        asx = { e: 1, coleccion: atributo, w: arrw };
+        //console.log(asx);
+        var request = $.ajax({
+            url: loc,
+            type: "POST",
+            data: asx,
+            dataType: "json"
+        });
+        //console.log(request);
+        request.done(function (d) {
+            //console.log(d[0].descripcion);
+            campo.innerHTML = d[0].descripcion;
+        });
+        request.fail(function (jqXHR, textStatus) {
+            setTimeout(function () {
+                _wait.style.display = 'none';
+            }, 400);
+            console.log(textStatus);
+        });
+    }
+
 }
 

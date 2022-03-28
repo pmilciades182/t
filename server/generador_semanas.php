@@ -2,8 +2,9 @@
 /// incluye la conexion a la bd
 include_once('mongo.php');
 
-$_YEAR = 2024;
-$date = "01 january 2024";
+$_YEAR = 2023;
+/// arrancar domingo
+$date = "01 january 2023";
 $my_date = date('Y-m-d', strtotime($date));
 //echo $my_date;
 $_NUMBER_OF_WEEKS = 52;

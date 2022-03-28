@@ -18,7 +18,6 @@ var e__where = '';
 
 /// columnas de la grilla
 var cols_grid = [
-  
     'id',
     'persona',
     'lector',
@@ -37,11 +36,9 @@ var cols_form =
             "input_pattern": 1,
             "list": false,
             "required" : true
-
         }
-
     ];
 
-    ///// columnas correspondientes a los campos N:N /// detalle
+///// columnas correspondientes a los campos N:N /// detalle
 
-    var cols_form_detail = [];
+var cols_form_detail = [];
