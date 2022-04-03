@@ -543,7 +543,7 @@ th {
   width: 100%;
   height: 100px;
   justify-content: center;
-    align-items: center;
+  align-items: center;
   
 }
 
@@ -582,4 +582,9 @@ th {
 
 .clase_registro_empleado{
   width: 120px;
+}
+
+.dsb_card.dsb_card1b.colum{
+  flex-direction: column;
+  height: 200px;
 }

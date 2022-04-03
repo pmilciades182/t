@@ -1202,6 +1202,49 @@ function load_list_id(a, b) {
     }
 }
 
+// para personas
+
+function load_list_persona(a, b) {
+
+    let loc = '../../server/entity_return.php';
+
+    var request = $.ajax({
+        url: loc,
+        type: "POST",
+        data: { e: 1, p: 1, detail: 1, coleccion: b },
+        dataType: "json",
+        async: false
+    });
+
+    //console.log(request);
+
+    request.done(function (v) {
+        // console.log(d);
+        //console.log(v);
+        __tab(v);
+    });
+
+    function __tab(v) {
+
+        //console.log(v);
+        //console.log(a);
+        a.options.add(new Option('Seleccione...', ''));
+
+        for (let i = 0; i <= v.length - 1; i++) {
+
+            let r = v[i];
+            //console.log(r);
+
+            let c = (r['id']);
+            let d = (r['nombre']) + ' ' + (r['apellido']);
+
+    
+            a.options.add(new Option(d, c));
+           
+        }
+    }
+}
+
 //carga las listas select segun la entidad
 function load_list_detail(a, b) {
 
