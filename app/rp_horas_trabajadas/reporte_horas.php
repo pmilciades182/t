@@ -13,7 +13,6 @@ if(isset($_GET['hasta'])){$_HASTA = $_GET['hasta'];}else{ $_DESDE = $_POST['hast
 if(isset($_GET['nombre'])){$_NOMBRE = $_GET['nombre'];}else{ $_NOMBRE = $_POST['nombre'];};
 
 
-
 $options = new Options();
 $options->set('isRemoteEnabled', TRUE);
 $dompdf = new Dompdf($options);
@@ -28,11 +27,11 @@ $context = stream_context_create([
 
 
 
-$IMPRESION = date('Y-m-d h:i:s');
+$IMPRESION = date('Y-m-d H:i:s');
 
 $dompdf->setHttpContext($context);
 
-// Introducimos HTML de prueba
+// Introducimos HTML 
 $html = "
 
 <style>
@@ -40,7 +39,7 @@ $html = "
     border:solid;
     border-collapse: collapse;
     border-width: 1px;
-    width: 130px;
+    width: 120px;
 }
 </style>
 
@@ -74,21 +73,21 @@ $html = "
     <td><b>Dia de la Semana </b></td>
     <td><b>Turno </b></td>
     <td><b>Marcaciones </b></td>
-    <td><b>Horas Trabajadas </b></td>
+    <td><b>Horas Diurnas </b></td>
+    <td><b>Horas Nocturnas </b></td>
 </tr>
 
 
 ";
 
 
-
-
-
-
 $A =  devolver_array($_DESDE,$_HASTA,$_PERSONA,$_MONGO,$_DB);
 
 
 $_COUNT         = count($A);
+
+$_SUMA_DIURNA       = 0;
+$_SUMA_NOCTURNA     = 0;
 
 
 for ($i = 0; $i < $_COUNT; $i++) 
@@ -103,11 +102,38 @@ for ($i = 0; $i < $_COUNT; $i++)
     $_HORAS             = $_LINEA->horas;
     $_TIEMPO            = $_LINEA->tiempo;
 
+    $_TIEMPO_DIURNO     = 0;
+    $_TIEMPO_NOCTURNO   = 0;
+
+
+
     if(is_array($_HORAS )) {
 
         $_HORAS = implode('<br>' ,$_HORAS );
 
     }
+
+    /// fix tiempo y distribuir
+
+    if( trim($_TIEMPO) == '')
+    {
+        $_TIEMPO = 0;
+    }
+
+    if($_TURNO <> '-'){
+
+        if($_TURNO == 'Noche'){
+            $_TIEMPO_DIURNO = 0;
+            $_TIEMPO_NOCTURNO = $_TIEMPO;
+        }else{
+            $_TIEMPO_DIURNO = $_TIEMPO;
+            $_TIEMPO_NOCTURNO = 0;
+        }
+
+    }
+
+    $_SUMA_DIURNA   = $_SUMA_DIURNA + $_TIEMPO_DIURNO;
+    $_SUMA_NOCTURNA = $_SUMA_NOCTURNA + $_TIEMPO_NOCTURNO;
 
     switch ($_DAY) {
         case 1: $_DAY = 'Lunes';  break;
@@ -126,16 +152,26 @@ for ($i = 0; $i < $_COUNT; $i++)
     $html .= "<td> $_DAY    </td>";
     $html .= "<td> $_TURNO  </td>";
     $html .= "<td> $_HORAS </td>";
-    $html .= "<td> $_TIEMPO </td>";
+    $html .= "<td> $_TIEMPO_DIURNO </td>";
+    $html .= "<td> $_TIEMPO_NOCTURNO </td>";
 
     $html .= "</tr>";
-
-    
-
 }
 
-$html .= "</table>";
+$html .= "
 
+<tr>
+<td><b>Total </b></td>
+<td></td>
+<td></td>
+<td></td>
+<td><b> $_SUMA_DIURNA </b></td>
+<td><b> $_SUMA_NOCTURNA </b></td>
+</tr>
+
+";
+
+$html .= "</table>";
 
 
 // Instanciamos un objeto de la clase DOMPDF.

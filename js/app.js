@@ -1410,7 +1410,7 @@ function carga_edit(e) {
                 //console.log('a');
                 // console.log(t[r]);
 
-                if (t[r].innerText == x || t[r].value) {
+                if (t[r].innerText == x || t[r].value == x) {
                     t[r].selected = true;
                 }
 
