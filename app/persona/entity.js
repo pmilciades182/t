@@ -32,7 +32,8 @@ var cols_grid = [
     'ciudad',
     'direccion',
     'empresa',
-    'sucursal'
+    'sucursal',
+    'activo'
 ];
 
 /// campos formulario nuevo y  editar /// tambien buscar /// solo cabecera
@@ -202,6 +203,19 @@ var cols_form =
             "list_entity" : "sucursal"
     
 
+        },
+        {
+            "attribute": "activo",
+            "label": "Activo",
+            "hint": "Estado del Empleado",
+            "new": true,
+            "edit": true,
+            "input_pattern": 2,
+            "list": true,
+            "required" : true,
+            "list_entity" : "activo"
+    
+
         }
 
     ];
@@ -210,13 +224,13 @@ var cols_form =
 
     var cols_form_detail = [
         {
-            "attribute": "movilidad",
-            "label": "Movilidad Propia",
-            "hint": "Movilidad Propia con la que cuenta. Seleccionar varias opciones con la tecla Ctrl",
+            "attribute": "funcion",
+            "label": "Funcion Empleado",
+            "hint": "Funciones que realiza la Persona. Seleccionar varias opciones con la tecla Ctrl",
             "new": true,
             "edit": true,
             "required" : true,
             "check": true,
-            "check_entity" : "movilidad"
+            "check_entity" : "funcion"
         }
     ]

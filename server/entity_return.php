@@ -341,7 +341,7 @@ function __toarray($DATA, $_COLECCION)
 {
     if( $_COLECCION == 'persona')
     {
-        $DATA['movilidad'] = explode(",",$DATA['movilidad']);
+        $DATA['funcion'] = explode(",",$DATA['funcion']);
     }
 
     if( $_COLECCION == 'usuario')

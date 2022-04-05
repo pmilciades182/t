@@ -1122,10 +1122,13 @@ function load_list(a, b) {
 
     let loc = '../../server/entity_return.php';
 
+    we =  { "activo": "SI" };
+    we = JSON.stringify(we);
+
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1, detail: 1, coleccion: b },
+        data: { e: 1, p: 1, detail: 1, coleccion: b, w: we },
         dataType: "json",
         async: false
     });
@@ -1166,10 +1169,13 @@ function load_list_id(a, b) {
 
     let loc = '../../server/entity_return.php';
 
+    we =  { "activo": "SI" };
+    we = JSON.stringify(we);
+
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1, detail: 1, coleccion: b },
+        data: { e: 1, p: 1, detail: 1, coleccion: b, w: we },
         dataType: "json",
         async: false
     });
@@ -1208,10 +1214,13 @@ function load_list_persona(a, b) {
 
     let loc = '../../server/entity_return.php';
 
+    we =  { "activo": "SI" };
+    we = JSON.stringify(we);
+
     var request = $.ajax({
         url: loc,
         type: "POST",
-        data: { e: 1, p: 1, detail: 1, coleccion: b },
+        data: { e: 1, p: 1, detail: 1, coleccion: b, w:we },
         dataType: "json",
         async: false
     });
@@ -1238,9 +1247,9 @@ function load_list_persona(a, b) {
             let c = (r['id']);
             let d = (r['nombre']) + ' ' + (r['apellido']);
 
-    
+
             a.options.add(new Option(d, c));
-           
+
         }
     }
 }

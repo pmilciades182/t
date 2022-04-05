@@ -46,7 +46,7 @@ include_once('../../server/_rpt_index.php');
         </div>
     </div>
 </div>
-
+<script src="../../js/alert.js"></script>
 <script>
 
 content_sucursales.style.display = 'none';
@@ -418,6 +418,11 @@ function actualiza_turno(e){
 
         console.log(d);
 
+        Toast.fire({
+            icon: 'success',
+            title: 'Guardado'
+        })
+
         
 
     });
@@ -467,6 +472,20 @@ function mueve_semana(n){
     cabecera_de_fechas(gg_year,gg_week);
     carga_empleados(gg_sucursal,gg_year,gg_week);
 }
+
+
+/// para alertar
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 1000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
 
 </script>

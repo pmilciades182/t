@@ -1,6 +1,6 @@
 /////globales de entidad
 
-var entity = 'pais';
+var entity = 'funcion';
 
 //// pagina inicial
 var page = 1;
@@ -13,7 +13,6 @@ var e__delete = [];
 
 var e__where = '';
 
-
 /// columnas de la grilla
 var cols_grid = [
     'id',
@@ -21,7 +20,7 @@ var cols_grid = [
     'activo'
 ];
 
-/// campos formulario nuevo y  editar
+/// campos formulario nuevo y  editar /// tambien buscar
 var cols_form =
     [
         {
@@ -31,17 +30,21 @@ var cols_form =
             "new": false,
             "edit": true,
             "input_pattern": 1,
-            "list": false
+            "list": false,
+            "required" : true
 
         },
         {
             "attribute": "descripcion",
             "label": "Descripcion",
-            "hint": "Nombre del Pais o Nacion",
+            "hint": "Tipo de Documento Legal",
             "new": true,
             "edit": true,
+            "search": true,
             "input_pattern": 2,
-            "list": false
+            "list": false,
+            "required" : true
+
         },
         {
             "attribute": "activo",
@@ -56,8 +59,9 @@ var cols_form =
     
 
         }
-    ];
 
+
+    ];
 
     ///// columnas correspondientes a los campos N:N /// detalle
 

@@ -61,7 +61,16 @@
         "_titulo": "Empleados Sucursal"
     },
 
-
+     {
+        "_tipo": "1",
+        "_class": "li_de",
+        "_class2": "tit",
+        "_data_prog": "monto",
+        "_data_id": "5",
+        "_data_tit_pes": "Montos",
+        "_icono": "money-bill",
+        "_titulo": "Montos"
+    },
 
     {
         "_tipo": "2",
@@ -92,7 +101,17 @@
         "_data_id": "7",
         "_data_tit_pes": "Tipo Doc",
         "_icono": "passport",
-        "_titulo": "Tipos Documentos"
+        "_titulo": "Tipo Documentos"
+    },
+    {
+        "_tipo": "1",
+        "_class": "li_de",
+        "_class2": "tit",
+        "_data_prog": "funcion",
+        "_data_id": "17",
+        "_data_tit_pes": "Funcion",
+        "_icono": "briefcase",
+        "_titulo": "Funciones"
     },
     {
         "_tipo": "1",

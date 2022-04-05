@@ -17,7 +17,8 @@ var e__where = '';
 /// columnas de la grilla
 var cols_grid = [
     'id',
-    'descripcion'
+    'descripcion',
+    'activo'
 ];
 
 /// campos formulario nuevo y  editar
@@ -41,6 +42,19 @@ var cols_form =
             "edit": true,
             "input_pattern": 2,
             "list": false
+        },
+        {
+            "attribute": "activo",
+            "label": "Activo",
+            "hint": "Estado",
+            "new": true,
+            "edit": true,
+            "input_pattern": 2,
+            "list": true,
+            "required" : true,
+            "list_entity" : "activo"
+    
+
         }
     ];
 

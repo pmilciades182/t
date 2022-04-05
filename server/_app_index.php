@@ -1,7 +1,6 @@
 <?php  
 
 include_once('manage_session.php');
-
 $_r = rand(111111111, 999999999);
 
 ?>
