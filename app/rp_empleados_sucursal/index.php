@@ -25,7 +25,7 @@ include_once('../../server/_rpt_index.php');
                 </div>
             </div>
 
-            <table id="ta_date">
+            <table id="ta_date"> 
                 <tbody id="__td_date">
                     <tr id="__th_date">
                         <th colspan='8' class="tab_title">

@@ -2,6 +2,7 @@
 
 /// incluye la conexion a la bd
 include_once('mongo.php');
+include_once('horas_trabajadas.php');
 
 if(isset($_POST['coleccion'] ) or isset($_GET['coleccion']) )
 {
@@ -430,6 +431,32 @@ if(isset($_POST['turno']) or isset($_GET['turno']))
     }
  
     echo $_D;
+
+}
+
+///funcion especial que se encarga de resumir el proceso obtener la marcacion del empleado
+
+if(isset($_POST['horas']) or isset($_GET['horas']))
+{
+    if(isset($_POST['dia']))
+    {
+        $_DAY = $_POST['dia'];
+    }else
+    {
+        $_DAY = $_GET['dia'];
+    }
+
+    if(isset($_POST['persona']))
+    {
+        $_PERSON = $_POST['persona'];
+    }else
+    {
+        $_PERSON = $_GET['persona'];
+    }
+
+
+    echo  json_encode(buscar_marcaciones($_PERSON,$_DAY,$_MONGO,$_DB));
+    
 
 }
 
