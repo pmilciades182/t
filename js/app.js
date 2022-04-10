@@ -560,8 +560,15 @@ function go_frm_new(a) {
         ins[i].value = '';
         //recarga las listas
         //console.log(ins[i].tagName);
+
         if (ins[i].tagName == 'SELECT') {
-            load_list(ins[i], ins[i].name);
+
+            if(ins[i].name == 'persona'){
+                load_list_persona(ins[i], ins[i].name);
+            }else{
+                load_list(ins[i], ins[i].name);
+            }
+
         }
     }
 
