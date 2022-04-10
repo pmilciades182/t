@@ -12,17 +12,12 @@ include_once('../../server/_dsb_index.php');
             <span class="dsb_number"> 100 </span>
         </div>
         <div class="dsb_card dsb_card4">  
-            <span>Ausencias (Mes) </span> <br>
+            <span>Ausencias (Semana) </span> <br>
             <span class="dsb_number"> 100 </span>
         </div>
         <div class="dsb_card dsb_card4"> 
-            <span>Ausencias (Mes) </span> <br>
-            <span class="dsb_number"> 100 </span>
         </div>
         <div class="dsb_card dsb_card4"> 
-            <span>Ausencias (Mes) </span> <br>
-            <span class="dsb_number"> 100 </span>
-           
         </div>
 
     </div>

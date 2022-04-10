@@ -97,6 +97,26 @@
         "_tipo": "1",
         "_class": "li_de",
         "_class2": "tit",
+        "_data_prog": "permiso_empleado",
+        "_data_id": "19",
+        "_data_tit_pes": "Permisos",
+        "_icono": "book-spells",
+        "_titulo": "Permisos"
+    },
+    {
+        "_tipo": "1",
+        "_class": "li_de",
+        "_class2": "tit",
+        "_data_prog": "permiso_empleado_motivo",
+        "_data_id": "20",
+        "_data_tit_pes": "Motivo Permiso",
+        "_icono": "gift-card",
+        "_titulo": "Motivo Permiso"
+    },
+    {
+        "_tipo": "1",
+        "_class": "li_de",
+        "_class2": "tit",
         "_data_prog": "tipo_documento",
         "_data_id": "7",
         "_data_tit_pes": "Tipo Doc",
